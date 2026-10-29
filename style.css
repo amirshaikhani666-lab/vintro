@@ -160,17 +160,26 @@ p{margin:0}
 /* ---------- product page ---------- */
 .crumbs{padding-block:18px;font-size:.8rem;color:var(--muted)}
 .crumbs a:hover{color:var(--ink)}
-.pdp{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(320px,1fr);gap:48px;padding-bottom:72px}
+.pdp{display:grid;grid-template-columns:minmax(0,480px) minmax(300px,420px);justify-content:center;gap:64px;padding-bottom:72px;padding-top:8px}
 @media (max-width:900px){.pdp{grid-template-columns:1fr;gap:26px}}
-.pics{display:grid;grid-template-columns:1fr 1fr;gap:4px;align-content:start}
-.pics .pic{position:relative;aspect-ratio:808/951;background:var(--tile);overflow:hidden}
-.pics .pic:first-child,.pics .pic:last-child:nth-child(even){grid-column:1/-1}
+.gal{display:grid;gap:10px;align-content:start;min-width:0}
+.pics{display:block}
+.pics .pic{position:relative;aspect-ratio:808/951;background:var(--tile);overflow:hidden;display:none}
+.pics .pic.on{display:block;cursor:zoom-in}
+.pics .pic img{transition:transform .25s ease}
+.pics .pic.zoom img{transform:scale(2.2)}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap}
+.thumbs button{width:64px;aspect-ratio:808/951;background:var(--tile);border:1px solid transparent;padding:2px;opacity:.65;transition:opacity .2s}
+.thumbs button:hover{opacity:1}
+.thumbs button[aria-pressed="true"]{border-color:var(--ink);opacity:1}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+
 .pics .pic img,.pics .pic .art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 @media (max-width:900px){
   .pics{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:0;margin-inline:calc(-1 * max(20px,env(safe-area-inset-left,0px)));scrollbar-width:none}
   .pics::-webkit-scrollbar{display:none}
-  .pics .pic{flex:0 0 100%;scroll-snap-align:center}
-  .pics .pic:first-child,.pics .pic:last-child:nth-child(even){grid-column:auto}
+  .pics .pic{flex:0 0 100%;scroll-snap-align:center;display:block;cursor:auto}
+  .thumbs{display:none}
 }
 .dots-nav{display:none;justify-content:center;gap:6px;margin-top:10px}
 .dots-nav i{width:6px;height:6px;border-radius:50%;background:var(--line)}
