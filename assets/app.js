@@ -251,19 +251,20 @@
     if (!p) { $("#main").innerHTML = '<div class="loading pad">لم نعثر على هذا الموديل. <a class="link-u" href="' + d(ROOT) + '">العودة إلى الرئيسية</a></div>'; return; }
     var s = seasonOf(p.season) || SEASONS[0], cols = arr(p.colors), sizes = arr(p.sizes);
     document.title = p.name + (p.code ? " · " + p.code : "") + " — VINTRO";
-    var ci = Math.max(0, cols.findIndex(function (c) { return arr(c.images).length; })), size = null;
+    var ci = Math.max(0, cols.findIndex(function (c) { return arr(c.images).length; })), size = null, ii = 0;
     var wa = digits(B.whatsapp);
     var related = P.filter(function (x) { return x !== p && x.season === p.season; });
     related.sort(function (a, b) { return (b.category === p.category) - (a.category === p.category); });
 
     function draw() {
       var c = cols[ci] || {}, imgs = arr(c.images).filter(Boolean);
-      var pics = imgs.length ? imgs.map(function (im, i) { return '<div class="pic"><img src="' + esc(url(im)) + '" alt="' + esc(p.name + " — " + (c.name || "") + " " + (i + 1)) + '"' + (i ? ' loading="lazy"' : "") + '></div>'; }).join("")
-        : '<div class="pic">' + art(p, hexOf(c)) + '</div>';
+      var pics = imgs.length ? imgs.map(function (im, i) { if (ii >= imgs.length) ii = 0; return '<div class="pic' + (i === ii ? " on" : "") + '"><img src="' + esc(url(im)) + '" alt="' + esc(p.name + " — " + (c.name || "") + " " + (i + 1)) + '"' + (i ? ' loading="lazy"' : "") + '></div>'; }).join("")
+        : '<div class="pic on">' + art(p, hexOf(c)) + '</div>';
+      var thumbs = imgs.length > 1 ? '<div class="thumbs">' + imgs.map(function (im, i) { return '<button data-i="' + i + '" aria-pressed="' + (i === ii) + '" aria-label="صورة ' + toAr(i + 1) + '"><img src="' + esc(url(im)) + '" alt=""></button>'; }).join("") + '</div>' : "";
       var msg = "مرحباً VINTRO، أرغب بالاستفسار عن الموديل " + (p.code || p.name) + " (" + p.name + ")" + (c.name ? "\nاللون: " + c.name : "") + (size ? "\nالمقاس: " + size : "");
       $("#main").innerHTML = '<nav class="crumbs pad" aria-label="المسار"><a href="' + d(ROOT) + '">الرئيسية</a> / <a href="' + seasonUrl(s.id) + '">' + s.ar + '</a>' +
         (p.category ? ' / <a href="' + seasonUrl(s.id, p.category) + '">' + esc(p.category) + '</a>' : "") + '</nav>' +
-        '<div class="pdp pad"><div><div class="pics" id="pics">' + pics + '</div>' + (imgs.length > 1 ? '<div class="dots-nav">' + imgs.map(function (_, i) { return '<i' + (i ? "" : ' class="on"') + '></i>'; }).join("") + '</div>' : "") + '</div>' +
+        '<div class="pdp pad"><div class="gal"><div class="pics" id="pics">' + pics + '</div>' + thumbs + (imgs.length > 1 && imgs.length > 1 ? '<div class="dots-nav">' + imgs.map(function (_, i) { return '<i' + (i ? "" : ' class="on"') + '></i>'; }).join("") + '</div>' : "") + '</div>' +
         '<aside class="panel-info"><div>' + (p.code ? '<div class="code">' + esc(p.code) + '</div>' : "") + '<h1>' + esc(p.name) + '</h1>' +
         (p.price ? '<div class="price">' + esc(p.price) + '</div>' : '<div class="price ask">السعر عند الطلب</div>') + '</div>' +
         (cols.length ? '<div><div class="opt-label"><span>اللون</span><b>' + esc(c.name || "") + '</b></div><div class="colors">' + cols.map(function (k, i) {
@@ -281,10 +282,21 @@
         (p.min_order ? '<dt>أقل كمية</dt><dd>' + esc(p.min_order) + '</dd>' : "") + '</dl></div></details></div></aside></div>' +
         (related.length ? '<section class="sec pad" style="border-top:1px solid var(--line)"><div class="sec-head"><div><span class="latin">You may also like</span><h2>من نفس المجموعة</h2></div><a class="link-u" href="' + seasonUrl(s.id) + '">عرض الكل</a></div><div class="strip">' + related.slice(0, 10).map(card).join("") + '</div></section>' : "");
       var pk = $("#pics"), dots = document.querySelectorAll(".dots-nav i");
+      /* hover zoom on desktop: the photo enlarges and follows the mouse */
+      if (pk && window.matchMedia && matchMedia("(hover: hover) and (min-width: 901px)").matches) {
+        pk.addEventListener("mousemove", function (e) {
+          var pic = e.target.closest(".pic.on"); if (!pic) return; var im = pic.querySelector("img"); if (!im) return;
+          var r = pic.getBoundingClientRect();
+          im.style.transformOrigin = ((e.clientX - r.left) / r.width * 100) + "% " + ((e.clientY - r.top) / r.height * 100) + "%";
+          pic.classList.add("zoom");
+        });
+        pk.addEventListener("mouseleave", function () { var z = pk.querySelector(".zoom"); if (z) z.classList.remove("zoom"); });
+      }
       if (pk && dots.length) pk.addEventListener("scroll", function () { var i = Math.round(Math.abs(pk.scrollLeft) / pk.clientWidth); dots.forEach(function (dd, j) { dd.classList.toggle("on", i === j); }); }, { passive: true });
     }
     document.addEventListener("click", function (e) {
-      var cb = e.target.closest("[data-c]"); if (cb) { ci = +cb.getAttribute("data-c"); var y = window.scrollY; draw(); window.scrollTo(0, y); return; }
+      var tb = e.target.closest("[data-i]"); if (tb) { ii = +tb.getAttribute("data-i"); var y0 = window.scrollY; draw(); window.scrollTo(0, y0); return; }
+      var cb = e.target.closest("[data-c]"); if (cb) { ci = +cb.getAttribute("data-c"); ii = 0; var y = window.scrollY; draw(); window.scrollTo(0, y); return; }
       var sb = e.target.closest("[data-s]"); if (sb) { var v = sb.getAttribute("data-s"); size = size === v ? null : v; var y2 = window.scrollY; draw(); window.scrollTo(0, y2); }
     });
     draw();
