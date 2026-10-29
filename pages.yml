@@ -1,0 +1,171 @@
+media:
+  input: images
+  output: /images
+  categories: [image]
+  rename: safe
+
+content:
+  - name: products
+    label: الموديلات
+    type: file
+    path: data/products.json
+    format: json
+    list: true
+    fields:
+      - name: name
+        label: اسم الموديل
+        type: string
+        required: true
+      - name: code
+        label: رقم الموديل (مثال S26-101)
+        type: string
+        required: true
+      - name: season
+        label: الموسم
+        type: select
+        required: true
+        options:
+          values:
+            - name: summer-2026
+              label: صيف ٢٠٢٦
+            - name: winter-2026
+              label: شتاء ٢٠٢٦
+      - name: category
+        label: النوع (تيشرت، قميص، فستان، بنطال، جاكيت، كنزة…)
+        type: string
+      - name: colors
+        label: الألوان والصور
+        type: object
+        list: true
+        fields:
+          - name: name
+            label: اسم اللون
+            type: string
+            required: true
+          - name: hex
+            label: كود اللون (اختياري، مثال #1E2A44)
+            type: string
+          - name: images
+            label: صور هذا اللون (أول صورة هي الغلاف)
+            type: image
+            options:
+              multiple:
+                max: 8
+              extensions: [jpg, jpeg, png, webp]
+      - name: sizes
+        label: المقاسات (مقاس بكل سطر)
+        type: string
+        list: true
+      - name: fabric
+        label: القماش
+        type: string
+      - name: price
+        label: السعر (اتركه فارغاً ليظهر «السعر عند الطلب»)
+        type: string
+      - name: min_order
+        label: أقل كمية للطلب
+        type: string
+      - name: description
+        label: وصف قصير
+        type: text
+      - name: featured
+        label: عرضه بالصفحة الرئيسية
+        type: boolean
+
+  - name: brand
+    label: معلومات الشركة
+    type: file
+    path: data/brand.json
+    format: json
+    fields:
+      - name: name
+        label: اسم الشركة
+        type: string
+      - name: headline
+        label: العنوان الكبير بالصفحة الرئيسية
+        type: string
+      - name: tagline
+        label: سطر تعريفي
+        type: string
+      - name: founder
+        label: اسم المؤسس
+        type: string
+      - name: founder_title
+        label: صفة المؤسس
+        type: string
+      - name: phone
+        label: رقم الهاتف
+        type: string
+      - name: phone_label
+        label: اسم الرقم الأول (مثال مصر)
+        type: string
+      - name: phone2
+        label: رقم هاتف ثاني
+        type: string
+      - name: phone2_label
+        label: اسم الرقم الثاني (مثال سوريا)
+        type: string
+      - name: whatsapp
+        label: رقم واتساب مع رمز الدولة
+        type: string
+      - name: email
+        label: البريد الإلكتروني
+        type: string
+      - name: email2
+        label: بريد إلكتروني ثاني
+        type: string
+      - name: instagram
+        label: حساب إنستغرام
+        type: string
+      - name: facebook
+        label: رابط صفحة فيسبوك
+        type: string
+      - name: address
+        label: العنوان
+        type: string
+      - name: address_map
+        label: العنوان للخريطة (بالإنجليزي)
+        type: string
+      - name: hours
+        label: أوقات العمل
+        type: string
+      - name: about
+        label: من نحن (مختصر)
+        type: text
+      - name: story
+        label: قصة الشركة (صفحة من نحن)
+        type: text
+      - name: values
+        label: ما يميّزنا
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: العنوان
+            type: string
+          - name: text
+            label: الشرح
+            type: text
+      - name: faq
+        label: أسئلة شائعة (صفحة الجملة)
+        type: object
+        list: true
+        fields:
+          - name: q
+            label: السؤال
+            type: string
+          - name: a
+            label: الجواب
+            type: text
+      - name: summer_intro
+        label: مقدمة قسم الصيف
+        type: text
+      - name: summer_cover
+        label: صورة غلاف الصيف (طولية، تظهر بالصفحة الرئيسية)
+        type: image
+      - name: winter_intro
+        label: مقدمة قسم الشتاء
+        type: text
+      - name: winter_cover
+        label: صورة غلاف الشتاء (طولية، تظهر بالصفحة الرئيسية)
+        type: image

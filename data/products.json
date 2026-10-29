@@ -1,0 +1,199 @@
+[
+  {
+    "name": "تيشرت قطن بياقة دائرية",
+    "code": "S26-101",
+    "season": "summer-2026",
+    "category": "تيشرت",
+    "fabric": "قطن ١٠٠٪ — ١٨٠ غرام",
+    "price": "",
+    "min_order": "",
+    "description": "قصّة مستقيمة، خياطة مزدوجة على الأكمام والحافة.",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": true,
+    "colors": [
+      {
+        "name": "أبيض",
+        "hex": "#F4F4F2",
+        "images": []
+      },
+      {
+        "name": "كحلي",
+        "hex": "#1E2A44",
+        "images": []
+      },
+      {
+        "name": "زيتي",
+        "hex": "#6B6F3A",
+        "images": []
+      }
+    ]
+  },
+  {
+    "name": "فستان كتان بحزام",
+    "code": "S26-204",
+    "season": "summer-2026",
+    "category": "فستان",
+    "fabric": "كتان ٥٥٪ — فسكوز ٤٥٪",
+    "price": "",
+    "min_order": "",
+    "description": "طول متوسط، أكمام قصيرة، حزام من نفس القماش.",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "featured": true,
+    "colors": [
+      {
+        "name": "بيج",
+        "hex": "#D9C7A7",
+        "images": []
+      },
+      {
+        "name": "سماوي",
+        "hex": "#9CC3D5",
+        "images": []
+      }
+    ]
+  },
+  {
+    "name": "قميص كتان رجالي",
+    "code": "S26-310",
+    "season": "summer-2026",
+    "category": "قميص",
+    "fabric": "كتان ١٠٠٪",
+    "price": "",
+    "min_order": "",
+    "description": "ياقة كلاسيكية، جيب على الصدر، أزرار صدف.",
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "featured": false,
+    "colors": [
+      {
+        "name": "أبيض",
+        "hex": "#F4F4F2",
+        "images": []
+      },
+      {
+        "name": "أزرق فاتح",
+        "hex": "#B7CCE0",
+        "images": []
+      },
+      {
+        "name": "رملي",
+        "hex": "#CDB78F",
+        "images": []
+      }
+    ]
+  },
+  {
+    "name": "جاكيت مبطّن بقبعة",
+    "code": "W26-501",
+    "season": "winter-2026",
+    "category": "جاكيت",
+    "fabric": "نايلون مقاوم للماء — حشوة ٢٠٠ غرام",
+    "price": "",
+    "min_order": "",
+    "description": "سحّاب أمامي، جيبان جانبيان، قبعة قابلة للفك.",
+    "sizes": [
+      "M",
+      "L",
+      "XL",
+      "XXL",
+      "3XL"
+    ],
+    "featured": true,
+    "colors": [
+      {
+        "name": "أسود",
+        "hex": "#1A1A1A",
+        "images": []
+      },
+      {
+        "name": "كحلي",
+        "hex": "#1E2A44",
+        "images": []
+      },
+      {
+        "name": "زيتي",
+        "hex": "#4F5530",
+        "images": []
+      }
+    ]
+  },
+  {
+    "name": "كنزة صوف محبوكة",
+    "code": "W26-412",
+    "season": "winter-2026",
+    "category": "كنزة",
+    "fabric": "صوف ٥٠٪ — أكريليك ٥٠٪",
+    "price": "",
+    "min_order": "",
+    "description": "ياقة عالية، حبكة مضلّعة على الأطراف.",
+    "sizes": [
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "featured": true,
+    "colors": [
+      {
+        "name": "رمادي",
+        "hex": "#8A8D91",
+        "images": []
+      },
+      {
+        "name": "خمري",
+        "hex": "#6E1F2E",
+        "images": []
+      },
+      {
+        "name": "كريمي",
+        "hex": "#E9E2D0",
+        "images": []
+      }
+    ]
+  },
+  {
+    "name": "بنطال جينز مستقيم",
+    "code": "W26-620",
+    "season": "winter-2026",
+    "category": "بنطال",
+    "fabric": "دنيم ١٢ أونصة — قطن ٩٨٪ إيلاستين ٢٪",
+    "price": "",
+    "min_order": "",
+    "description": "خمسة جيوب، قصّة مستقيمة، غسلة داكنة.",
+    "sizes": [
+      "30",
+      "32",
+      "34",
+      "36",
+      "38"
+    ],
+    "featured": false,
+    "colors": [
+      {
+        "name": "أزرق داكن",
+        "hex": "#23395B",
+        "images": []
+      },
+      {
+        "name": "أسود",
+        "hex": "#1C1C1E",
+        "images": []
+      }
+    ]
+  }
+]
