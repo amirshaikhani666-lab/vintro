@@ -26,10 +26,18 @@ content:
         required: true
         options:
           values:
+            - name: summer-2027
+              label: صيف ٢٠٢٧
+            - name: winter-2027
+              label: شتاء ٢٠٢٧
             - name: summer-2026
               label: صيف ٢٠٢٦
             - name: winter-2026
               label: شتاء ٢٠٢٦
+            - name: summer-2025
+              label: صيف ٢٠٢٥
+            - name: winter-2025
+              label: شتاء ٢٠٢٥
       - name: category
         label: النوع (تيشرت، قميص، فستان، بنطال، جاكيت، كنزة…)
         type: string
@@ -70,6 +78,41 @@ content:
         type: text
       - name: featured
         label: عرضه بالصفحة الرئيسية
+        type: boolean
+
+  - name: collections
+    label: المجموعات (المواسم)
+    type: file
+    path: data/collections.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: المجموعة
+        type: select
+        required: true
+        options:
+          values:
+            - name: summer-2027
+              label: صيف ٢٠٢٧
+            - name: winter-2027
+              label: شتاء ٢٠٢٧
+            - name: summer-2026
+              label: صيف ٢٠٢٦
+            - name: winter-2026
+              label: شتاء ٢٠٢٦
+            - name: summer-2025
+              label: صيف ٢٠٢٥
+            - name: winter-2025
+              label: شتاء ٢٠٢٥
+      - name: intro
+        label: جملة تعريفية للمجموعة
+        type: text
+      - name: cover
+        label: صورة الغلاف (طولية)
+        type: image
+      - name: hidden
+        label: إخفاء هذه المجموعة من الموقع
         type: boolean
 
   - name: brand
