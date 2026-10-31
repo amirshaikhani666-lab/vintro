@@ -350,7 +350,7 @@
   function home() {
     splash();
     var top = LATEST.length ? LATEST[0].year : new Date().getFullYear();
-    document.title = "VINTRO — " + (bt("tagline") || t("collectionsOf") + num(top));
+    document.title = "VINTRO";
     var inLatest = function (p) { return LATEST.some(function (s) { return s.id === p.season; }); };
     var featured = P.filter(function (p) { return p.featured; });
     if (featured.length < 4) featured = featured.concat(P.filter(function (p) { return featured.indexOf(p) < 0 && inLatest(p); })).slice(0, 10);
