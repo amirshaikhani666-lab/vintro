@@ -9,16 +9,34 @@
         "name": "بيج",
         "hex": "D7BBA8",
         "images": [
-          "/images/11012-copy.jpg"
+          "/images/11011-copy-1.jpg"
         ]
       },
       {
         "name": "كحلي",
-        "hex": "#1E2A44"
+        "hex": "#1E2A44",
+        "images": [
+          "/images/11012-copy-1.jpg"
+        ]
       },
       {
         "name": "زيتي",
-        "hex": "#6B6F3A"
+        "hex": "#6B6F3A",
+        "images": [
+          "/images/11013-copy.jpg"
+        ]
+      },
+      {
+        "name": "بني",
+        "images": [
+          "/images/11014-copy.jpg"
+        ]
+      },
+      {
+        "name": "ازرق",
+        "images": [
+          "/images/11015-copy.jpg"
+        ]
       }
     ],
     "sizes": [
