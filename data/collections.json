@@ -1,26 +1,21 @@
 [
   {
     "id": "summer-2026",
-    "intro": "",
-    "cover": "",
     "hidden": false
   },
   {
     "id": "winter-2026",
-    "intro": "",
-    "cover": "",
+    "cover": "/images/screen-shot-2026-10-31-at-61129-pm.png",
     "hidden": false
   },
   {
     "id": "summer-2025",
     "intro": "قطع صيفية خفيفة من موسم ٢٠٢٥",
-    "cover": "",
     "hidden": false
   },
   {
     "id": "winter-2025",
     "intro": "تشكيلة شتاء ٢٠٢٥ الدافئة",
-    "cover": "",
     "hidden": false
   }
 ]
