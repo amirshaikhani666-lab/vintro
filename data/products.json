@@ -50,18 +50,36 @@
     "featured": true
   },
   {
-    "name": "فستان كتان بحزام",
-    "code": "S26-204",
-    "season": "summer-2026",
-    "category": "فستان",
+    "name": "تيشرت تريكو",
+    "code": "1102",
+    "season": "winter-2026",
+    "category": "تيشيرت",
     "colors": [
       {
         "name": "بيج",
-        "hex": "#D9C7A7"
+        "hex": "#D9C7A7",
+        "images": [
+          "/images/1-1.png"
+        ]
       },
       {
         "name": "سماوي",
-        "hex": "#9CC3D5"
+        "hex": "#9CC3D5",
+        "images": [
+          "/images/11022-copy.jpg"
+        ]
+      },
+      {
+        "name": "اسود",
+        "images": [
+          "/images/11023-copy.jpg"
+        ]
+      },
+      {
+        "name": "كحلي",
+        "images": [
+          "/images/11024-copy.jpg"
+        ]
       }
     ],
     "sizes": [
