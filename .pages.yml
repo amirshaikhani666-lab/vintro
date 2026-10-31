@@ -1,214 +1,285 @@
 media:
   input: images
   output: /images
-  categories: [image]
+  categories:
+  - image
   rename: safe
-
 content:
-  - name: products
-    label: الموديلات
-    type: file
-    path: data/products.json
-    format: json
+- name: products
+  label: الموديلات
+  type: file
+  path: data/products.json
+  format: json
+  list: true
+  fields:
+  - name: name
+    label: اسم الموديل
+    type: string
+    required: true
+  - name: name_en
+    label: اسم الموديل بالإنجليزي
+    type: string
+  - name: code
+    label: رقم الموديل (مثال S26-101)
+    type: string
+    required: true
+  - name: season
+    label: الموسم
+    type: select
+    required: true
+    options:
+      values:
+      - name: summer-2027
+        label: صيف ٢٠٢٧
+      - name: winter-2027
+        label: شتاء ٢٠٢٧
+      - name: summer-2026
+        label: صيف ٢٠٢٦
+      - name: winter-2026
+        label: شتاء ٢٠٢٦
+      - name: summer-2025
+        label: صيف ٢٠٢٥
+      - name: winter-2025
+        label: شتاء ٢٠٢٥
+  - name: category
+    label: النوع (تيشرت، قميص، فستان، بنطال، جاكيت، كنزة…)
+    type: string
+  - name: category_en
+    label: النوع بالإنجليزي (اختياري، مثال T-shirts)
+    type: string
+  - name: colors
+    label: الألوان والصور
+    type: object
     list: true
     fields:
-      - name: name
-        label: اسم الموديل
-        type: string
-        required: true
-      - name: code
-        label: رقم الموديل (مثال S26-101)
-        type: string
-        required: true
-      - name: season
-        label: الموسم
-        type: select
-        required: true
-        options:
-          values:
-            - name: summer-2027
-              label: صيف ٢٠٢٧
-            - name: winter-2027
-              label: شتاء ٢٠٢٧
-            - name: summer-2026
-              label: صيف ٢٠٢٦
-            - name: winter-2026
-              label: شتاء ٢٠٢٦
-            - name: summer-2025
-              label: صيف ٢٠٢٥
-            - name: winter-2025
-              label: شتاء ٢٠٢٥
-      - name: category
-        label: النوع (تيشرت، قميص، فستان، بنطال، جاكيت، كنزة…)
-        type: string
-      - name: colors
-        label: الألوان والصور
-        type: object
-        list: true
-        fields:
-          - name: name
-            label: اسم اللون
-            type: string
-            required: true
-          - name: hex
-            label: كود اللون (اختياري، مثال #1E2A44)
-            type: string
-          - name: images
-            label: صور هذا اللون (أول صورة هي الغلاف)
-            type: image
-            options:
-              multiple:
-                max: 8
-              extensions: [jpg, jpeg, png, webp]
-      - name: sizes
-        label: المقاسات (مقاس بكل سطر)
-        type: string
-        list: true
-      - name: fabric
-        label: القماش
-        type: string
-      - name: price
-        label: السعر (اتركه فارغاً ليظهر «السعر عند الطلب»)
-        type: string
-      - name: min_order
-        label: أقل كمية للطلب
-        type: string
-      - name: description
-        label: وصف قصير
-        type: text
-      - name: featured
-        label: عرضه بالصفحة الرئيسية
-        type: boolean
-
-  - name: collections
-    label: المجموعات (المواسم)
-    type: file
-    path: data/collections.json
-    format: json
+    - name: name
+      label: اسم اللون
+      type: string
+      required: true
+    - name: name_en
+      label: اسم اللون بالإنجليزي (اختياري)
+      type: string
+    - name: hex
+      label: كود اللون (اختياري، مثال
+      type: string
+    - name: images
+      label: صور هذا اللون (أول صورة هي الغلاف)
+      type: image
+      options:
+        multiple:
+          max: 8
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+  - name: sizes
+    label: المقاسات (مقاس بكل سطر)
+    type: string
+    list: true
+  - name: fabric
+    label: القماش
+    type: string
+  - name: fabric_en
+    label: القماش بالإنجليزي
+    type: string
+  - name: price
+    label: السعر (اتركه فارغاً ليظهر «السعر عند الطلب»)
+    type: string
+  - name: min_order
+    label: أقل كمية للطلب
+    type: string
+  - name: min_order_en
+    label: أقل كمية بالإنجليزي
+    type: string
+  - name: description
+    label: وصف قصير
+    type: text
+  - name: description_en
+    label: الوصف بالإنجليزي
+    type: text
+  - name: featured
+    label: عرضه بالصفحة الرئيسية
+    type: boolean
+- name: collections
+  label: المجموعات (المواسم)
+  type: file
+  path: data/collections.json
+  format: json
+  list: true
+  fields:
+  - name: id
+    label: المجموعة
+    type: select
+    required: true
+    options:
+      values:
+      - name: summer-2027
+        label: صيف ٢٠٢٧
+      - name: winter-2027
+        label: شتاء ٢٠٢٧
+      - name: summer-2026
+        label: صيف ٢٠٢٦
+      - name: winter-2026
+        label: شتاء ٢٠٢٦
+      - name: summer-2025
+        label: صيف ٢٠٢٥
+      - name: winter-2025
+        label: شتاء ٢٠٢٥
+  - name: intro
+    label: جملة تعريفية للمجموعة
+    type: text
+  - name: intro_en
+    label: الجملة التعريفية بالإنجليزي
+    type: text
+  - name: cover
+    label: صورة الغلاف (طولية)
+    type: image
+  - name: hidden
+    label: إخفاء هذه المجموعة من الموقع
+    type: boolean
+- name: brand
+  label: معلومات الشركة
+  type: file
+  path: data/brand.json
+  format: json
+  fields:
+  - name: name
+    label: اسم الشركة
+    type: string
+  - name: headline
+    label: العنوان الكبير بالصفحة الرئيسية
+    type: string
+  - name: headline_en
+    label: العنوان الكبير بالإنجليزي
+    type: string
+  - name: tagline
+    label: سطر تعريفي
+    type: string
+  - name: tagline_en
+    label: السطر التعريفي بالإنجليزي
+    type: string
+  - name: announcement
+    label: شريط الإعلان أعلى الموقع (اكتب - لإخفائه)
+    type: string
+  - name: announcement_en
+    label: شريط الإعلان بالإنجليزي
+    type: string
+  - name: founder
+    label: اسم المؤسس
+    type: string
+  - name: founder_en
+    label: اسم المؤسس بالإنجليزي
+    type: string
+  - name: founder_title
+    label: صفة المؤسس
+    type: string
+  - name: founder_title_en
+    label: صفة المؤسس بالإنجليزي
+    type: string
+  - name: phone
+    label: رقم الهاتف
+    type: string
+  - name: phone_label
+    label: اسم الرقم الأول (مثال مصر)
+    type: string
+  - name: phone2
+    label: رقم هاتف ثاني
+    type: string
+  - name: phone2_label
+    label: اسم الرقم الثاني (مثال سوريا)
+    type: string
+  - name: whatsapp
+    label: رقم واتساب مع رمز الدولة
+    type: string
+  - name: email
+    label: البريد الإلكتروني
+    type: string
+  - name: email2
+    label: بريد إلكتروني ثاني
+    type: string
+  - name: instagram
+    label: حساب إنستغرام
+    type: string
+  - name: facebook
+    label: رابط صفحة فيسبوك
+    type: string
+  - name: address
+    label: العنوان
+    type: string
+  - name: address_en
+    label: العنوان بالإنجليزي
+    type: string
+  - name: address_map
+    label: العنوان للخريطة (بالإنجليزي)
+    type: string
+  - name: hours
+    label: أوقات العمل
+    type: string
+  - name: hours_en
+    label: أوقات العمل بالإنجليزي
+    type: string
+  - name: about
+    label: من نحن (مختصر)
+    type: text
+  - name: about_en
+    label: من نحن بالإنجليزي
+    type: text
+  - name: story
+    label: قصة الشركة (صفحة من نحن)
+    type: text
+  - name: story_en
+    label: قصة الشركة بالإنجليزي
+    type: text
+  - name: values
+    label: ما يميّزنا
+    type: object
     list: true
     fields:
-      - name: id
-        label: المجموعة
-        type: select
-        required: true
-        options:
-          values:
-            - name: summer-2027
-              label: صيف ٢٠٢٧
-            - name: winter-2027
-              label: شتاء ٢٠٢٧
-            - name: summer-2026
-              label: صيف ٢٠٢٦
-            - name: winter-2026
-              label: شتاء ٢٠٢٦
-            - name: summer-2025
-              label: صيف ٢٠٢٥
-            - name: winter-2025
-              label: شتاء ٢٠٢٥
-      - name: intro
-        label: جملة تعريفية للمجموعة
-        type: text
-      - name: cover
-        label: صورة الغلاف (طولية)
-        type: image
-      - name: hidden
-        label: إخفاء هذه المجموعة من الموقع
-        type: boolean
-
-  - name: brand
-    label: معلومات الشركة
-    type: file
-    path: data/brand.json
-    format: json
+    - name: title
+      label: العنوان
+      type: string
+    - name: title_en
+      label: العنوان بالإنجليزي
+      type: string
+    - name: text
+      label: الشرح
+      type: text
+    - name: text_en
+      label: الشرح بالإنجليزي
+      type: text
+  - name: faq
+    label: أسئلة شائعة (صفحة الجملة)
+    type: object
+    list: true
     fields:
-      - name: name
-        label: اسم الشركة
-        type: string
-      - name: headline
-        label: العنوان الكبير بالصفحة الرئيسية
-        type: string
-      - name: tagline
-        label: سطر تعريفي
-        type: string
-      - name: founder
-        label: اسم المؤسس
-        type: string
-      - name: founder_title
-        label: صفة المؤسس
-        type: string
-      - name: phone
-        label: رقم الهاتف
-        type: string
-      - name: phone_label
-        label: اسم الرقم الأول (مثال مصر)
-        type: string
-      - name: phone2
-        label: رقم هاتف ثاني
-        type: string
-      - name: phone2_label
-        label: اسم الرقم الثاني (مثال سوريا)
-        type: string
-      - name: whatsapp
-        label: رقم واتساب مع رمز الدولة
-        type: string
-      - name: email
-        label: البريد الإلكتروني
-        type: string
-      - name: email2
-        label: بريد إلكتروني ثاني
-        type: string
-      - name: instagram
-        label: حساب إنستغرام
-        type: string
-      - name: facebook
-        label: رابط صفحة فيسبوك
-        type: string
-      - name: address
-        label: العنوان
-        type: string
-      - name: address_map
-        label: العنوان للخريطة (بالإنجليزي)
-        type: string
-      - name: hours
-        label: أوقات العمل
-        type: string
-      - name: about
-        label: من نحن (مختصر)
-        type: text
-      - name: story
-        label: قصة الشركة (صفحة من نحن)
-        type: text
-      - name: values
-        label: ما يميّزنا
-        type: object
-        list: true
-        fields:
-          - name: title
-            label: العنوان
-            type: string
-          - name: text
-            label: الشرح
-            type: text
-      - name: faq
-        label: أسئلة شائعة (صفحة الجملة)
-        type: object
-        list: true
-        fields:
-          - name: q
-            label: السؤال
-            type: string
-          - name: a
-            label: الجواب
-            type: text
-      - name: summer_intro
-        label: مقدمة قسم الصيف
-        type: text
-      - name: summer_cover
-        label: صورة غلاف الصيف (طولية، تظهر بالصفحة الرئيسية)
-        type: image
-      - name: winter_intro
-        label: مقدمة قسم الشتاء
-        type: text
-      - name: winter_cover
-        label: صورة غلاف الشتاء (طولية، تظهر بالصفحة الرئيسية)
-        type: image
+    - name: q
+      label: السؤال
+      type: string
+    - name: q_en
+      label: السؤال بالإنجليزي
+      type: string
+    - name: a
+      label: الجواب
+      type: text
+    - name: a_en
+      label: الجواب بالإنجليزي
+      type: text
+  - name: summer_intro
+    label: مقدمة قسم الصيف
+    type: text
+  - name: summer_intro_en
+    label: مقدمة الصيف بالإنجليزي
+    type: text
+  - name: summer_cover
+    label: صورة غلاف الصيف (طولية، تظهر بالصفحة الرئيسية)
+    type: image
+  - name: winter_intro
+    label: مقدمة قسم الشتاء
+    type: text
+  - name: winter_intro_en
+    label: مقدمة الشتاء بالإنجليزي
+    type: text
+  - name: winter_cover
+    label: صورة غلاف الشتاء (طولية، تظهر بالصفحة الرئيسية)
+    type: image
