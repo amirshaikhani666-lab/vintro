@@ -1,6 +1,6 @@
 [
   {
-    "name": "تيشرت تريكو",
+    "name": "سترة محبوكة (بلوفر)",
     "code": "1101",
     "season": "winter-2026",
     "category": "تيشرت",
@@ -46,7 +46,7 @@
       "2XL"
     ],
     "fabric": "قطن ١٠٠٪ — ١٨٠ غرام",
-    "description": "قصّة مستقيمة، خياطة مزدوجة على الأكمام والحافة.",
+    "description": "\"سترة محبوكة (بلوفر) رجالية أنيقة تتميز بفتحة رقبة كلاسيكية على شكل حرف V، وأساور وحاشية مضلعة، مع لمسة نهائية ناعمة وراقية وبقصة عادية مريحة.\"",
     "featured": true
   },
   {
@@ -93,22 +93,52 @@
     "featured": true
   },
   {
-    "name": "قميص كتان رجالي",
-    "code": "S26-310",
-    "season": "summer-2026",
-    "category": "قميص",
+    "name": "تيشرت تريكو",
+    "code": "1103",
+    "season": "winter-2026",
+    "category": "تيشيرت",
     "colors": [
       {
-        "name": "أبيض",
-        "hex": "#F4F4F2"
+        "name": "نبيتي",
+        "hex": "#F4F4F2",
+        "images": [
+          "/images/11032-copy.jpg"
+        ]
       },
       {
-        "name": "أزرق فاتح",
-        "hex": "#B7CCE0"
+        "name": "كحلي",
+        "hex": "#B7CCE0",
+        "images": [
+          "/images/11033-copy.jpg"
+        ]
       },
       {
-        "name": "رملي",
-        "hex": "#CDB78F"
+        "name": "بني",
+        "hex": "#CDB78F",
+        "images": [
+          "/images/11034-copy.jpg"
+        ]
+      },
+      {
+        "name": "ابيض"
+      },
+      {
+        "name": "فانيلا",
+        "images": [
+          "/images/11036-copy.jpg"
+        ]
+      },
+      {
+        "name": "اسود"
+      },
+      {
+        "name": "سماوي"
+      },
+      {
+        "name": "ابيض",
+        "images": [
+          "/images/11039-copy.jpg"
+        ]
       }
     ],
     "sizes": [
