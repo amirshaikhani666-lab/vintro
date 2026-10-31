@@ -10,10 +10,13 @@
   function d(p) { return (LOCAL || FRAMED) ? p + "index.html" : p; }
   function pageUrl(name) { return d(ROOT + name + "/"); }
 
-  var SEASONS = [
-    { id: "summer-2026", ar: "صيف ٢٠٢٦", latin: "Summer 2026", intro: "summer_intro", cover: "summer_cover", cls: "summer" },
-    { id: "winter-2026", ar: "شتاء ٢٠٢٦", latin: "Winter 2026", intro: "winter_intro", cover: "winter_cover", cls: "winter" }
-  ];
+  /* Collections are named "summer-2025", "winter-2026"… Their order is newest year first, summer before winter.
+     Intro text and cover come from data/collections.json (edited in Pages CMS). */
+  var TYPES = {
+    summer: { ar: "صيف", latin: "Summer", intro: "أقمشة خفيفة وقصّات مريحة لأيام الحر" },
+    winter: { ar: "شتاء", latin: "Winter", intro: "طبقات دافئة وأقمشة ثقيلة لموسم البرد" }
+  };
+  var ALL = [], SEASONS = [], LATEST = [];
 
   /* ---------- helpers ---------- */
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -21,8 +24,29 @@
   function toAr(n) { return String(n).replace(/\d/g, function (x) { return "٠١٢٣٤٥٦٧٨٩"[x]; }); }
   function arr(x) { return Array.isArray(x) ? x : (x ? [x] : []); }
   function url(p) { if (!p) return ""; if (/^(https?:)?\/\//.test(p) || /^data:/.test(p)) return p; return ROOT + String(p).replace(/^\/+/, ""); }
-  function seasonOf(id) { return SEASONS.find(function (s) { return s.id === id; }); }
-  function seasonUrl(id, cat) { return d(ROOT + id + "/") + (cat ? "?cat=" + encodeURIComponent(cat) : ""); }
+  function mkSeason(id, cfg) {
+    var m = /^(summer|winter)-(\d{4})$/.exec(String(id || "").trim()); if (!m) return null;
+    var t = TYPES[m[1]], y = m[2]; cfg = cfg || {};
+    return { id: m[0], type: m[1], year: +y, cls: m[1], ar: t.ar + " " + toAr(y), latin: t.latin + " " + y,
+      intro: cfg.intro || B[m[1] + "_intro"] || t.intro,
+      cover: cfg.cover || (y === "2026" ? B[m[1] + "_cover"] : "") || "", hidden: !!cfg.hidden };
+  }
+  function countOf(id) { return P.filter(function (p) { return p.season === id; }).length; }
+  function buildSeasons(C) {
+    var seen = {};
+    function add(id, cfg) { var s = mkSeason(id, cfg); if (s && !seen[s.id]) { seen[s.id] = 1; ALL.push(s); } }
+    arr(C).forEach(function (c) { if (c) add(c.id, c); });
+    P.forEach(function (p) { add(p.season); });
+    if (!ALL.length) { add("summer-2026"); add("winter-2026"); }
+    ALL.sort(function (a, b) { return b.year - a.year || (a.type === "summer" ? -1 : 1); });
+    SEASONS = ALL.filter(function (s) { return !s.hidden && countOf(s.id) > 0; });
+    if (!SEASONS.length) SEASONS = ALL.filter(function (s) { return !s.hidden; });
+    var top = SEASONS.length ? SEASONS[0].year : 0;
+    LATEST = SEASONS.filter(function (s) { return s.year === top; });
+  }
+  function years() { var y = []; SEASONS.forEach(function (s) { if (y.indexOf(s.year) < 0) y.push(s.year); }); return y; }
+  function seasonOf(id) { return ALL.find(function (s) { return s.id === id; }) || mkSeason(id); }
+  function seasonUrl(id, cat) { return pageUrl("collections") + "?id=" + encodeURIComponent(id) + (cat ? "&cat=" + encodeURIComponent(cat) : ""); }
   function modelUrl(p) { return d(ROOT + "model/") + "?id=" + encodeURIComponent(p.code || p.name); }
   function digits(s) { return String(s || "").replace(/[^\d]/g, ""); }
   function imagesOf(p) { var o = []; arr(p.colors).forEach(function (c) { arr(c.images).forEach(function (i) { if (i) o.push(i); }); }); return o; }
@@ -99,7 +123,7 @@
   function catsOf(list) { var c = []; list.forEach(function (p) { if (p.category && c.indexOf(p.category) < 0) c.push(p.category); }); return c; }
 
   function header(current) {
-    var NAV = [{ id: "collections", ar: "المجموعات", href: pageUrl("collections") }].concat(SEASONS.map(function (s) { return { id: s.id, ar: s.ar, href: seasonUrl(s.id) }; }))
+    var NAV = [{ id: "collections", ar: "المجموعات", href: pageUrl("collections") }].concat(LATEST.map(function (s) { return { id: s.id, ar: s.ar, href: seasonUrl(s.id) }; }))
       .concat([{ id: "about", ar: "من نحن", href: pageUrl("about") }, { id: "wholesale", ar: "الجملة", href: pageUrl("wholesale") }]);
     var h = $("#head");
     h.className = "head";
@@ -117,10 +141,11 @@
       '<div class="drawer-top"><a href="' + d(ROOT) + '" class="drawer-logo">' + logo("word") + '</a><button class="ico-btn" data-close aria-label="إغلاق">' + IC.close + '</button></div>' +
       '<ul class="drawer-list"><li><a href="' + d(ROOT) + '"' + (current === "home" ? ' aria-current="page"' : "") + '>الرئيسية</a></li>' +
       '<li><a href="' + pageUrl("collections") + '"' + (current === "collections" ? ' aria-current="page"' : "") + '>المجموعات</a></li>' +
-      SEASONS.map(function (s) {
-        var items = P.filter(function (p) { return p.season === s.id; }), cats = catsOf(items);
-        return '<li><details' + (current === s.id ? " open" : "") + '><summary>' + s.ar + '<small>' + toAr(items.length) + '</small></summary><ul class="sub"><li><a href="' + seasonUrl(s.id) + '">عرض الكل</a></li>' +
-          cats.map(function (c) { return '<li><a href="' + seasonUrl(s.id, c) + '">' + esc(c) + '</a></li>'; }).join("") + '</ul></details></li>';
+      years().map(function (y, yi) {
+        var ss = SEASONS.filter(function (s) { return s.year === y; });
+        var open = ss.some(function (s) { return s.id === current; }) || (yi === 0 && !SEASONS.some(function (s) { return s.id === current; }));
+        return '<li><details' + (open ? " open" : "") + '><summary>مجموعات ' + toAr(y) + '<small>' + toAr(ss.reduce(function (n, s) { return n + countOf(s.id); }, 0)) + '</small></summary><ul class="sub">' +
+          ss.map(function (s) { return '<li><a href="' + seasonUrl(s.id) + '"' + (current === s.id ? ' aria-current="page"' : "") + '>' + s.ar + ' <small>(' + toAr(countOf(s.id)) + ')</small></a></li>'; }).join("") + '</ul></details></li>';
       }).join("") +
       '<li><a href="' + pageUrl("about") + '"' + (current === "about" ? ' aria-current="page"' : "") + '>من نحن</a></li>' +
       '<li><a href="' + pageUrl("wholesale") + '"' + (current === "wholesale" ? ' aria-current="page"' : "") + '>الجملة وطريقة الطلب</a></li>' +
@@ -155,7 +180,7 @@
   function footer() {
     var wa = digits(B.whatsapp);
     $("#foot").innerHTML = '<div class="foot-in pad"><div class="fbrand">' + logo("full") + '<p>' + esc(B.tagline || "") + '</p></div>' +
-      '<div><h4>المجموعات</h4><ul>' + SEASONS.map(function (s) { return '<li><a href="' + seasonUrl(s.id) + '">' + s.ar + '</a></li>'; }).join("") + '<li><a href="' + pageUrl("collections") + '">كل المجموعات</a></li></ul><h4 style="margin-top:22px">الشركة</h4><ul><li><a href="' + pageUrl("about") + '">من نحن</a></li><li><a href="' + pageUrl("wholesale") + '">الجملة وطريقة الطلب</a></li><li><a href="' + pageUrl("contact") + '">تواصل معنا</a></li></ul></div>' +
+      '<div><h4>المجموعات</h4><ul>' + LATEST.map(function (s) { return '<li><a href="' + seasonUrl(s.id) + '">' + s.ar + '</a></li>'; }).join("") + '<li><a href="' + pageUrl("collections") + '">كل المجموعات</a></li></ul><h4 style="margin-top:22px">الشركة</h4><ul><li><a href="' + pageUrl("about") + '">من نحن</a></li><li><a href="' + pageUrl("wholesale") + '">الجملة وطريقة الطلب</a></li><li><a href="' + pageUrl("contact") + '">تواصل معنا</a></li></ul></div>' +
       '<div><h4>تواصل معنا</h4><ul>' +
       [B.phone, B.phone2].filter(Boolean).map(function (ph) { return '<li><a class="ltr" href="tel:' + esc(ph.replace(/\s/g, "")) + '">' + esc(ph) + '</a></li>'; }).join("") +
       [B.email, B.email2].filter(Boolean).map(function (m) { return '<li><a class="ltr" href="mailto:' + esc(m) + '">' + esc(m) + '</a></li>'; }).join("") + '</ul></div>' +
@@ -185,29 +210,37 @@
 
   function home() {
     splash();
-    document.title = "VINTRO — " + (B.tagline || "مجموعات ٢٠٢٦");
+    var top = LATEST.length ? LATEST[0].year : new Date().getFullYear();
+    document.title = "VINTRO — " + (B.tagline || "مجموعات " + toAr(top));
+    var inLatest = function (p) { return LATEST.some(function (s) { return s.id === p.season; }); };
     var featured = P.filter(function (p) { return p.featured; });
-    if (featured.length < 4) featured = featured.concat(P.filter(function (p) { return featured.indexOf(p) < 0; })).slice(0, 10);
+    if (featured.length < 4) featured = featured.concat(P.filter(function (p) { return featured.indexOf(p) < 0 && inLatest(p); })).slice(0, 10);
+    var older = SEASONS.filter(function (s) { return s.year !== top; });
     var wa = digits(B.whatsapp);
     $("#main").innerHTML =
       '<section class="opening" aria-label="VINTRO">' + lines() + '<div class="op-in pad">' +
         '<span class="op-logo">' + logo("full") + '</span>' +
-        '<span class="op-eyebrow latin">Collections 2026</span>' +
+        '<span class="op-eyebrow latin">Collections ' + top + '</span>' +
         '<h1>' + esc(B.headline || "") + '</h1>' + (B.tagline ? '<p>' + esc(B.tagline) + '</p>' : "") +
         '<div class="op-btns"><a class="btn gold" href="' + pageUrl("collections") + '">اكتشف المجموعات</a><a class="btn light" href="' + pageUrl("contact") + '">تواصل معنا</a></div>' +
         '</div><a class="op-down" href="#seasons" aria-label="انزل إلى المجموعات"><span></span></a></section>' +
-      '<section class="hero" id="seasons" aria-label="المجموعات">' + SEASONS.map(function (s) {
-        var cover = B[s.cover], n = P.filter(function (p) { return p.season === s.id; }).length;
+      '<section class="hero' + (LATEST.length === 1 ? " one" : "") + '" id="seasons" aria-label="المجموعات">' + LATEST.slice(0, 2).map(function (s) {
+        var cover = s.cover, n = countOf(s.id);
         return '<a class="panel ' + s.cls + (cover ? " has-img" : "") + '" href="' + seasonUrl(s.id) + '"><div class="media">' + (cover ? '<img src="' + esc(url(cover)) + '" alt="">' : lines()) + '</div>' +
           (cover ? "" : '<span class="mark">' + logo("mark") + '</span>') +
-          '<div class="cap fade"><span class="latin">' + s.latin + '</span><span class="ar">' + esc(B[s.intro] || s.ar) + '</span><span class="go">اكتشف المجموعة · ' + toAr(n) + ' موديل</span></div></a>';
+          '<div class="cap fade"><span class="latin">' + s.latin + '</span><span class="ar">' + esc(s.intro) + '</span><span class="go">اكتشف المجموعة · ' + toAr(n) + ' موديل</span></div></a>';
       }).join("") + '</section>' +
-      (featured.length ? '<section class="sec pad" style="padding-top:0"><div class="sec-head"><div><span class="latin">New In</span><h2>أحدث الموديلات</h2></div><a class="link-u" href="' + seasonUrl(SEASONS[0].id) + '">عرض الكل</a></div><div class="strip">' + featured.map(card).join("") + '</div></section>' : "") +
-      SEASONS.map(function (s) {
+      (featured.length ? '<section class="sec pad" style="padding-top:0"><div class="sec-head"><div><span class="latin">New In</span><h2>أحدث الموديلات</h2></div><a class="link-u" href="' + pageUrl("collections") + '">كل المجموعات</a></div><div class="strip">' + featured.map(card).join("") + '</div></section>' : "") +
+      LATEST.map(function (s) {
         var cats = catsOf(P.filter(function (p) { return p.season === s.id; }));
         return cats.length ? '<section class="sec pad" style="padding-top:24px"><div class="sec-head"><div><span class="latin">' + s.latin + '</span><h2>' + s.ar + '</h2></div><a class="link-u" href="' + seasonUrl(s.id) + '">كل الموديلات</a></div><div class="cats">' +
           cats.map(function (c) { var n = P.filter(function (p) { return p.season === s.id && p.category === c; }).length; return '<a href="' + seasonUrl(s.id, c) + '"><strong>' + esc(c) + '</strong><span>' + toAr(n) + ' موديل</span></a>'; }).join("") + '</div></section>' : "";
       }).join("") +
+      (older.length ? '<section class="sec pad" style="padding-top:24px"><div class="sec-head"><div><span class="latin">Archive</span><h2>مجموعات سابقة</h2></div><a class="link-u" href="' + pageUrl("collections") + '">كل المجموعات</a></div><div class="arch">' +
+        older.map(function (s) {
+          return '<a class="arch-card ' + s.cls + '" href="' + seasonUrl(s.id) + '"><div class="am">' + (s.cover ? '<img src="' + esc(url(s.cover)) + '" alt="" loading="lazy">' : lines() + '<span class="mark">' + logo("mark") + '</span>') + '</div>' +
+            '<div class="at"><span class="latin">' + s.latin + '</span><strong>' + s.ar + '</strong><small>' + toAr(countOf(s.id)) + ' موديل</small></div></a>';
+        }).join("") + '</div></section>' : "") +
       '<section class="sec pad" id="about" style="padding-block:88px"><div class="about"><div class="txt"><span class="eyebrow latin">About VINTRO</span><h2 style="font-size:clamp(1.6rem,3vw,2.3rem)">من نحن</h2><p>' + esc(B.about || "") + '</p><a class="link-u" style="justify-self:start" href="' + pageUrl("about") + '">اقرأ المزيد عن VINTRO</a>' +
       (B.founder ? '<div class="founder"><span class="m">' + logo("mark") + '</span><div><b>' + esc(B.founder) + '</b><small>' + esc(B.founder_title || "") + '</small></div></div>' : "") + '</div>' +
       '<div class="contact-card" id="contact"><h3>تواصل معنا</h3><dl>' +
@@ -219,12 +252,14 @@
   }
 
   function collection() {
-    var id = document.body.getAttribute("data-season"), s = seasonOf(id);
+    var qs = new URLSearchParams(location.search);
+    var id = document.body.getAttribute("data-season") || qs.get("id"), s = seasonOf(id);
+    if (!s) { $("#main").innerHTML = '<div class="loading pad">لم نعثر على هذه المجموعة. <a class="link-u" href="' + pageUrl("collections") + '">كل المجموعات</a></div>'; return; }
     document.title = s.ar + " — VINTRO";
     var items = P.filter(function (p) { return p.season === id; }), cats = catsOf(items);
     var cat = new URLSearchParams(location.search).get("cat") || "all"; if (cat !== "all" && cats.indexOf(cat) < 0) cat = "all";
     var big = false; try { big = localStorage.getItem("vintro-view") === "2"; } catch (e) {}
-    $("#main").innerHTML = '<header class="col-head pad"><span class="latin">' + s.latin + '</span><h1>' + s.ar + '</h1>' + (B[s.intro] ? '<p>' + esc(B[s.intro]) + '</p>' : "") + '</header>' +
+    $("#main").innerHTML = '<header class="col-head pad"><span class="latin">' + s.latin + '</span><h1>' + s.ar + '</h1>' + (s.intro ? '<p>' + esc(s.intro) + '</p>' : "") + '</header>' +
       '<div class="toolbar"><div class="toolbar-in pad"><div class="filters" role="group" aria-label="النوع"></div><span class="count" id="count"></span>' +
       '<div class="view" role="group" aria-label="طريقة العرض"><button data-view="2" aria-label="عرض كبير">' + IC.g2 + '</button><button data-view="4" aria-label="عرض صغير">' + IC.g4 + '</button></div></div></div>' +
       '<section class="grid pad" id="grid" aria-live="polite"></section>';
@@ -238,7 +273,7 @@
     }
     document.addEventListener("click", function (e) {
       var c = e.target.closest("[data-cat]");
-      if (c) { cat = c.getAttribute("data-cat"); draw(); try { history.replaceState(null, "", cat === "all" ? location.pathname : "?cat=" + encodeURIComponent(cat)); } catch (er) {} return; }
+      if (c) { cat = c.getAttribute("data-cat"); draw(); try { var q = new URLSearchParams(location.search); if (cat === "all") q.delete("cat"); else q.set("cat", cat); var qq = q.toString(); history.replaceState(null, "", location.pathname + (qq ? "?" + qq : "")); } catch (er) {} return; }
       var v = e.target.closest("[data-view]");
       if (v) { big = v.getAttribute("data-view") === "2"; try { localStorage.setItem("vintro-view", big ? "2" : "4"); } catch (er) {} draw(); }
     });
@@ -249,7 +284,7 @@
     var id = new URLSearchParams(location.search).get("id");
     var p = P.find(function (x) { return (x.code || x.name) === id; });
     if (!p) { $("#main").innerHTML = '<div class="loading pad">لم نعثر على هذا الموديل. <a class="link-u" href="' + d(ROOT) + '">العودة إلى الرئيسية</a></div>'; return; }
-    var s = seasonOf(p.season) || SEASONS[0], cols = arr(p.colors), sizes = arr(p.sizes);
+    var s = seasonOf(p.season) || mkSeason("summer-2026"), cols = arr(p.colors), sizes = arr(p.sizes);
     document.title = p.name + (p.code ? " · " + p.code : "") + " — VINTRO";
     var ci = Math.max(0, cols.findIndex(function (c) { return arr(c.images).length; })), size = null, ii = 0;
     var wa = digits(B.whatsapp);
@@ -309,18 +344,24 @@
   function waLink(text) { var wa = digits(B.whatsapp); return wa ? "https://wa.me/" + wa + (text ? "?text=" + encodeURIComponent(text) : "") : ""; }
 
   function collections() {
+    if (new URLSearchParams(location.search).get("id")) return collection();
     document.title = "المجموعات — VINTRO";
-    $("#main").innerHTML = pageHead("Collections", "المجموعات", "مجموعتان لموسم ٢٠٢٦، لكل موديل ألوانه ومقاساته وصوره.") +
-      SEASONS.map(function (s, i) {
-        var items = P.filter(function (p) { return p.season === s.id; }), cats = catsOf(items), cover = B[s.cover];
+    var k = 0;
+    $("#main").innerHTML = pageHead("Collections", "المجموعات", "كل مجموعات VINTRO مرتّبة حسب السنة والموسم، لكل موديل ألوانه ومقاساته وصوره.") +
+      years().map(function (y) {
+        return '<div class="year-head pad"><span class="yr latin">' + y + '</span><span class="yl">مجموعات ' + toAr(y) + '</span></div>' +
+          SEASONS.filter(function (s) { return s.year === y; }).map(function (s) { return collBlock(s, k++); }).join("");
+      }).join("");
+  }
+  function collBlock(s, i) {
+        var items = P.filter(function (p) { return p.season === s.id; }), cats = catsOf(items), cover = s.cover;
         return '<section class="coll ' + s.cls + (i % 2 ? " flip" : "") + '"><a class="coll-media' + (cover ? " has-img" : "") + '" href="' + seasonUrl(s.id) + '" aria-label="' + s.ar + '">' +
           (cover ? '<img src="' + esc(url(cover)) + '" alt="">' : lines() + '<span class="mark">' + logo("mark") + '</span>') + '<span class="latin big">' + s.latin + '</span></a>' +
-          '<div class="coll-txt pad"><span class="latin">' + s.latin + '</span><h2>' + s.ar + '</h2><p>' + esc(B[s.intro] || "") + '</p>' +
+          '<div class="coll-txt pad"><span class="latin">' + s.latin + '</span><h2>' + s.ar + '</h2><p>' + esc(s.intro || "") + '</p>' +
           '<div class="coll-meta"><span>' + toAr(items.length) + ' موديل</span><span>' + toAr(cats.length) + ' أنواع</span></div>' +
           (cats.length ? '<ul class="coll-cats">' + cats.map(function (c) { return '<li><a href="' + seasonUrl(s.id, c) + '">' + esc(c) + '</a></li>'; }).join("") + '</ul>' : "") +
           '<a class="btn solid" href="' + seasonUrl(s.id) + '">تصفّح ' + s.ar + '</a></div></section>' +
           (items.length ? '<div class="pad" style="padding-block:28px 72px"><div class="strip">' + items.slice(0, 8).map(card).join("") + '</div></div>' : "");
-      }).join("");
   }
 
   function about() {
@@ -394,13 +435,15 @@
   function loadPreview() {
     return new Promise(function (ok, fail) {
       var s = document.createElement("script"); s.src = ROOT + "assets/preview-data.js";
-      s.onload = function () { window.__PREVIEW__ ? ok([window.__PREVIEW__.brand, window.__PREVIEW__.products]) : fail(); };
+      s.onload = function () { var w = window.__PREVIEW__; w ? ok([w.brand, w.products, w.collections || []]) : fail(); };
       s.onerror = fail; document.head.appendChild(s);
     });
   }
-  ((LOCAL || FRAMED) ? loadPreview() : Promise.all([getJSON("data/brand.json"), getJSON("data/products.json")])).then(function (res) {
+  ((LOCAL || FRAMED) ? loadPreview() : Promise.all([getJSON("data/brand.json"), getJSON("data/products.json"), getJSON("data/collections.json").catch(function () { return []; })])).then(function (res) {
     B = res[0] || {}; P = arr(res[1]).filter(function (p) { return p && p.name; });
-    header(PAGE === "season" ? document.body.getAttribute("data-season") : PAGE);
+    buildSeasons(res[2]);
+    var qid = new URLSearchParams(location.search).get("id");
+    header(PAGE === "season" ? (document.body.getAttribute("data-season") || qid) : (PAGE === "collections" && qid) ? qid : PAGE);
     var R = { home: home, season: collection, model: model, collections: collections, about: about, wholesale: wholesale, contact: contact };
     (R[PAGE] || home)();
     footer();
