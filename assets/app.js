@@ -134,13 +134,13 @@
 
   /* ---------- names of categories and colours in English ---------- */
   var CAT_EN = { "تيشرت": "T-shirts", "تي شيرت": "T-shirts", "قميص": "Shirts", "فستان": "Dresses", "بنطال": "Trousers", "جينز": "Jeans", "جاكيت": "Jackets", "جاكيتة": "Jackets",
-    "معطف": "Coats", "كنزة": "Sweaters", "هودي": "Hoodies", "شورت": "Shorts", "بلوزة": "Blouses", "تنورة": "Skirts", "عباية": "Abayas", "بيجامة": "Pyjamas", "سويت شيرت": "Sweatshirts", "طقم": "Sets", "بدلة": "Suits" };
+    "معطف": "Coats", "كنزة": "Sweaters", "هودي": "Hoodies", "شورت": "Shorts", "بلوزة": "Blouses", "تنورة": "Skirts", "عباية": "Abayas", "بيجامة": "Pyjamas", "سويت شيرت": "Sweatshirts", "طقم": "Sets", "بدلة": "Suits", "بولو": "Polos", "تريكو": "Knitwear", "كنزات": "Sweaters" };
   function catL(c) {
     if (!EN) return c;
     var p = P.find(function (x) { return x.category === c && x.category_en; });
     return (p && p.category_en) || CAT_EN[c] || c;
   }
-  var COLORS = { "أسود": ["#1A1A1A", "Black"], "أبيض": ["#F4F4F2", "White"], "ابيض": ["#F4F4F2", "White"], "كحلي": ["#1E2A44", "Navy"], "رمادي": ["#8A8D91", "Grey"],
+  var COLORS = { "أسود": ["#1A1A1A", "Black"], "اسود": ["#1A1A1A", "Black"], "نبيتي": ["#4E1428", "Burgundy"], "فانيلا": ["#EEE6D3", "Vanilla"], "كاميل": ["#B06E3B", "Camel"], "أوف وايت": ["#F2EEE4", "Off-white"], "بترولي": ["#0E5047", "Petrol"], "أبيض": ["#F4F4F2", "White"], "ابيض": ["#F4F4F2", "White"], "كحلي": ["#1E2A44", "Navy"], "رمادي": ["#8A8D91", "Grey"],
     "زيتي": ["#5B6033", "Olive"], "بيج": ["#D9C7A7", "Beige"], "خمري": ["#6E1F2E", "Burgundy"], "أحمر": ["#B3261E", "Red"], "احمر": ["#B3261E", "Red"],
     "أزرق": ["#2F5DA8", "Blue"], "ازرق": ["#2F5DA8", "Blue"], "سماوي": ["#9CC3D5", "Sky blue"], "أخضر": ["#2F6B45", "Green"], "اخضر": ["#2F6B45", "Green"],
     "بني": ["#6B4A2F", "Brown"], "كريمي": ["#E9E2D0", "Cream"], "زهري": ["#E7A3B6", "Pink"], "وردي": ["#E7A3B6", "Pink"], "أصفر": ["#E2B93B", "Yellow"], "اصفر": ["#E2B93B", "Yellow"],
