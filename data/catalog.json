@@ -151,6 +151,93 @@
       "fabric": "كتان ١٠٠٪",
       "description": "ياقة كلاسيكية، جيب على الصدر، أزرار صدف.",
       "featured": false
+    },
+    {
+      "name": "تيشرت تريكو",
+      "code": "1104",
+      "season": "شتاء ٢٠٢٦",
+      "colors": [
+        {
+          "name": "اسود",
+          "name_en": "BLACK",
+          "images": [
+            "/images/11042-copy.jpg"
+          ]
+        },
+        {
+          "name": "ازرق",
+          "images": [
+            "/images/11043-copy.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "images": [
+            "/images/11044-copy.jpg"
+          ]
+        },
+        {
+          "name": "عسلي",
+          "images": [
+            "/images/11045-copy.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "images": [
+            "/images/11046-copy.jpg"
+          ]
+        },
+        {
+          "name": "بيج ",
+          "images": [
+            "/images/11047-copy.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "images": [
+            "/images/11048-copy.jpg"
+          ]
+        },
+        {
+          "name": "بني فاتح",
+          "images": [
+            "/images/11049-copy.jpg"
+          ]
+        },
+        {
+          "name": "شيك",
+          "images": [
+            "/images/110410-copy.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "images": [
+            "/images/110411-copy.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "images": [
+            "/images/110412-copy.jpg"
+          ]
+        },
+        {
+          "name": "نبيتي",
+          "images": [
+            "/images/110413-copy.jpg"
+          ]
+        }
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "featured": false
     }
   ]
 }
