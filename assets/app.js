@@ -99,7 +99,15 @@
     winter: { ar: "شتاء", en: "Winter", intro: "طبقات دافئة وأقمشة ثقيلة لموسم البرد", introEn: "Warm layers and heavier fabrics for the cold season" }
   };
   var ALL = [], SEASONS = [], LATEST = [];
+  /* seasons can be written "winter-2026" or "شتاء ٢٠٢٦"; both mean the same collection */
+  function normSeason(v) {
+    var s = String(v || "").trim().replace(/[٠-٩]/g, function (x) { return "٠١٢٣٤٥٦٧٨٩".indexOf(x); });
+    var m = /^(summer|winter|صيف|صيفي|شتاء|شتوي)[\s\-_·]*(\d{4})$/i.exec(s);
+    if (!m) return s;
+    return (/^(summer|صيف)/i.test(m[1]) ? "summer" : "winter") + "-" + m[2];
+  }
   function mkSeason(id, cfg) {
+    id = normSeason(id);
     var m = /^(summer|winter)-(\d{4})$/.exec(String(id || "").trim()); if (!m) return null;
     var ty = TYPES[m[1]], y = m[2]; cfg = cfg || {};
     var introAr = cfg.intro || B[m[1] + "_intro"] || ty.intro;
@@ -598,8 +606,12 @@
       s.onerror = fail; document.head.appendChild(s);
     });
   }
-  ((LOCAL || FRAMED) ? loadPreview() : Promise.all([getJSON("data/brand.json"), getJSON("data/products.json"), getJSON("data/collections.json").catch(function () { return []; })])).then(function (res) {
+  ((LOCAL || FRAMED) ? loadPreview() : Promise.all([getJSON("data/brand.json"),
+    /* models live in data/catalog.json ({ "models": [...] }); the older data/products.json is read only if that file is missing */
+    getJSON("data/catalog.json").then(function (c) { if (!c || !Array.isArray(c.models)) throw 0; return c.models; }).catch(function () { return getJSON("data/products.json"); }),
+    getJSON("data/collections.json").catch(function () { return []; })])).then(function (res) {
     B = res[0] || {}; P = arr(res[1]).filter(function (p) { return p && p.name; });
+    P.forEach(function (p) { p.season = normSeason(p.season); });
     buildSeasons(res[2]);
     var qid = QS.get("id");
     header(PAGE === "season" ? (document.body.getAttribute("data-season") || qid) : (PAGE === "collections" && qid) ? qid : PAGE);
