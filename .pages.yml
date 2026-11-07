@@ -10,7 +10,10 @@ content:
   type: file
   path: data/collections.json
   format: json
-  list: true
+  list:
+    collapsible:
+      collapsed: true
+      summary: '{id}'
   fields:
   - name: id
     label: المجموعة
@@ -47,7 +50,10 @@ content:
   type: file
   path: data/products.json
   format: json
-  list: true
+  list:
+    collapsible:
+      collapsed: true
+      summary: '{code}  ·  {name}  ·  {season}'
   fields:
   - name: name
     label: اسم الموديل
@@ -87,7 +93,10 @@ content:
   - name: colors
     label: الألوان والصور
     type: object
-    list: true
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{name}'
     fields:
     - name: name
       label: اسم اللون
@@ -234,7 +243,10 @@ content:
   - name: values
     label: ما يميّزنا
     type: object
-    list: true
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
     fields:
     - name: title
       label: العنوان
@@ -251,7 +263,10 @@ content:
   - name: faq
     label: أسئلة شائعة (صفحة الجملة)
     type: object
-    list: true
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{q}'
     fields:
     - name: q
       label: السؤال
