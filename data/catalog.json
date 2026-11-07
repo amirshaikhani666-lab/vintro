@@ -321,7 +321,7 @@
           "name_en": "Navy",
           "hex": "#1A2E52",
           "images": [
-            "/images/1105-navy-1.jpg"
+            "/images/part-02/1105-navy-1.jpg"
           ]
         },
         {
@@ -329,7 +329,7 @@
           "name_en": "Grey",
           "hex": "#5D5A63",
           "images": [
-            "/images/1105-grey-1.jpg"
+            "/images/part-02/1105-grey-1.jpg"
           ]
         },
         {
@@ -337,7 +337,7 @@
           "name_en": "Brown",
           "hex": "#4A2C25",
           "images": [
-            "/images/1105-brown-1.jpg"
+            "/images/part-02/1105-brown-1.jpg"
           ]
         },
         {
@@ -345,7 +345,7 @@
           "name_en": "Silver",
           "hex": "#C9CBD0",
           "images": [
-            "/images/1105-silver-1.jpg"
+            "/images/part-02/1105-silver-1.jpg"
           ]
         },
         {
@@ -353,7 +353,7 @@
           "name_en": "Camel",
           "hex": "#B9863E",
           "images": [
-            "/images/1105-camel-1.jpg"
+            "/images/part-02/1105-camel-1.jpg"
           ]
         },
         {
@@ -361,7 +361,7 @@
           "name_en": "Blue",
           "hex": "#24588A",
           "images": [
-            "/images/1105-blue-1.jpg"
+            "/images/part-02/1105-blue-1.jpg"
           ]
         },
         {
@@ -369,7 +369,7 @@
           "name_en": "Petrol green",
           "hex": "#0F4A40",
           "images": [
-            "/images/1105-green-1.jpg"
+            "/images/part-02/1105-green-1.jpg"
           ]
         },
         {
@@ -377,7 +377,7 @@
           "name_en": "Burgundy",
           "hex": "#4E1730",
           "images": [
-            "/images/1105-burgundy-1.jpg"
+            "/images/part-02/1105-burgundy-1.jpg"
           ]
         },
         {
@@ -385,7 +385,7 @@
           "name_en": "Beige",
           "hex": "#D2B39C",
           "images": [
-            "/images/1105-beige-1.jpg"
+            "/images/part-02/1105-beige-1.jpg"
           ]
         },
         {
@@ -393,7 +393,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1105-black-1.jpg"
+            "/images/part-02/1105-black-1.jpg"
           ]
         },
         {
@@ -401,7 +401,7 @@
           "name_en": "Vanilla",
           "hex": "#ECE3CF",
           "images": [
-            "/images/1105-vanilla-1.jpg"
+            "/images/part-02/1105-vanilla-1.jpg"
           ]
         },
         {
@@ -409,7 +409,7 @@
           "name_en": "White",
           "hex": "#F1EEE6",
           "images": [
-            "/images/1105-white-1.jpg"
+            "/images/part-02/1105-white-1.jpg"
           ]
         }
       ]
@@ -436,7 +436,7 @@
           "name_en": "Burgundy",
           "hex": "#4A1428",
           "images": [
-            "/images/1106-burgundy-1.jpg"
+            "/images/part-02/1106-burgundy-1.jpg"
           ]
         },
         {
@@ -444,7 +444,7 @@
           "name_en": "Navy",
           "hex": "#1A2D55",
           "images": [
-            "/images/1106-navy-1.jpg"
+            "/images/part-03/1106-navy-1.jpg"
           ]
         },
         {
@@ -452,7 +452,7 @@
           "name_en": "Silver",
           "hex": "#CDCED3",
           "images": [
-            "/images/1106-silver-1.jpg"
+            "/images/part-03/1106-silver-1.jpg"
           ]
         },
         {
@@ -460,7 +460,7 @@
           "name_en": "Brown",
           "hex": "#4A2A22",
           "images": [
-            "/images/1106-brown-1.jpg"
+            "/images/part-02/1106-brown-1.jpg"
           ]
         },
         {
@@ -468,7 +468,7 @@
           "name_en": "Vanilla",
           "hex": "#EEE5D2",
           "images": [
-            "/images/1106-vanilla-1.jpg"
+            "/images/part-03/1106-vanilla-1.jpg"
           ]
         }
       ]
@@ -495,7 +495,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1107-black-1.jpg"
+            "/images/part-03/1107-black-1.jpg"
           ]
         },
         {
@@ -503,7 +503,7 @@
           "name_en": "Brown",
           "hex": "#6A4134",
           "images": [
-            "/images/1107-brown-1.jpg"
+            "/images/part-03/1107-brown-1.jpg"
           ]
         },
         {
@@ -511,7 +511,7 @@
           "name_en": "Petrol green",
           "hex": "#0F4A40",
           "images": [
-            "/images/1107-green-1.jpg"
+            "/images/part-03/1107-green-1.jpg"
           ]
         },
         {
@@ -519,7 +519,7 @@
           "name_en": "Navy",
           "hex": "#16264A",
           "images": [
-            "/images/1107-navy-1.jpg"
+            "/images/part-03/1107-navy-1.jpg"
           ]
         },
         {
@@ -527,7 +527,7 @@
           "name_en": "White",
           "hex": "#F2EFE6",
           "images": [
-            "/images/1107-white-1.jpg"
+            "/images/part-03/1107-white-1.jpg"
           ]
         }
       ]
@@ -554,7 +554,7 @@
           "name_en": "Slate grey",
           "hex": "#4A5250",
           "images": [
-            "/images/1108-slate-1.jpg"
+            "/images/part-03/1108-slate-1.jpg"
           ]
         },
         {
@@ -562,7 +562,7 @@
           "name_en": "Beige",
           "hex": "#C9AA94",
           "images": [
-            "/images/1108-beige-1.jpg"
+            "/images/part-03/1108-beige-1.jpg"
           ]
         },
         {
@@ -570,7 +570,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1108-black-1.jpg"
+            "/images/part-03/1108-black-1.jpg"
           ]
         },
         {
@@ -578,7 +578,7 @@
           "name_en": "Petrol green",
           "hex": "#0F4A40",
           "images": [
-            "/images/1108-green-1.jpg"
+            "/images/part-03/1108-green-1.jpg"
           ]
         },
         {
@@ -586,7 +586,7 @@
           "name_en": "White",
           "hex": "#F2EFE6",
           "images": [
-            "/images/1108-white-1.jpg"
+            "/images/part-03/1108-white-1.jpg"
           ]
         }
       ]
@@ -613,7 +613,7 @@
           "name_en": "Petrol green",
           "hex": "#0F4A40",
           "images": [
-            "/images/1109-green-1.jpg"
+            "/images/part-03/1109-green-1.jpg"
           ]
         },
         {
@@ -621,7 +621,7 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1109-silver-1.jpg"
+            "/images/part-03/1109-silver-1.jpg"
           ]
         },
         {
@@ -629,7 +629,7 @@
           "name_en": "White",
           "hex": "#F2EFE6",
           "images": [
-            "/images/1109-white-1.jpg"
+            "/images/part-04/1109-white-1.jpg"
           ]
         },
         {
@@ -637,7 +637,7 @@
           "name_en": "Beige",
           "hex": "#CFB29B",
           "images": [
-            "/images/1109-beige-1.jpg"
+            "/images/part-03/1109-beige-1.jpg"
           ]
         },
         {
@@ -645,7 +645,7 @@
           "name_en": "Slate grey",
           "hex": "#4E5654",
           "images": [
-            "/images/1109-slate-1.jpg"
+            "/images/part-04/1109-slate-1.jpg"
           ]
         },
         {
@@ -653,7 +653,7 @@
           "name_en": "Brown",
           "hex": "#4D3028",
           "images": [
-            "/images/1109-brown-1.jpg"
+            "/images/part-03/1109-brown-1.jpg"
           ]
         },
         {
@@ -661,7 +661,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1109-black-1.jpg"
+            "/images/part-03/1109-black-1.jpg"
           ]
         },
         {
@@ -669,7 +669,7 @@
           "name_en": "Navy",
           "hex": "#1A2D55",
           "images": [
-            "/images/1109-navy-1.jpg"
+            "/images/part-03/1109-navy-1.jpg"
           ]
         }
       ]
@@ -696,7 +696,7 @@
           "name_en": "White / black stripe",
           "hex": "#141414",
           "images": [
-            "/images/1110-black-1.jpg"
+            "/images/part-04/1110-black-1.jpg"
           ]
         },
         {
@@ -704,7 +704,7 @@
           "name_en": "White / grey stripe",
           "hex": "#55545C",
           "images": [
-            "/images/1110-grey-1.jpg"
+            "/images/part-04/1110-grey-1.jpg"
           ]
         },
         {
@@ -712,7 +712,7 @@
           "name_en": "White / brown stripe",
           "hex": "#6A3F35",
           "images": [
-            "/images/1110-brown-1.jpg"
+            "/images/part-04/1110-brown-1.jpg"
           ]
         },
         {
@@ -720,7 +720,7 @@
           "name_en": "White / beige stripe",
           "hex": "#C2A38E",
           "images": [
-            "/images/1110-beige-1.jpg"
+            "/images/part-04/1110-beige-1.jpg"
           ]
         },
         {
@@ -728,7 +728,7 @@
           "name_en": "White / blue stripe",
           "hex": "#255A8C",
           "images": [
-            "/images/1110-blue-1.jpg"
+            "/images/part-04/1110-blue-1.jpg"
           ]
         }
       ]
@@ -755,7 +755,7 @@
           "name_en": "Brown",
           "hex": "#6A4134",
           "images": [
-            "/images/1111-brown-1.jpg"
+            "/images/part-04/1111-brown-1.jpg"
           ]
         },
         {
@@ -763,7 +763,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1111-black-1.jpg"
+            "/images/part-04/1111-black-1.jpg"
           ]
         },
         {
@@ -771,7 +771,7 @@
           "name_en": "Vanilla",
           "hex": "#EEE5D2",
           "images": [
-            "/images/1111-vanilla-1.jpg"
+            "/images/part-04/1111-vanilla-1.jpg"
           ]
         },
         {
@@ -779,7 +779,7 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1111-silver-1.jpg"
+            "/images/part-04/1111-silver-1.jpg"
           ]
         },
         {
@@ -787,7 +787,7 @@
           "name_en": "Blue",
           "hex": "#24588A",
           "images": [
-            "/images/1111-blue-1.jpg"
+            "/images/part-04/1111-blue-1.jpg"
           ]
         }
       ]
@@ -814,7 +814,7 @@
           "name_en": "Brown",
           "hex": "#4A2A24",
           "images": [
-            "/images/1112-brown-1.jpg"
+            "/images/part-04/1112-brown-1.jpg"
           ]
         },
         {
@@ -822,7 +822,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1112-black-1.jpg"
+            "/images/part-04/1112-black-1.jpg"
           ]
         },
         {
@@ -830,7 +830,7 @@
           "name_en": "Blue",
           "hex": "#24588A",
           "images": [
-            "/images/1112-blue-1.jpg"
+            "/images/part-04/1112-blue-1.jpg"
           ]
         },
         {
@@ -838,7 +838,7 @@
           "name_en": "Vanilla",
           "hex": "#EEE5D2",
           "images": [
-            "/images/1112-vanilla-1.jpg"
+            "/images/part-04/1112-vanilla-1.jpg"
           ]
         }
       ]
@@ -865,7 +865,7 @@
           "name_en": "Sage green",
           "hex": "#8FA38A",
           "images": [
-            "/images/1113-sage-1.jpg"
+            "/images/part-05/1113-sage-1.jpg"
           ]
         },
         {
@@ -873,7 +873,7 @@
           "name_en": "Navy",
           "hex": "#22375A",
           "images": [
-            "/images/1113-navy-1.jpg"
+            "/images/part-05/1113-navy-1.jpg"
           ]
         },
         {
@@ -881,7 +881,7 @@
           "name_en": "Charcoal",
           "hex": "#33373E",
           "images": [
-            "/images/1113-charcoal-1.jpg"
+            "/images/part-05/1113-charcoal-1.jpg"
           ]
         },
         {
@@ -889,7 +889,7 @@
           "name_en": "Burgundy",
           "hex": "#5A2A30",
           "images": [
-            "/images/1113-burgundy-1.jpg"
+            "/images/part-05/1113-burgundy-1.jpg"
           ]
         },
         {
@@ -897,7 +897,7 @@
           "name_en": "Camel",
           "hex": "#A88A72",
           "images": [
-            "/images/1113-camel-1.jpg"
+            "/images/part-05/1113-camel-1.jpg"
           ]
         },
         {
@@ -905,7 +905,7 @@
           "name_en": "Grey",
           "hex": "#5F5B59",
           "images": [
-            "/images/1113-grey-1.jpg"
+            "/images/part-05/1113-grey-1.jpg"
           ]
         },
         {
@@ -913,7 +913,7 @@
           "name_en": "Off-white",
           "hex": "#ECE8E0",
           "images": [
-            "/images/1113-white-1.jpg"
+            "/images/part-05/1113-white-1.jpg"
           ]
         },
         {
@@ -921,7 +921,7 @@
           "name_en": "Rust orange",
           "hex": "#C2532E",
           "images": [
-            "/images/1113-orange-1.jpg"
+            "/images/part-05/1113-orange-1.jpg"
           ]
         },
         {
@@ -929,7 +929,7 @@
           "name_en": "Beige",
           "hex": "#D8CDBE",
           "images": [
-            "/images/1113-beige-1.jpg"
+            "/images/part-04/1113-beige-1.jpg"
           ]
         },
         {
@@ -937,7 +937,7 @@
           "name_en": "Silver",
           "hex": "#C9CBCF",
           "images": [
-            "/images/1113-silver-1.jpg"
+            "/images/part-05/1113-silver-1.jpg"
           ]
         }
       ]
@@ -964,7 +964,7 @@
           "name_en": "Rust orange",
           "hex": "#C2532E",
           "images": [
-            "/images/1114-orange-1.jpg"
+            "/images/part-05/1114-orange-1.jpg"
           ]
         },
         {
@@ -972,7 +972,7 @@
           "name_en": "Charcoal",
           "hex": "#33373E",
           "images": [
-            "/images/1114-charcoal-1.jpg"
+            "/images/part-05/1114-charcoal-1.jpg"
           ]
         },
         {
@@ -980,7 +980,7 @@
           "name_en": "Beige",
           "hex": "#D8CDBE",
           "images": [
-            "/images/1114-beige-1.jpg"
+            "/images/part-05/1114-beige-1.jpg"
           ]
         },
         {
@@ -988,7 +988,7 @@
           "name_en": "Sage green",
           "hex": "#8FA38A",
           "images": [
-            "/images/1114-sage-1.jpg"
+            "/images/part-06/1114-sage-1.jpg"
           ]
         },
         {
@@ -996,7 +996,7 @@
           "name_en": "Silver",
           "hex": "#C9CBCF",
           "images": [
-            "/images/1114-silver-1.jpg"
+            "/images/part-06/1114-silver-1.jpg"
           ]
         },
         {
@@ -1004,7 +1004,7 @@
           "name_en": "Grey",
           "hex": "#5F5B59",
           "images": [
-            "/images/1114-grey-1.jpg"
+            "/images/part-05/1114-grey-1.jpg"
           ]
         },
         {
@@ -1012,7 +1012,7 @@
           "name_en": "Off-white",
           "hex": "#ECE8E0",
           "images": [
-            "/images/1114-white-1.jpg"
+            "/images/part-06/1114-white-1.jpg"
           ]
         },
         {
@@ -1020,7 +1020,7 @@
           "name_en": "Burgundy",
           "hex": "#5A2A30",
           "images": [
-            "/images/1114-burgundy-1.jpg"
+            "/images/part-05/1114-burgundy-1.jpg"
           ]
         },
         {
@@ -1028,7 +1028,7 @@
           "name_en": "Camel",
           "hex": "#A88A72",
           "images": [
-            "/images/1114-camel-1.jpg"
+            "/images/part-05/1114-camel-1.jpg"
           ]
         },
         {
@@ -1036,7 +1036,7 @@
           "name_en": "Navy",
           "hex": "#22375A",
           "images": [
-            "/images/1114-navy-1.jpg"
+            "/images/part-05/1114-navy-1.jpg"
           ]
         }
       ]
@@ -1063,8 +1063,8 @@
           "name_en": "Navy / white stripe",
           "hex": "#1C2D4F",
           "images": [
-            "/images/1115-navy-1.jpg",
-            "/images/1115-navy-2.jpg"
+            "/images/part-06/1115-navy-1.jpg",
+            "/images/part-06/1115-navy-2.jpg"
           ]
         },
         {
@@ -1072,7 +1072,7 @@
           "name_en": "Burgundy / white stripe",
           "hex": "#4A1A2C",
           "images": [
-            "/images/1115-burgundy-1.jpg"
+            "/images/part-06/1115-burgundy-1.jpg"
           ]
         },
         {
@@ -1080,7 +1080,7 @@
           "name_en": "Petrol green / white stripe",
           "hex": "#0F4A40",
           "images": [
-            "/images/1115-green-1.jpg"
+            "/images/part-06/1115-green-1.jpg"
           ]
         },
         {
@@ -1088,7 +1088,7 @@
           "name_en": "Brown / white stripe",
           "hex": "#6A4134",
           "images": [
-            "/images/1115-brown-1.jpg"
+            "/images/part-06/1115-brown-1.jpg"
           ]
         }
       ]
@@ -1115,7 +1115,7 @@
           "name_en": "Slate grey",
           "hex": "#4A5250",
           "images": [
-            "/images/1116-slate-1.jpg"
+            "/images/part-06/1116-slate-1.jpg"
           ]
         },
         {
@@ -1123,7 +1123,7 @@
           "name_en": "Brown",
           "hex": "#4A2A24",
           "images": [
-            "/images/1116-brown-1.jpg"
+            "/images/part-06/1116-brown-1.jpg"
           ]
         },
         {
@@ -1131,7 +1131,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1116-black-1.jpg"
+            "/images/part-06/1116-black-1.jpg"
           ]
         },
         {
@@ -1139,7 +1139,7 @@
           "name_en": "Off-white",
           "hex": "#F1EEE6",
           "images": [
-            "/images/1116-white-1.jpg"
+            "/images/part-06/1116-white-1.jpg"
           ]
         }
       ]
@@ -1166,7 +1166,7 @@
           "name_en": "Silver",
           "hex": "#CDCED3",
           "images": [
-            "/images/1118-silver-1.jpg"
+            "/images/part-07/1118-silver-1.jpg"
           ]
         },
         {
@@ -1174,7 +1174,7 @@
           "name_en": "Camel",
           "hex": "#C99A6B",
           "images": [
-            "/images/1118-camel-1.jpg"
+            "/images/part-06/1118-camel-1.jpg"
           ]
         },
         {
@@ -1182,7 +1182,7 @@
           "name_en": "Slate grey",
           "hex": "#4A5250",
           "images": [
-            "/images/1118-slate-1.jpg"
+            "/images/part-07/1118-slate-1.jpg"
           ]
         },
         {
@@ -1190,7 +1190,7 @@
           "name_en": "Sage green",
           "hex": "#86A895",
           "images": [
-            "/images/1118-sage-1.jpg"
+            "/images/part-07/1118-sage-1.jpg"
           ]
         },
         {
@@ -1198,7 +1198,7 @@
           "name_en": "Off-white",
           "hex": "#F1EEE6",
           "images": [
-            "/images/1118-white-1.jpg"
+            "/images/part-07/1118-white-1.jpg"
           ]
         },
         {
@@ -1206,7 +1206,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1118-black-1.jpg"
+            "/images/part-06/1118-black-1.jpg"
           ]
         },
         {
@@ -1214,7 +1214,7 @@
           "name_en": "Brown",
           "hex": "#6A3F35",
           "images": [
-            "/images/1118-brown-1.jpg"
+            "/images/part-06/1118-brown-1.jpg"
           ]
         },
         {
@@ -1222,7 +1222,7 @@
           "name_en": "Blue",
           "hex": "#2A5C94",
           "images": [
-            "/images/1118-blue-1.jpg"
+            "/images/part-06/1118-blue-1.jpg"
           ]
         }
       ]
@@ -1249,7 +1249,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1119-black-1.jpg"
+            "/images/part-07/1119-black-1.jpg"
           ]
         },
         {
@@ -1257,7 +1257,7 @@
           "name_en": "Petrol green",
           "hex": "#0F4A40",
           "images": [
-            "/images/1119-green-1.jpg"
+            "/images/part-07/1119-green-1.jpg"
           ]
         },
         {
@@ -1265,7 +1265,7 @@
           "name_en": "Off-white",
           "hex": "#EFE9DE",
           "images": [
-            "/images/1119-white-1.jpg"
+            "/images/part-07/1119-white-1.jpg"
           ]
         },
         {
@@ -1273,7 +1273,7 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1119-silver-1.jpg"
+            "/images/part-07/1119-silver-1.jpg"
           ]
         },
         {
@@ -1281,7 +1281,7 @@
           "name_en": "Camel",
           "hex": "#B8873F",
           "images": [
-            "/images/1119-camel-1.jpg"
+            "/images/part-07/1119-camel-1.jpg"
           ]
         },
         {
@@ -1289,7 +1289,7 @@
           "name_en": "Navy",
           "hex": "#1A2D55",
           "images": [
-            "/images/1119-navy-1.jpg"
+            "/images/part-07/1119-navy-1.jpg"
           ]
         }
       ]
@@ -1316,7 +1316,7 @@
           "name_en": "Burgundy",
           "hex": "#4A1A2C",
           "images": [
-            "/images/1120-burgundy-1.jpg"
+            "/images/part-07/1120-burgundy-1.jpg"
           ]
         },
         {
@@ -1324,7 +1324,7 @@
           "name_en": "Beige",
           "hex": "#C9AA94",
           "images": [
-            "/images/1120-beige-1.jpg"
+            "/images/part-07/1120-beige-1.jpg"
           ]
         },
         {
@@ -1332,7 +1332,7 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1120-silver-1.jpg"
+            "/images/part-07/1120-silver-1.jpg"
           ]
         },
         {
@@ -1340,7 +1340,7 @@
           "name_en": "Petrol green",
           "hex": "#0F4A40",
           "images": [
-            "/images/1120-green-1.jpg"
+            "/images/part-07/1120-green-1.jpg"
           ]
         },
         {
@@ -1348,7 +1348,7 @@
           "name_en": "Navy",
           "hex": "#1A2D55",
           "images": [
-            "/images/1120-navy-1.jpg"
+            "/images/part-07/1120-navy-1.jpg"
           ]
         }
       ]
@@ -1375,7 +1375,7 @@
           "name_en": "Brown",
           "hex": "#4A2A24",
           "images": [
-            "/images/1121-brown-1.jpg"
+            "/images/part-07/1121-brown-1.jpg"
           ]
         },
         {
@@ -1383,7 +1383,7 @@
           "name_en": "Burgundy",
           "hex": "#4A1A2C",
           "images": [
-            "/images/1121-burgundy-1.jpg"
+            "/images/part-07/1121-burgundy-1.jpg"
           ]
         },
         {
@@ -1391,7 +1391,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1121-black-1.jpg"
+            "/images/part-07/1121-black-1.jpg"
           ]
         },
         {
@@ -1399,7 +1399,7 @@
           "name_en": "Navy",
           "hex": "#1A2D55",
           "images": [
-            "/images/1121-navy-1.jpg"
+            "/images/part-07/1121-navy-1.jpg"
           ]
         },
         {
@@ -1407,7 +1407,7 @@
           "name_en": "Off-white",
           "hex": "#F1EEE6",
           "images": [
-            "/images/1121-white-1.jpg"
+            "/images/part-08/1121-white-1.jpg"
           ]
         }
       ]
@@ -1434,9 +1434,9 @@
           "name_en": "Beige",
           "hex": "#D3C4B0",
           "images": [
-            "/images/1001-beige-1.jpg",
-            "/images/1001-beige-2.jpg",
-            "/images/1001-beige-3.jpg"
+            "/images/part-01/1001-beige-1.jpg",
+            "/images/part-01/1001-beige-2.jpg",
+            "/images/part-01/1001-beige-3.jpg"
           ]
         },
         {
@@ -1444,7 +1444,7 @@
           "name_en": "Mint",
           "hex": "#8FD1B5",
           "images": [
-            "/images/1001-mint-1.jpg"
+            "/images/part-01/1001-mint-1.jpg"
           ]
         },
         {
@@ -1452,7 +1452,7 @@
           "name_en": "Vanilla",
           "hex": "#EDE6D8",
           "images": [
-            "/images/1001-cream-1.jpg"
+            "/images/part-01/1001-cream-1.jpg"
           ]
         },
         {
@@ -1460,7 +1460,7 @@
           "name_en": "Sage green",
           "hex": "#A9BE8C",
           "images": [
-            "/images/1001-sage-1.jpg"
+            "/images/part-01/1001-sage-1.jpg"
           ]
         }
       ]
@@ -1487,9 +1487,9 @@
           "name_en": "Camel",
           "hex": "#B98A5E",
           "images": [
-            "/images/1002-camel-1.jpg",
-            "/images/1002-camel-2.jpg",
-            "/images/1002-camel-3.jpg"
+            "/images/part-01/1002-camel-1.jpg",
+            "/images/part-01/1002-camel-2.jpg",
+            "/images/part-01/1002-camel-3.jpg"
           ]
         },
         {
@@ -1497,7 +1497,7 @@
           "name_en": "Navy",
           "hex": "#1F2D5C",
           "images": [
-            "/images/1002-navy-1.jpg"
+            "/images/part-01/1002-navy-1.jpg"
           ]
         },
         {
@@ -1505,7 +1505,7 @@
           "name_en": "Forest green",
           "hex": "#24502F",
           "images": [
-            "/images/1002-green-1.jpg"
+            "/images/part-01/1002-green-1.jpg"
           ]
         },
         {
@@ -1513,7 +1513,7 @@
           "name_en": "Pistachio",
           "hex": "#BFCB92",
           "images": [
-            "/images/1002-pistachio-1.jpg"
+            "/images/part-01/1002-pistachio-1.jpg"
           ]
         },
         {
@@ -1521,7 +1521,7 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1002-silver-1.jpg"
+            "/images/part-01/1002-silver-1.jpg"
           ]
         },
         {
@@ -1529,7 +1529,7 @@
           "name_en": "Mint",
           "hex": "#8FD1B5",
           "images": [
-            "/images/1002-mint-1.jpg"
+            "/images/part-01/1002-mint-1.jpg"
           ]
         },
         {
@@ -1537,7 +1537,7 @@
           "name_en": "Red",
           "hex": "#D61F26",
           "images": [
-            "/images/1002-red-1.jpg"
+            "/images/part-01/1002-red-1.jpg"
           ]
         }
       ]
@@ -1564,9 +1564,9 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1003-silver-1.jpg",
-            "/images/1003-silver-2.jpg",
-            "/images/1003-silver-3.jpg"
+            "/images/part-01/1003-silver-1.jpg",
+            "/images/part-01/1003-silver-2.jpg",
+            "/images/part-01/1003-silver-3.jpg"
           ]
         },
         {
@@ -1574,7 +1574,7 @@
           "name_en": "Vanilla",
           "hex": "#EDE6D8",
           "images": [
-            "/images/1003-cream-1.jpg"
+            "/images/part-01/1003-cream-1.jpg"
           ]
         },
         {
@@ -1582,7 +1582,7 @@
           "name_en": "Mint",
           "hex": "#8FD1B5",
           "images": [
-            "/images/1003-mint-1.jpg"
+            "/images/part-01/1003-mint-1.jpg"
           ]
         },
         {
@@ -1590,7 +1590,7 @@
           "name_en": "Sky blue",
           "hex": "#B9CDEB",
           "images": [
-            "/images/1003-skyblue-1.jpg"
+            "/images/part-01/1003-skyblue-1.jpg"
           ]
         }
       ]
@@ -1617,9 +1617,9 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1004-silver-1.jpg",
-            "/images/1004-silver-2.jpg",
-            "/images/1004-silver-3.jpg"
+            "/images/part-01/1004-silver-1.jpg",
+            "/images/part-01/1004-silver-2.jpg",
+            "/images/part-01/1004-silver-3.jpg"
           ]
         },
         {
@@ -1627,7 +1627,7 @@
           "name_en": "Dusty blue",
           "hex": "#5E7590",
           "images": [
-            "/images/1004-dustyblue-1.jpg"
+            "/images/part-01/1004-dustyblue-1.jpg"
           ]
         },
         {
@@ -1635,7 +1635,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1004-black-1.jpg"
+            "/images/part-01/1004-black-1.jpg"
           ]
         },
         {
@@ -1643,7 +1643,7 @@
           "name_en": "Sage green",
           "hex": "#A9BE8C",
           "images": [
-            "/images/1004-sage-1.jpg"
+            "/images/part-01/1004-sage-1.jpg"
           ]
         },
         {
@@ -1651,7 +1651,7 @@
           "name_en": "Sky blue",
           "hex": "#B9CDEB",
           "images": [
-            "/images/1004-skyblue-1.jpg"
+            "/images/part-01/1004-skyblue-1.jpg"
           ]
         },
         {
@@ -1659,7 +1659,7 @@
           "name_en": "Mocha",
           "hex": "#8B6F5C",
           "images": [
-            "/images/1004-mocha-1.jpg"
+            "/images/part-01/1004-mocha-1.jpg"
           ]
         },
         {
@@ -1667,7 +1667,7 @@
           "name_en": "Beige",
           "hex": "#D3C4B0",
           "images": [
-            "/images/1004-beige-1.jpg"
+            "/images/part-01/1004-beige-1.jpg"
           ]
         },
         {
@@ -1675,7 +1675,7 @@
           "name_en": "Vanilla",
           "hex": "#EDE6D8",
           "images": [
-            "/images/1004-cream-1.jpg"
+            "/images/part-01/1004-cream-1.jpg"
           ]
         },
         {
@@ -1683,7 +1683,7 @@
           "name_en": "Red",
           "hex": "#D61F26",
           "images": [
-            "/images/1004-red-1.jpg"
+            "/images/part-01/1004-red-1.jpg"
           ]
         }
       ]
@@ -1710,9 +1710,9 @@
           "name_en": "Navy",
           "hex": "#1F2D5C",
           "images": [
-            "/images/1005-navy-1.jpg",
-            "/images/1005-navy-2.jpg",
-            "/images/1005-navy-3.jpg"
+            "/images/part-01/1005-navy-1.jpg",
+            "/images/part-01/1005-navy-2.jpg",
+            "/images/part-01/1005-navy-3.jpg"
           ]
         },
         {
@@ -1720,7 +1720,7 @@
           "name_en": "Dusty blue",
           "hex": "#5E7590",
           "images": [
-            "/images/1005-dustyblue-1.jpg"
+            "/images/part-01/1005-dustyblue-1.jpg"
           ]
         },
         {
@@ -1728,7 +1728,7 @@
           "name_en": "Sage green",
           "hex": "#A9BE8C",
           "images": [
-            "/images/1005-sage-1.jpg"
+            "/images/part-01/1005-sage-1.jpg"
           ]
         },
         {
@@ -1736,7 +1736,7 @@
           "name_en": "Camel",
           "hex": "#B98A5E",
           "images": [
-            "/images/1005-camel-1.jpg"
+            "/images/part-01/1005-camel-1.jpg"
           ]
         },
         {
@@ -1744,7 +1744,7 @@
           "name_en": "Vanilla",
           "hex": "#EDE6D8",
           "images": [
-            "/images/1005-cream-1.jpg"
+            "/images/part-01/1005-cream-1.jpg"
           ]
         }
       ]
@@ -1771,9 +1771,9 @@
           "name_en": "Camel",
           "hex": "#B98A5E",
           "images": [
-            "/images/1006-camel-1.jpg",
-            "/images/1006-camel-2.jpg",
-            "/images/1006-camel-3.jpg"
+            "/images/part-01/1006-camel-1.jpg",
+            "/images/part-01/1006-camel-2.jpg",
+            "/images/part-01/1006-camel-3.jpg"
           ]
         },
         {
@@ -1781,7 +1781,7 @@
           "name_en": "Beige",
           "hex": "#D3C4B0",
           "images": [
-            "/images/1006-beige-1.jpg"
+            "/images/part-01/1006-beige-1.jpg"
           ]
         },
         {
@@ -1789,7 +1789,7 @@
           "name_en": "Light green",
           "hex": "#B5CF98",
           "images": [
-            "/images/1006-lightgreen-1.jpg"
+            "/images/part-01/1006-lightgreen-1.jpg"
           ]
         },
         {
@@ -1797,7 +1797,7 @@
           "name_en": "Turquoise",
           "hex": "#6FB8AE",
           "images": [
-            "/images/1006-turquoise-1.jpg"
+            "/images/part-01/1006-turquoise-1.jpg"
           ]
         },
         {
@@ -1805,7 +1805,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1006-black-1.jpg"
+            "/images/part-01/1006-black-1.jpg"
           ]
         },
         {
@@ -1813,7 +1813,7 @@
           "name_en": "Vanilla",
           "hex": "#EDE6D8",
           "images": [
-            "/images/1006-cream-1.jpg"
+            "/images/part-01/1006-cream-1.jpg"
           ]
         }
       ]
@@ -1840,9 +1840,9 @@
           "name_en": "Navy / white stripe",
           "hex": "#1F2D5C",
           "images": [
-            "/images/1007-navy-white-1.jpg",
-            "/images/1007-navy-white-2.jpg",
-            "/images/1007-navy-white-3.jpg"
+            "/images/part-01/1007-navy-white-1.jpg",
+            "/images/part-01/1007-navy-white-2.jpg",
+            "/images/part-01/1007-navy-white-3.jpg"
           ]
         },
         {
@@ -1850,7 +1850,7 @@
           "name_en": "Green / white stripe",
           "hex": "#6FAE8C",
           "images": [
-            "/images/1007-green-white-1.jpg"
+            "/images/part-01/1007-green-white-1.jpg"
           ]
         },
         {
@@ -1858,7 +1858,7 @@
           "name_en": "Brown / white stripe",
           "hex": "#5E3A26",
           "images": [
-            "/images/1007-brown-white-1.jpg"
+            "/images/part-01/1007-brown-white-1.jpg"
           ]
         },
         {
@@ -1866,7 +1866,7 @@
           "name_en": "Vanilla / navy stripe",
           "hex": "#EDE6D8",
           "images": [
-            "/images/1007-cream-navy-1.jpg"
+            "/images/part-01/1007-cream-navy-1.jpg"
           ]
         }
       ]
@@ -1893,9 +1893,9 @@
           "name_en": "Vanilla",
           "hex": "#EDE6D8",
           "images": [
-            "/images/1008-cream-1.jpg",
-            "/images/1008-cream-2.jpg",
-            "/images/1008-cream-3.jpg"
+            "/images/part-01/1008-cream-1.jpg",
+            "/images/part-01/1008-cream-2.jpg",
+            "/images/part-01/1008-cream-3.jpg"
           ]
         },
         {
@@ -1903,7 +1903,7 @@
           "name_en": "Sky blue",
           "hex": "#B9CDEB",
           "images": [
-            "/images/1008-skyblue-1.jpg"
+            "/images/part-02/1008-skyblue-1.jpg"
           ]
         },
         {
@@ -1911,7 +1911,7 @@
           "name_en": "Blue",
           "hex": "#294C8F",
           "images": [
-            "/images/1008-blue-1.jpg"
+            "/images/part-01/1008-blue-1.jpg"
           ]
         },
         {
@@ -1919,7 +1919,7 @@
           "name_en": "Navy / red tipping",
           "hex": "#1F2D5C",
           "images": [
-            "/images/1008-navy-red-1.jpg"
+            "/images/part-01/1008-navy-red-1.jpg"
           ]
         },
         {
@@ -1927,7 +1927,7 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1008-silver-1.jpg"
+            "/images/part-01/1008-silver-1.jpg"
           ]
         },
         {
@@ -1935,7 +1935,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1008-black-1.jpg"
+            "/images/part-01/1008-black-1.jpg"
           ]
         }
       ]
@@ -1962,9 +1962,9 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1009-black-1.jpg",
-            "/images/1009-black-2.jpg",
-            "/images/1009-black-3.jpg"
+            "/images/part-02/1009-black-1.jpg",
+            "/images/part-02/1009-black-2.jpg",
+            "/images/part-02/1009-black-3.jpg"
           ]
         },
         {
@@ -1972,7 +1972,7 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1009-silver-1.jpg"
+            "/images/part-02/1009-silver-1.jpg"
           ]
         },
         {
@@ -1980,7 +1980,7 @@
           "name_en": "Rust",
           "hex": "#9A5528",
           "images": [
-            "/images/1009-rust-1.jpg"
+            "/images/part-02/1009-rust-1.jpg"
           ]
         },
         {
@@ -1988,7 +1988,7 @@
           "name_en": "Beige",
           "hex": "#D3C4B0",
           "images": [
-            "/images/1009-beige-1.jpg"
+            "/images/part-02/1009-beige-1.jpg"
           ]
         },
         {
@@ -1996,7 +1996,7 @@
           "name_en": "Vanilla",
           "hex": "#EDE6D8",
           "images": [
-            "/images/1009-cream-1.jpg"
+            "/images/part-02/1009-cream-1.jpg"
           ]
         },
         {
@@ -2004,7 +2004,7 @@
           "name_en": "Navy",
           "hex": "#1F2D5C",
           "images": [
-            "/images/1009-navy-1.jpg"
+            "/images/part-02/1009-navy-1.jpg"
           ]
         },
         {
@@ -2012,7 +2012,7 @@
           "name_en": "Mint",
           "hex": "#8FD1B5",
           "images": [
-            "/images/1009-mint-1.jpg"
+            "/images/part-02/1009-mint-1.jpg"
           ]
         },
         {
@@ -2020,7 +2020,7 @@
           "name_en": "Forest green",
           "hex": "#24502F",
           "images": [
-            "/images/1009-green-1.jpg"
+            "/images/part-02/1009-green-1.jpg"
           ]
         }
       ]
@@ -2047,9 +2047,9 @@
           "name_en": "Camel",
           "hex": "#B98A5E",
           "images": [
-            "/images/1010-camel-1.jpg",
-            "/images/1010-camel-2.jpg",
-            "/images/1010-camel-3.jpg"
+            "/images/part-02/1010-camel-1.jpg",
+            "/images/part-02/1010-camel-2.jpg",
+            "/images/part-02/1010-camel-3.jpg"
           ]
         }
       ]
@@ -2076,9 +2076,9 @@
           "name_en": "Sage green",
           "hex": "#A9BE8C",
           "images": [
-            "/images/1011-sage-1.jpg",
-            "/images/1011-sage-2.jpg",
-            "/images/1011-sage-3.jpg"
+            "/images/part-02/1011-sage-1.jpg",
+            "/images/part-02/1011-sage-2.jpg",
+            "/images/part-02/1011-sage-3.jpg"
           ]
         }
       ]
@@ -2105,9 +2105,9 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1012-silver-1.jpg",
-            "/images/1012-silver-2.jpg",
-            "/images/1012-silver-3.jpg"
+            "/images/part-02/1012-silver-1.jpg",
+            "/images/part-02/1012-silver-2.jpg",
+            "/images/part-02/1012-silver-3.jpg"
           ]
         },
         {
@@ -2115,7 +2115,7 @@
           "name_en": "Sky blue",
           "hex": "#B9CDEB",
           "images": [
-            "/images/1012-skyblue-1.jpg"
+            "/images/part-02/1012-skyblue-1.jpg"
           ]
         },
         {
@@ -2123,7 +2123,7 @@
           "name_en": "Beige",
           "hex": "#D3C4B0",
           "images": [
-            "/images/1012-beige-1.jpg"
+            "/images/part-02/1012-beige-1.jpg"
           ]
         },
         {
@@ -2131,7 +2131,7 @@
           "name_en": "Brown",
           "hex": "#6A4632",
           "images": [
-            "/images/1012-brown-1.jpg"
+            "/images/part-02/1012-brown-1.jpg"
           ]
         }
       ]
@@ -2158,9 +2158,9 @@
           "name_en": "Vanilla",
           "hex": "#EDE6D8",
           "images": [
-            "/images/1013-cream-1.jpg",
-            "/images/1013-cream-2.jpg",
-            "/images/1013-cream-3.jpg"
+            "/images/part-02/1013-cream-1.jpg",
+            "/images/part-02/1013-cream-2.jpg",
+            "/images/part-02/1013-cream-3.jpg"
           ]
         },
         {
@@ -2168,7 +2168,7 @@
           "name_en": "Beige",
           "hex": "#D3C4B0",
           "images": [
-            "/images/1013-beige-1.jpg"
+            "/images/part-02/1013-beige-1.jpg"
           ]
         },
         {
@@ -2176,7 +2176,7 @@
           "name_en": "Camel",
           "hex": "#B98A5E",
           "images": [
-            "/images/1013-camel-1.jpg"
+            "/images/part-02/1013-camel-1.jpg"
           ]
         },
         {
@@ -2184,7 +2184,7 @@
           "name_en": "Sky blue",
           "hex": "#B9CDEB",
           "images": [
-            "/images/1013-skyblue-1.jpg"
+            "/images/part-02/1013-skyblue-1.jpg"
           ]
         },
         {
@@ -2192,7 +2192,7 @@
           "name_en": "Navy",
           "hex": "#1F2D5C",
           "images": [
-            "/images/1013-navy-1.jpg"
+            "/images/part-02/1013-navy-1.jpg"
           ]
         },
         {
@@ -2200,7 +2200,7 @@
           "name_en": "Mint",
           "hex": "#8FD1B5",
           "images": [
-            "/images/1013-mint-1.jpg"
+            "/images/part-02/1013-mint-1.jpg"
           ]
         },
         {
@@ -2208,7 +2208,7 @@
           "name_en": "Sage green",
           "hex": "#A9BE8C",
           "images": [
-            "/images/1013-sage-1.jpg"
+            "/images/part-02/1013-sage-1.jpg"
           ]
         },
         {
@@ -2216,7 +2216,7 @@
           "name_en": "Forest green",
           "hex": "#24502F",
           "images": [
-            "/images/1013-green-1.jpg"
+            "/images/part-02/1013-green-1.jpg"
           ]
         },
         {
@@ -2224,7 +2224,7 @@
           "name_en": "Red",
           "hex": "#D61F26",
           "images": [
-            "/images/1013-red-1.jpg"
+            "/images/part-02/1013-red-1.jpg"
           ]
         },
         {
@@ -2232,7 +2232,7 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1013-silver-1.jpg"
+            "/images/part-02/1013-silver-1.jpg"
           ]
         },
         {
@@ -2240,7 +2240,7 @@
           "name_en": "Dusty blue",
           "hex": "#5E7590",
           "images": [
-            "/images/1013-dustyblue-1.jpg"
+            "/images/part-02/1013-dustyblue-1.jpg"
           ]
         },
         {
@@ -2248,7 +2248,7 @@
           "name_en": "Black",
           "hex": "#141414",
           "images": [
-            "/images/1013-black-1.jpg"
+            "/images/part-02/1013-black-1.jpg"
           ]
         }
       ]
@@ -2275,12 +2275,12 @@
           "name_en": "Sky blue",
           "hex": "#B9CDEB",
           "images": [
-            "/images/1014-skyblue-1.jpg",
-            "/images/1014-skyblue-2.jpg",
-            "/images/1014-skyblue-3.jpg",
-            "/images/1014-skyblue-4.jpg",
-            "/images/1014-skyblue-5.jpg",
-            "/images/1014-skyblue-6.jpg"
+            "/images/part-02/1014-skyblue-1.jpg",
+            "/images/part-02/1014-skyblue-2.jpg",
+            "/images/part-02/1014-skyblue-3.jpg",
+            "/images/part-02/1014-skyblue-4.jpg",
+            "/images/part-02/1014-skyblue-5.jpg",
+            "/images/part-02/1014-skyblue-6.jpg"
           ]
         },
         {
@@ -2288,7 +2288,7 @@
           "name_en": "Silver",
           "hex": "#D3D4D8",
           "images": [
-            "/images/1014-silver-1.jpg"
+            "/images/part-02/1014-silver-1.jpg"
           ]
         },
         {
@@ -2296,7 +2296,7 @@
           "name_en": "Beige",
           "hex": "#D3C4B0",
           "images": [
-            "/images/1014-beige-1.jpg"
+            "/images/part-02/1014-beige-1.jpg"
           ]
         },
         {
@@ -2304,7 +2304,7 @@
           "name_en": "Navy",
           "hex": "#1F2D5C",
           "images": [
-            "/images/1014-navy-1.jpg"
+            "/images/part-02/1014-navy-1.jpg"
           ]
         }
       ]
