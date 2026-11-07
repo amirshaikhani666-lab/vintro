@@ -422,4 +422,15 @@ details.acc .in{padding-bottom:16px;color:var(--muted);white-space:pre-line;font
 [dir="ltr"] .wa-float{left:auto;right:calc(20px + env(safe-area-inset-right,0px))}
 [dir="ltr"] .panel-info .code{text-align:left}
 
+/* ---------- photos of any shape are shown whole, never cropped ---------- */
+.card .ph:has(img){background:#fff}
+.card .ph img{object-fit:contain}
+.thumbs button:has(img),.colors button:has(img){background:#fff}
+.thumbs img,.colors button img{object-fit:contain}
+.pics .pic:has(img){aspect-ratio:auto;background:#fff;display:none}
+.pics .pic.on:has(img){display:flex;align-items:center;justify-content:center}
+.pics .pic img{position:static;width:100%;height:auto;max-height:min(80vh,900px);object-fit:contain}
+.pdp{grid-template-columns:minmax(0,560px) minmax(300px,420px)}
+@media (max-width:900px){.pdp{grid-template-columns:1fr}.pics{align-items:center}.pics .pic:has(img){display:flex;align-items:center}}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
