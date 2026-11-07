@@ -1,0 +1,156 @@
+{
+  "models": [
+    {
+      "name": "تيشرت تريكو",
+      "code": "1101",
+      "season": "شتاء ٢٠٢٦",
+      "category": "تيشرت",
+      "colors": [
+        {
+          "name": "بيج",
+          "hex": "D7BBA8",
+          "images": [
+            "/images/11011-copy-2.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "hex": "#1E2A44",
+          "images": [
+            "/images/11012-copy-1.jpg"
+          ]
+        },
+        {
+          "name": "زيتي",
+          "hex": "#6B6F3A",
+          "images": [
+            "/images/11013-copy.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "images": [
+            "/images/11014-copy.jpg"
+          ]
+        },
+        {
+          "name": "ازرق",
+          "images": [
+            "/images/11015-copy.jpg"
+          ]
+        }
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "fabric": "قطن ١٠٠٪ — ١٨٠ غرام",
+      "description": "\"سترة محبوكة (بلوفر) رجالية أنيقة تتميز بفتحة رقبة كلاسيكية على شكل حرف V، وأساور وحاشية مضلعة، مع لمسة نهائية ناعمة وراقية وبقصة عادية مريحة.\"",
+      "featured": true
+    },
+    {
+      "name": "تيشرت تريكو",
+      "code": "1102",
+      "season": "شتاء ٢٠٢٦",
+      "category": "تيشرت",
+      "colors": [
+        {
+          "name": "بيج",
+          "hex": "#D9C7A7",
+          "images": [
+            "/images/11021-copy.jpg"
+          ]
+        },
+        {
+          "name": "سماوي",
+          "hex": "#9CC3D5",
+          "images": [
+            "/images/11022-copy.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "images": [
+            "/images/11023-copy.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "images": [
+            "/images/11024-copy.jpg"
+          ]
+        }
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "fabric": "كتان ٥٥٪ — فسكوز ٤٥٪",
+      "description": "طول متوسط، أكمام قصيرة، حزام من نفس القماش.",
+      "featured": true
+    },
+    {
+      "name": "تيشرت تريكو",
+      "code": "1103",
+      "season": "شتاء ٢٠٢٦",
+      "category": "تيشرت",
+      "colors": [
+        {
+          "name": "نبيتي",
+          "hex": "#F4F4F2",
+          "images": [
+            "/images/11032-copy.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "hex": "#B7CCE0",
+          "images": [
+            "/images/11033-copy.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "hex": "#CDB78F",
+          "images": [
+            "/images/11034-copy.jpg"
+          ]
+        },
+        {
+          "name": "ابيض"
+        },
+        {
+          "name": "فانيلا",
+          "images": [
+            "/images/11036-copy.jpg"
+          ]
+        },
+        {
+          "name": "اسود"
+        },
+        {
+          "name": "سماوي"
+        },
+        {
+          "name": "ابيض",
+          "images": [
+            "/images/11039-copy.jpg"
+          ]
+        }
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "fabric": "كتان ١٠٠٪",
+      "description": "ياقة كلاسيكية، جيب على الصدر، أزرار صدف.",
+      "featured": false
+    }
+  ]
+}
