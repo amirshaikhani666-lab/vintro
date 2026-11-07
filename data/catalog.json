@@ -1,40 +1,49 @@
 {
   "models": [
     {
-      "name": "تيشرت تريكو",
+      "name": "كنزة تريكو بفتحة V",
       "code": "1101",
       "season": "شتاء ٢٠٢٦",
-      "category": "تيشرت",
+      "category": "كنزة",
       "colors": [
         {
           "name": "بيج",
-          "hex": "D7BBA8",
+          "name_en": "Beige",
+          "hex": "#D3B8A0",
           "images": [
-            "/images/11011-copy-2.jpg"
+            "/images/artboard-1.png",
+            "/images/11011-copy-2.jpg",
+            "/images/1.png"
           ]
         },
         {
-          "name": "كحلي",
-          "hex": "#1E2A44",
+          "name": "رمادي",
+          "name_en": "Grey",
+          "hex": "#5F5D68",
           "images": [
             "/images/11012-copy-1.jpg"
           ]
         },
         {
-          "name": "زيتي",
-          "hex": "#6B6F3A",
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#B06E3B",
           "images": [
             "/images/11013-copy.jpg"
           ]
         },
         {
           "name": "بني",
+          "name_en": "Brown",
+          "hex": "#4A2A22",
           "images": [
             "/images/11014-copy.jpg"
           ]
         },
         {
           "name": "ازرق",
+          "name_en": "Blue",
+          "hex": "#1F5A93",
           "images": [
             "/images/11015-copy.jpg"
           ]
@@ -46,99 +55,49 @@
         "XL",
         "2XL"
       ],
-      "fabric": "قطن ١٠٠٪ — ١٨٠ غرام",
-      "description": "\"سترة محبوكة (بلوفر) رجالية أنيقة تتميز بفتحة رقبة كلاسيكية على شكل حرف V، وأساور وحاشية مضلعة، مع لمسة نهائية ناعمة وراقية وبقصة عادية مريحة.\"",
-      "featured": true
+      "description": "سترة محبوكة (بلوفر) رجالية أنيقة تتميز بفتحة رقبة كلاسيكية على شكل حرف V، وأساور وحاشية مضلعة، مع لمسة نهائية ناعمة وراقية وبقصة عادية مريحة.",
+      "featured": true,
+      "name_en": "V-slit knit sweater",
+      "category_en": "Sweaters",
+      "description_en": "A clean men's knit sweater featuring a classic V-slit neckline, ribbed cuffs and hem, and a smooth, refined finish with a comfortable regular fit."
     },
     {
-      "name": "تيشرت تريكو",
+      "name": "بولو تريكو بأزرار",
       "code": "1102",
       "season": "شتاء ٢٠٢٦",
-      "category": "تيشرت",
+      "category": "بولو",
       "colors": [
         {
-          "name": "بيج",
-          "hex": "#D9C7A7",
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#6E4436",
           "images": [
+            "/images/1-1.png",
             "/images/11021-copy.jpg"
           ]
         },
         {
-          "name": "سماوي",
-          "hex": "#9CC3D5",
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D8BCA2",
           "images": [
             "/images/11022-copy.jpg"
           ]
         },
         {
           "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
           "images": [
             "/images/11023-copy.jpg"
           ]
         },
         {
           "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#142A4C",
           "images": [
             "/images/11024-copy.jpg"
-          ]
-        }
-      ],
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
-      "fabric": "كتان ٥٥٪ — فسكوز ٤٥٪",
-      "description": "طول متوسط، أكمام قصيرة، حزام من نفس القماش.",
-      "featured": true
-    },
-    {
-      "name": "تيشرت تريكو",
-      "code": "1103",
-      "season": "شتاء ٢٠٢٦",
-      "category": "تيشرت",
-      "colors": [
-        {
-          "name": "نبيتي",
-          "hex": "#F4F4F2",
-          "images": [
-            "/images/11032-copy.jpg"
-          ]
-        },
-        {
-          "name": "كحلي",
-          "hex": "#B7CCE0",
-          "images": [
-            "/images/11033-copy.jpg"
-          ]
-        },
-        {
-          "name": "بني",
-          "hex": "#CDB78F",
-          "images": [
-            "/images/11034-copy.jpg"
-          ]
-        },
-        {
-          "name": "ابيض"
-        },
-        {
-          "name": "فانيلا",
-          "images": [
-            "/images/11036-copy.jpg"
-          ]
-        },
-        {
-          "name": "اسود"
-        },
-        {
-          "name": "سماوي"
-        },
-        {
-          "name": "ابيض",
-          "images": [
-            "/images/11039-copy.jpg"
           ]
         }
       ],
@@ -146,86 +105,182 @@
         "M",
         "L",
         "XL",
-        "XXL"
+        "2XL"
       ],
-      "fabric": "كتان ١٠٠٪",
-      "description": "ياقة كلاسيكية، جيب على الصدر، أزرار صدف.",
-      "featured": false
+      "description": "كنزة بولو رجالية محبوكة بياقة كلاسيكية وفتحة بأزرار، بأكمام طويلة وأساور مضلّعة، وبقصّة عادية أنيقة تناسب كل الإطلالات.",
+      "featured": true,
+      "name_en": "Buttoned knit polo",
+      "category_en": "Polos",
+      "description_en": "A refined men's knit polo sweater featuring a classic collar, buttoned placket, long sleeves, ribbed cuffs and a clean, versatile regular fit."
     },
     {
-      "name": "تيشرت تريكو",
+      "name": "كنزة تريكو بياقة دائرية",
+      "code": "1103",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "colors": [
+        {
+          "name": "نبيتي",
+          "name_en": "Burgundy",
+          "hex": "#4E1428",
+          "images": [
+            "/images/11032-copy.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#14284A",
+          "images": [
+            "/images/11033-copy.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#432520",
+          "images": [
+            "/images/11034-copy.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EEE6D3",
+          "images": [
+            "/images/11036-copy.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "White",
+          "hex": "#F3F0E8",
+          "images": [
+            "/images/11039-copy.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": []
+        },
+        {
+          "name": "سماوي",
+          "name_en": "Sky blue",
+          "hex": "#9CC3D5",
+          "images": []
+        }
+      ],
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة رجالية محبوكة كلاسيكية بياقة دائرية وتصميم سادة، بأكمام طويلة، وياقة وأساور وحاشية مضلّعة، وبقصّة عادية مريحة.",
+      "featured": false,
+      "name_en": "Crew-neck knit sweater",
+      "category_en": "Sweaters",
+      "description_en": "A classic men's crew-neck knit sweater with a clean solid design, long sleeves, ribbed neckline, cuffs and hem, and a comfortable regular fit."
+    },
+    {
+      "name": "بولو تريكو بكم طويل",
       "code": "1104",
       "season": "شتاء ٢٠٢٦",
       "colors": [
         {
           "name": "اسود",
-          "name_en": "BLACK",
+          "name_en": "Black",
+          "hex": "#141414",
           "images": [
             "/images/11042-copy.jpg"
           ]
         },
         {
           "name": "ازرق",
+          "name_en": "Blue",
+          "hex": "#1E5C96",
           "images": [
             "/images/11043-copy.jpg"
           ]
         },
         {
           "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#142B52",
           "images": [
             "/images/11044-copy.jpg"
           ]
         },
         {
           "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#A86A34",
           "images": [
             "/images/11045-copy.jpg"
           ]
         },
         {
           "name": "ابيض",
+          "name_en": "White",
+          "hex": "#F2EEE4",
           "images": [
             "/images/11046-copy.jpg"
           ]
         },
         {
-          "name": "بيج ",
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D6B89C",
           "images": [
             "/images/11047-copy.jpg"
           ]
         },
         {
           "name": "بني",
+          "name_en": "Brown",
+          "hex": "#4B2B22",
           "images": [
             "/images/11048-copy.jpg"
           ]
         },
         {
           "name": "بني فاتح",
+          "name_en": "Light brown",
+          "hex": "#7A5146",
           "images": [
             "/images/11049-copy.jpg"
           ]
         },
         {
-          "name": "شيك",
+          "name": "أخضر بترولي",
+          "name_en": "Petrol green",
+          "hex": "#0E5047",
           "images": [
             "/images/110410-copy.jpg"
           ]
         },
         {
           "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#C9CCD1",
           "images": [
             "/images/110411-copy.jpg"
           ]
         },
         {
           "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EFE7D4",
           "images": [
             "/images/110412-copy.jpg"
           ]
         },
         {
           "name": "نبيتي",
+          "name_en": "Burgundy",
+          "hex": "#4F1529",
           "images": [
             "/images/110413-copy.jpg"
           ]
@@ -237,7 +292,2022 @@
         "XL",
         "2XL"
       ],
-      "featured": false
+      "featured": false,
+      "name_en": "Long-sleeve knit polo",
+      "category": "بولو",
+      "category_en": "Polos",
+      "description": "بولو رجالي محبوك بأكمام طويلة وياقة كلاسيكية وفتحة بأزرار، مع أساور وحاشية مضلّعة وقصّة عادية أنيقة.",
+      "description_en": "A refined men's long-sleeve knit polo featuring a classic collar, buttoned placket, ribbed cuffs and hem, and a clean regular fit."
+    },
+    {
+      "name": "كنزة تريكو بياقة عالية",
+      "name_en": "Turtleneck knit sweater",
+      "code": "1105",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "category_en": "Sweaters",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة تريكو رجالية بياقة عالية وأكمام راغلان، بلمسة نهائية ناعمة ومحكمة، مع ياقة وأساور وحاشية مضلّعة، وبقصّة عادية مريحة.",
+      "description_en": "A turtleneck knit sweater featuring raglan sleeves, a clean textured finish, ribbed collar, cuffs and hem, and a comfortable regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1A2E52",
+          "images": [
+            "/images/1105-navy-1.jpg"
+          ]
+        },
+        {
+          "name": "رمادي",
+          "name_en": "Grey",
+          "hex": "#5D5A63",
+          "images": [
+            "/images/1105-grey-1.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#4A2C25",
+          "images": [
+            "/images/1105-brown-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#C9CBD0",
+          "images": [
+            "/images/1105-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#B9863E",
+          "images": [
+            "/images/1105-camel-1.jpg"
+          ]
+        },
+        {
+          "name": "ازرق",
+          "name_en": "Blue",
+          "hex": "#24588A",
+          "images": [
+            "/images/1105-blue-1.jpg"
+          ]
+        },
+        {
+          "name": "أخضر بترولي",
+          "name_en": "Petrol green",
+          "hex": "#0F4A40",
+          "images": [
+            "/images/1105-green-1.jpg"
+          ]
+        },
+        {
+          "name": "نبيتي",
+          "name_en": "Burgundy",
+          "hex": "#4E1730",
+          "images": [
+            "/images/1105-burgundy-1.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D2B39C",
+          "images": [
+            "/images/1105-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1105-black-1.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#ECE3CF",
+          "images": [
+            "/images/1105-vanilla-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "White",
+          "hex": "#F1EEE6",
+          "images": [
+            "/images/1105-white-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو مجدول",
+      "name_en": "Cable-knit polo sweater",
+      "code": "1106",
+      "season": "شتاء ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة بولو رجالية أنيقة بحبكة مجدولة، بياقة كلاسيكية وفتحة أمامية، ونقشة طولية بارزة، مع أساور مضلّعة.",
+      "description_en": "A refined men's cable-knit polo sweater featuring a classic collar, buttoned placket, vertical textured pattern, and ribbed cuffs.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "نبيتي",
+          "name_en": "Burgundy",
+          "hex": "#4A1428",
+          "images": [
+            "/images/1106-burgundy-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1A2D55",
+          "images": [
+            "/images/1106-navy-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#CDCED3",
+          "images": [
+            "/images/1106-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#4A2A22",
+          "images": [
+            "/images/1106-brown-1.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EEE5D2",
+          "images": [
+            "/images/1106-vanilla-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "جاكيت تريكو مجدول بسحّاب",
+      "name_en": "Cable-knit zip-up sweater",
+      "code": "1107",
+      "season": "شتاء ٢٠٢٦",
+      "category": "جاكيت تريكو",
+      "category_en": "Zip-up knits",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "جاكيت تريكو رجالي أنيق بحبكة مجدولة، بياقة عالية وسحّاب أمامي كامل، ونقشة طولية بارزة، وبقصّة عادية.",
+      "description_en": "A sophisticated men's cable-knit zip-up sweater featuring a high collar, full-length front zipper and vertical textured pattern. Regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1107-black-1.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#6A4134",
+          "images": [
+            "/images/1107-brown-1.jpg"
+          ]
+        },
+        {
+          "name": "أخضر بترولي",
+          "name_en": "Petrol green",
+          "hex": "#0F4A40",
+          "images": [
+            "/images/1107-green-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#16264A",
+          "images": [
+            "/images/1107-navy-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "White",
+          "hex": "#F2EFE6",
+          "images": [
+            "/images/1107-white-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "كنزة تريكو محببة بياقة دائرية",
+      "name_en": "Textured crew-neck knit sweater",
+      "code": "1108",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "category_en": "Sweaters",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة رجالية محبوكة كلاسيكية بياقة دائرية وملمس محبّب ناعم، بأكمام طويلة، وياقة وأساور وحاشية مضلّعة، وبقصّة عادية أنيقة.",
+      "description_en": "A classic men's crew-neck knit sweater featuring a subtle fine-textured finish, long sleeves, ribbed neckline, cuffs and hem, and a clean regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "رصاصي",
+          "name_en": "Slate grey",
+          "hex": "#4A5250",
+          "images": [
+            "/images/1108-slate-1.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#C9AA94",
+          "images": [
+            "/images/1108-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1108-black-1.jpg"
+          ]
+        },
+        {
+          "name": "أخضر بترولي",
+          "name_en": "Petrol green",
+          "hex": "#0F4A40",
+          "images": [
+            "/images/1108-green-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "White",
+          "hex": "#F2EFE6",
+          "images": [
+            "/images/1108-white-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "كنزة تريكو مضلّعة بأزرار",
+      "name_en": "Ribbed henley knit sweater",
+      "code": "1109",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "category_en": "Sweaters",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة رجالية محبوكة أنيقة بنقشة طولية بارزة، وفتحة رقبة كلاسيكية بأزرار، مع أساور وحاشية مضلّعة، وبقصّة عادية تناسب كل الإطلالات.",
+      "description_en": "A refined men's knit sweater featuring a vertical textured pattern, classic buttoned neckline, ribbed cuffs and hem, and a versatile regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "أخضر بترولي",
+          "name_en": "Petrol green",
+          "hex": "#0F4A40",
+          "images": [
+            "/images/1109-green-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1109-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "White",
+          "hex": "#F2EFE6",
+          "images": [
+            "/images/1109-white-1.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#CFB29B",
+          "images": [
+            "/images/1109-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "رصاصي",
+          "name_en": "Slate grey",
+          "hex": "#4E5654",
+          "images": [
+            "/images/1109-slate-1.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#4D3028",
+          "images": [
+            "/images/1109-brown-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1109-black-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1A2D55",
+          "images": [
+            "/images/1109-navy-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "كنزة تريكو مقلّمة",
+      "name_en": "Striped knit sweater",
+      "code": "1110",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "category_en": "Sweaters",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة رجالية محبوكة أنيقة بخطوط عرضية، بياقة دائرية كلاسيكية وأكمام طويلة، مع أساور وحاشية مضلّعة، وبقصّة عادية مريحة.",
+      "description_en": "A stylish men's striped knit sweater featuring a classic crew neckline, long sleeves, ribbed cuffs and hem, and a comfortable regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "ابيض مقلم اسود",
+          "name_en": "White / black stripe",
+          "hex": "#141414",
+          "images": [
+            "/images/1110-black-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض مقلم رمادي",
+          "name_en": "White / grey stripe",
+          "hex": "#55545C",
+          "images": [
+            "/images/1110-grey-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض مقلم بني",
+          "name_en": "White / brown stripe",
+          "hex": "#6A3F35",
+          "images": [
+            "/images/1110-brown-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض مقلم بيج",
+          "name_en": "White / beige stripe",
+          "hex": "#C2A38E",
+          "images": [
+            "/images/1110-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض مقلم ازرق",
+          "name_en": "White / blue stripe",
+          "hex": "#255A8C",
+          "images": [
+            "/images/1110-blue-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو مخرّم بسحّاب",
+      "name_en": "Textured half-zip knit polo",
+      "code": "1111",
+      "season": "شتاء ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة بولو رجالية أنيقة بحبكة مخرّمة، بياقة كلاسيكية وسحّاب نصفي، ونقشة طولية بارزة، وبأكمام طويلة.",
+      "description_en": "A refined men's textured knit polo sweater featuring a classic collar, half-zip placket, vertical ribbed texture, and long sleeves.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#6A4134",
+          "images": [
+            "/images/1111-brown-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1111-black-1.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EEE5D2",
+          "images": [
+            "/images/1111-vanilla-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1111-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "ازرق",
+          "name_en": "Blue",
+          "hex": "#24588A",
+          "images": [
+            "/images/1111-blue-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "كنزة تريكو بياقة عالية وسحّاب نصفي",
+      "name_en": "Textured half-zip knit sweater",
+      "code": "1112",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "category_en": "Sweaters",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة تريكو محببة بسحّاب نصفي وياقة عالية، مع تفاصيل طولية ناعمة، وأساور وحاشية مضلّعة، وبقصّة عادية مريحة.",
+      "description_en": "A textured knit half-zip sweater featuring a high collar, subtle vertical panel detailing, ribbed cuffs and hem, and a comfortable regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#4A2A24",
+          "images": [
+            "/images/1112-brown-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1112-black-1.jpg"
+          ]
+        },
+        {
+          "name": "ازرق",
+          "name_en": "Blue",
+          "hex": "#24588A",
+          "images": [
+            "/images/1112-blue-1.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EEE5D2",
+          "images": [
+            "/images/1112-vanilla-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "كنزة تريكو سادة بسحّاب نصفي",
+      "name_en": "Half-zip knit sweater",
+      "code": "1113",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "category_en": "Sweaters",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة تريكو رجالية أنيقة بسحّاب نصفي وياقة عالية، بملمس ناعم وبسيط، مع أساور وحاشية مضلّعة، وبقصّة عادية مريحة.",
+      "description_en": "A refined men's knit half-zip sweater featuring a high stand collar, clean minimal texture, ribbed cuffs and hem, and a comfortable regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "زيتي فاتح",
+          "name_en": "Sage green",
+          "hex": "#8FA38A",
+          "images": [
+            "/images/1113-sage-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#22375A",
+          "images": [
+            "/images/1113-navy-1.jpg"
+          ]
+        },
+        {
+          "name": "رصاصي",
+          "name_en": "Charcoal",
+          "hex": "#33373E",
+          "images": [
+            "/images/1113-charcoal-1.jpg"
+          ]
+        },
+        {
+          "name": "نبيتي",
+          "name_en": "Burgundy",
+          "hex": "#5A2A30",
+          "images": [
+            "/images/1113-burgundy-1.jpg"
+          ]
+        },
+        {
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#A88A72",
+          "images": [
+            "/images/1113-camel-1.jpg"
+          ]
+        },
+        {
+          "name": "رمادي",
+          "name_en": "Grey",
+          "hex": "#5F5B59",
+          "images": [
+            "/images/1113-grey-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "Off-white",
+          "hex": "#ECE8E0",
+          "images": [
+            "/images/1113-white-1.jpg"
+          ]
+        },
+        {
+          "name": "برتقالي",
+          "name_en": "Rust orange",
+          "hex": "#C2532E",
+          "images": [
+            "/images/1113-orange-1.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D8CDBE",
+          "images": [
+            "/images/1113-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#C9CBCF",
+          "images": [
+            "/images/1113-silver-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "جاكيت تريكو سادة بسحّاب",
+      "name_en": "Knit zip-up sweater",
+      "code": "1114",
+      "season": "شتاء ٢٠٢٦",
+      "category": "جاكيت تريكو",
+      "category_en": "Zip-up knits",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "جاكيت تريكو رجالي بياقة واقفة وسحّاب أمامي كامل، بأكمام راغلان، مع أساور وحاشية مضلّعة، وبقصّة عادية أنيقة.",
+      "description_en": "Men's knit zip-up sweater featuring a stand collar, full-length front zipper, raglan sleeves, ribbed cuffs and hem, and a clean regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "برتقالي",
+          "name_en": "Rust orange",
+          "hex": "#C2532E",
+          "images": [
+            "/images/1114-orange-1.jpg"
+          ]
+        },
+        {
+          "name": "رصاصي",
+          "name_en": "Charcoal",
+          "hex": "#33373E",
+          "images": [
+            "/images/1114-charcoal-1.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D8CDBE",
+          "images": [
+            "/images/1114-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "زيتي فاتح",
+          "name_en": "Sage green",
+          "hex": "#8FA38A",
+          "images": [
+            "/images/1114-sage-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#C9CBCF",
+          "images": [
+            "/images/1114-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "رمادي",
+          "name_en": "Grey",
+          "hex": "#5F5B59",
+          "images": [
+            "/images/1114-grey-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "Off-white",
+          "hex": "#ECE8E0",
+          "images": [
+            "/images/1114-white-1.jpg"
+          ]
+        },
+        {
+          "name": "نبيتي",
+          "name_en": "Burgundy",
+          "hex": "#5A2A30",
+          "images": [
+            "/images/1114-burgundy-1.jpg"
+          ]
+        },
+        {
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#A88A72",
+          "images": [
+            "/images/1114-camel-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#22375A",
+          "images": [
+            "/images/1114-navy-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "كنزة تريكو بخطوط رفيعة",
+      "name_en": "Fine-striped knit sweater",
+      "code": "1115",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "category_en": "Sweaters",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة رجالية محبوكة كلاسيكية بياقة دائرية، وخطوط عرضية رفيعة بلون متباين، مع أساور وحاشية مضلّعة، وبقصّة عادية أنيقة.",
+      "description_en": "A classic men's striped knit sweater featuring a crew neckline, contrasting horizontal stripe pattern, ribbed cuffs and hem, and a clean regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "كحلي مقلم ابيض",
+          "name_en": "Navy / white stripe",
+          "hex": "#1C2D4F",
+          "images": [
+            "/images/1115-navy-1.jpg",
+            "/images/1115-navy-2.jpg"
+          ]
+        },
+        {
+          "name": "نبيتي مقلم ابيض",
+          "name_en": "Burgundy / white stripe",
+          "hex": "#4A1A2C",
+          "images": [
+            "/images/1115-burgundy-1.jpg"
+          ]
+        },
+        {
+          "name": "أخضر بترولي مقلم ابيض",
+          "name_en": "Petrol green / white stripe",
+          "hex": "#0F4A40",
+          "images": [
+            "/images/1115-green-1.jpg"
+          ]
+        },
+        {
+          "name": "بني مقلم ابيض",
+          "name_en": "Brown / white stripe",
+          "hex": "#6A4134",
+          "images": [
+            "/images/1115-brown-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "كنزة تريكو مجدولة بسحّاب نصفي",
+      "name_en": "Cable-knit half-zip sweater",
+      "code": "1116",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "category_en": "Sweaters",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة تريكو رجالية أنيقة بحبكة مجدولة بارزة، وياقة عالية بسحّاب، مع أساور وحاشية مضلّعة، وبقصّة عادية مريحة.",
+      "description_en": "A sophisticated men's cable-knit sweater featuring a textured braided pattern, high zip-up collar, ribbed cuffs and hem, and a comfortable regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "رصاصي",
+          "name_en": "Slate grey",
+          "hex": "#4A5250",
+          "images": [
+            "/images/1116-slate-1.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#4A2A24",
+          "images": [
+            "/images/1116-brown-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1116-black-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "Off-white",
+          "hex": "#F1EEE6",
+          "images": [
+            "/images/1116-white-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "كنزة تريكو مضلّعة بياقة دائرية",
+      "name_en": "Ribbed crew-neck knit sweater",
+      "code": "1118",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "category_en": "Sweaters",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة تريكو رجالية مضلّعة بياقة دائرية وأكمام راغلان، بنقشة طولية ناعمة، مع أساور وحاشية مضلّعة، وبقصّة عادية أنيقة.",
+      "description_en": "Men's ribbed knit sweater featuring a crew neckline, raglan sleeves, fine vertical ribbed texture, ribbed cuffs and hem, and a clean regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#CDCED3",
+          "images": [
+            "/images/1118-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#C99A6B",
+          "images": [
+            "/images/1118-camel-1.jpg"
+          ]
+        },
+        {
+          "name": "رصاصي",
+          "name_en": "Slate grey",
+          "hex": "#4A5250",
+          "images": [
+            "/images/1118-slate-1.jpg"
+          ]
+        },
+        {
+          "name": "زيتي فاتح",
+          "name_en": "Sage green",
+          "hex": "#86A895",
+          "images": [
+            "/images/1118-sage-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "Off-white",
+          "hex": "#F1EEE6",
+          "images": [
+            "/images/1118-white-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1118-black-1.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#6A3F35",
+          "images": [
+            "/images/1118-brown-1.jpg"
+          ]
+        },
+        {
+          "name": "ازرق",
+          "name_en": "Blue",
+          "hex": "#2A5C94",
+          "images": [
+            "/images/1118-blue-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "كنزة تريكو بخطوط بارزة وسحّاب نصفي",
+      "name_en": "Paneled quarter-zip knit sweater",
+      "code": "1119",
+      "season": "شتاء ٢٠٢٦",
+      "category": "كنزة",
+      "category_en": "Sweaters",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة تريكو رجالية بسحّاب نصفي وياقة واقفة، بتفاصيل طولية بارزة، مع أساور وحاشية مضلّعة، وبقصّة عادية.",
+      "description_en": "Men's knit quarter-zip sweater with a stand collar, vertical panel detailing, ribbed cuffs and hem, and a regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1119-black-1.jpg"
+          ]
+        },
+        {
+          "name": "أخضر بترولي",
+          "name_en": "Petrol green",
+          "hex": "#0F4A40",
+          "images": [
+            "/images/1119-green-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "Off-white",
+          "hex": "#EFE9DE",
+          "images": [
+            "/images/1119-white-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1119-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#B8873F",
+          "images": [
+            "/images/1119-camel-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1A2D55",
+          "images": [
+            "/images/1119-navy-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو محبب بسحّاب",
+      "name_en": "Textured quarter-zip knit polo",
+      "code": "1120",
+      "season": "شتاء ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "كنزة بولو رجالية محبوكة بياقة كلاسيكية وسحّاب نصفي، بواجهة أمامية محبّبة، مع أساور وحاشية مضلّعة، وبقصّة عادية.",
+      "description_en": "Men's knit quarter-zip polo sweater with a textured front, ribbed cuffs and hem, and a regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "نبيتي",
+          "name_en": "Burgundy",
+          "hex": "#4A1A2C",
+          "images": [
+            "/images/1120-burgundy-1.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#C9AA94",
+          "images": [
+            "/images/1120-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1120-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "أخضر بترولي",
+          "name_en": "Petrol green",
+          "hex": "#0F4A40",
+          "images": [
+            "/images/1120-green-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1A2D55",
+          "images": [
+            "/images/1120-navy-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "جاكيت تريكو بخطوط بارزة",
+      "name_en": "Paneled knit full-zip jacket",
+      "code": "1121",
+      "season": "شتاء ٢٠٢٦",
+      "category": "جاكيت تريكو",
+      "category_en": "Zip-up knits",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "جاكيت تريكو رجالي بسحّاب كامل وياقة واقفة، بتفاصيل طولية بارزة، مع أساور وحاشية مضلّعة، وبقصّة عادية.",
+      "description_en": "Men's knit full-zip jacket with a stand collar, vertical panel detailing, ribbed cuffs and hem, and a regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#4A2A24",
+          "images": [
+            "/images/1121-brown-1.jpg"
+          ]
+        },
+        {
+          "name": "نبيتي",
+          "name_en": "Burgundy",
+          "hex": "#4A1A2C",
+          "images": [
+            "/images/1121-burgundy-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1121-black-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1A2D55",
+          "images": [
+            "/images/1121-navy-1.jpg"
+          ]
+        },
+        {
+          "name": "ابيض",
+          "name_en": "Off-white",
+          "hex": "#F1EEE6",
+          "images": [
+            "/images/1121-white-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو بنقشة متموجة",
+      "name_en": "Wave-knit johnny polo",
+      "code": "1001",
+      "season": "صيف ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "بولو رجالي محبوك بياقة مفتوحة، بنقشة طولية متموجة بارزة على الصدر، مع أساور وحاشية مضلّعة، وبقصّة عادية مريحة.",
+      "description_en": "A men's knit johnny-collar polo with a raised wavy panel pattern on the front, ribbed cuffs and hem, and a relaxed regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D3C4B0",
+          "images": [
+            "/images/1001-beige-1.jpg",
+            "/images/1001-beige-2.jpg",
+            "/images/1001-beige-3.jpg"
+          ]
+        },
+        {
+          "name": "نعناعي",
+          "name_en": "Mint",
+          "hex": "#8FD1B5",
+          "images": [
+            "/images/1001-mint-1.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EDE6D8",
+          "images": [
+            "/images/1001-cream-1.jpg"
+          ]
+        },
+        {
+          "name": "زيتي فاتح",
+          "name_en": "Sage green",
+          "hex": "#A9BE8C",
+          "images": [
+            "/images/1001-sage-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو بنقشة معيّنات",
+      "name_en": "Diamond-knit johnny polo",
+      "code": "1002",
+      "season": "صيف ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "بولو رجالي محبوك بياقة مفتوحة ونقشة معيّنات ناعمة على كامل القطعة، بقماش خفيف مناسب للصيف، وبقصّة عادية.",
+      "description_en": "A men's knit johnny-collar polo with an all-over fine diamond texture, a lightweight summer knit and a regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#B98A5E",
+          "images": [
+            "/images/1002-camel-1.jpg",
+            "/images/1002-camel-2.jpg",
+            "/images/1002-camel-3.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1F2D5C",
+          "images": [
+            "/images/1002-navy-1.jpg"
+          ]
+        },
+        {
+          "name": "أخضر غامق",
+          "name_en": "Forest green",
+          "hex": "#24502F",
+          "images": [
+            "/images/1002-green-1.jpg"
+          ]
+        },
+        {
+          "name": "فستقي",
+          "name_en": "Pistachio",
+          "hex": "#BFCB92",
+          "images": [
+            "/images/1002-pistachio-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1002-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "نعناعي",
+          "name_en": "Mint",
+          "hex": "#8FD1B5",
+          "images": [
+            "/images/1002-mint-1.jpg"
+          ]
+        },
+        {
+          "name": "احمر",
+          "name_en": "Red",
+          "hex": "#D61F26",
+          "images": [
+            "/images/1002-red-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو بخطوط مخرّمة",
+      "name_en": "Pointelle-stripe johnny polo",
+      "code": "1003",
+      "season": "صيف ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "بولو رجالي محبوك بياقة مفتوحة، بخطوط عرضية مخرّمة تمنح تهوية وخفّة، مع أساور وحاشية مضلّعة.",
+      "description_en": "A men's knit johnny-collar polo with breathable horizontal pointelle bands, ribbed cuffs and hem.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1003-silver-1.jpg",
+            "/images/1003-silver-2.jpg",
+            "/images/1003-silver-3.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EDE6D8",
+          "images": [
+            "/images/1003-cream-1.jpg"
+          ]
+        },
+        {
+          "name": "نعناعي",
+          "name_en": "Mint",
+          "hex": "#8FD1B5",
+          "images": [
+            "/images/1003-mint-1.jpg"
+          ]
+        },
+        {
+          "name": "سماوي",
+          "name_en": "Sky blue",
+          "hex": "#B9CDEB",
+          "images": [
+            "/images/1003-skyblue-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "تيشرت تريكو بياقة دائرية",
+      "name_en": "Crew-neck knit tee",
+      "code": "1004",
+      "season": "صيف ٢٠٢٦",
+      "category": "تيشرت",
+      "category_en": "T-shirts",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "تيشرت رجالي محبوك سادة بياقة دائرية وأكمام قصيرة، بملمس ناعم، مع ياقة وأساور وحاشية مضلّعة.",
+      "description_en": "A clean men's crew-neck knit tee with short sleeves, a soft fine-gauge finish and ribbed neckline, cuffs and hem.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1004-silver-1.jpg",
+            "/images/1004-silver-2.jpg",
+            "/images/1004-silver-3.jpg"
+          ]
+        },
+        {
+          "name": "أزرق رمادي",
+          "name_en": "Dusty blue",
+          "hex": "#5E7590",
+          "images": [
+            "/images/1004-dustyblue-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1004-black-1.jpg"
+          ]
+        },
+        {
+          "name": "زيتي فاتح",
+          "name_en": "Sage green",
+          "hex": "#A9BE8C",
+          "images": [
+            "/images/1004-sage-1.jpg"
+          ]
+        },
+        {
+          "name": "سماوي",
+          "name_en": "Sky blue",
+          "hex": "#B9CDEB",
+          "images": [
+            "/images/1004-skyblue-1.jpg"
+          ]
+        },
+        {
+          "name": "موكا",
+          "name_en": "Mocha",
+          "hex": "#8B6F5C",
+          "images": [
+            "/images/1004-mocha-1.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D3C4B0",
+          "images": [
+            "/images/1004-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EDE6D8",
+          "images": [
+            "/images/1004-cream-1.jpg"
+          ]
+        },
+        {
+          "name": "احمر",
+          "name_en": "Red",
+          "hex": "#D61F26",
+          "images": [
+            "/images/1004-red-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو مجدول بأزرار",
+      "name_en": "Cable-panel knit polo",
+      "code": "1005",
+      "season": "صيف ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "بولو رجالي محبوك بياقة كلاسيكية وفتحة بأزرار، بخطوط مجدولة طولية على الصدر والظهر، وبقصّة عادية أنيقة.",
+      "description_en": "A men's knit polo with a classic collar, buttoned placket and vertical cable panels front and back, in a refined regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1F2D5C",
+          "images": [
+            "/images/1005-navy-1.jpg",
+            "/images/1005-navy-2.jpg",
+            "/images/1005-navy-3.jpg"
+          ]
+        },
+        {
+          "name": "أزرق رمادي",
+          "name_en": "Dusty blue",
+          "hex": "#5E7590",
+          "images": [
+            "/images/1005-dustyblue-1.jpg"
+          ]
+        },
+        {
+          "name": "زيتي فاتح",
+          "name_en": "Sage green",
+          "hex": "#A9BE8C",
+          "images": [
+            "/images/1005-sage-1.jpg"
+          ]
+        },
+        {
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#B98A5E",
+          "images": [
+            "/images/1005-camel-1.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EDE6D8",
+          "images": [
+            "/images/1005-cream-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو شبكي",
+      "name_en": "Open-mesh knit polo",
+      "code": "1006",
+      "season": "صيف ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "بولو رجالي بحبكة شبكية مفتوحة وياقة مفتوحة، خفيف ومريح لأيام الحر، مع أساور وحاشية مضلّعة.",
+      "description_en": "A men's open-mesh knit polo with a johnny collar, light and breathable for warm days, with ribbed cuffs and hem.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#B98A5E",
+          "images": [
+            "/images/1006-camel-1.jpg",
+            "/images/1006-camel-2.jpg",
+            "/images/1006-camel-3.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D3C4B0",
+          "images": [
+            "/images/1006-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "أخضر فاتح",
+          "name_en": "Light green",
+          "hex": "#B5CF98",
+          "images": [
+            "/images/1006-lightgreen-1.jpg"
+          ]
+        },
+        {
+          "name": "تركوازي",
+          "name_en": "Turquoise",
+          "hex": "#6FB8AE",
+          "images": [
+            "/images/1006-turquoise-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1006-black-1.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EDE6D8",
+          "images": [
+            "/images/1006-cream-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو مقلّم",
+      "name_en": "Striped knit johnny polo",
+      "code": "1007",
+      "season": "صيف ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "بولو رجالي محبوك بياقة مفتوحة وخطوط عرضية عريضة بلون متباين، بقماش مضلّع خفيف وبقصّة عادية.",
+      "description_en": "A men's knit johnny-collar polo with bold contrast horizontal stripes, a light ribbed knit and a regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "كحلي مقلم ابيض",
+          "name_en": "Navy / white stripe",
+          "hex": "#1F2D5C",
+          "images": [
+            "/images/1007-navy-white-1.jpg",
+            "/images/1007-navy-white-2.jpg",
+            "/images/1007-navy-white-3.jpg"
+          ]
+        },
+        {
+          "name": "أخضر مقلم ابيض",
+          "name_en": "Green / white stripe",
+          "hex": "#6FAE8C",
+          "images": [
+            "/images/1007-green-white-1.jpg"
+          ]
+        },
+        {
+          "name": "بني مقلم ابيض",
+          "name_en": "Brown / white stripe",
+          "hex": "#5E3A26",
+          "images": [
+            "/images/1007-brown-white-1.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا مقلم كحلي",
+          "name_en": "Vanilla / navy stripe",
+          "hex": "#EDE6D8",
+          "images": [
+            "/images/1007-cream-navy-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو بحواف ملوّنة",
+      "name_en": "Tipped johnny polo",
+      "code": "1008",
+      "season": "صيف ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "بولو رجالي محبوك بياقة مفتوحة وحواف بلون متباين على الياقة والأكمام، بتصميم كلاسيكي أنيق.",
+      "description_en": "A men's knit johnny-collar polo with contrast tipping on the collar and sleeves, for a classic, polished look.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EDE6D8",
+          "images": [
+            "/images/1008-cream-1.jpg",
+            "/images/1008-cream-2.jpg",
+            "/images/1008-cream-3.jpg"
+          ]
+        },
+        {
+          "name": "سماوي",
+          "name_en": "Sky blue",
+          "hex": "#B9CDEB",
+          "images": [
+            "/images/1008-skyblue-1.jpg"
+          ]
+        },
+        {
+          "name": "ازرق",
+          "name_en": "Blue",
+          "hex": "#294C8F",
+          "images": [
+            "/images/1008-blue-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي بحواف حمراء",
+          "name_en": "Navy / red tipping",
+          "hex": "#1F2D5C",
+          "images": [
+            "/images/1008-navy-red-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1008-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1008-black-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "تيشرت تريكو هنلي بأزرار",
+      "name_en": "Ribbed knit henley",
+      "code": "1009",
+      "season": "صيف ٢٠٢٦",
+      "category": "تيشرت",
+      "category_en": "T-shirts",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "تيشرت هنلي رجالي محبوك بياقة دائرية وفتحة بزرّين، بخطوط طولية ناعمة، وبأكمام قصيرة وقصّة عادية.",
+      "description_en": "A men's knit henley tee with a round collar, two-button placket and subtle vertical ribs, short sleeves and a regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1009-black-1.jpg",
+            "/images/1009-black-2.jpg",
+            "/images/1009-black-3.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1009-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "قرميدي",
+          "name_en": "Rust",
+          "hex": "#9A5528",
+          "images": [
+            "/images/1009-rust-1.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D3C4B0",
+          "images": [
+            "/images/1009-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EDE6D8",
+          "images": [
+            "/images/1009-cream-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1F2D5C",
+          "images": [
+            "/images/1009-navy-1.jpg"
+          ]
+        },
+        {
+          "name": "نعناعي",
+          "name_en": "Mint",
+          "hex": "#8FD1B5",
+          "images": [
+            "/images/1009-mint-1.jpg"
+          ]
+        },
+        {
+          "name": "أخضر غامق",
+          "name_en": "Forest green",
+          "hex": "#24502F",
+          "images": [
+            "/images/1009-green-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "قميص تريكو مضلّع بأزرار",
+      "name_en": "Ribbed knit button shirt",
+      "code": "1010",
+      "season": "صيف ٢٠٢٦",
+      "category": "قميص",
+      "category_en": "Shirts",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "قميص رجالي محبوك بخطوط طولية مضلّعة وأزرار كاملة من الأمام، بياقة كلاسيكية وأكمام قصيرة.",
+      "description_en": "A men's ribbed knit shirt with a full button front, classic collar and short sleeves.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#B98A5E",
+          "images": [
+            "/images/1010-camel-1.jpg",
+            "/images/1010-camel-2.jpg",
+            "/images/1010-camel-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو مجدول",
+      "name_en": "Cable-knit polo",
+      "code": "1011",
+      "season": "صيف ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "بولو رجالي بحبكة مجدولة على كامل القطعة، بياقة كلاسيكية وفتحة بأزرار، وبقصّة عادية.",
+      "description_en": "A men's all-over cable-knit polo with a classic collar, buttoned placket and a regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "زيتي فاتح",
+          "name_en": "Sage green",
+          "hex": "#A9BE8C",
+          "images": [
+            "/images/1011-sage-1.jpg",
+            "/images/1011-sage-2.jpg",
+            "/images/1011-sage-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو بنقشة هندسية",
+      "name_en": "Geometric jacquard johnny polo",
+      "code": "1012",
+      "season": "صيف ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "بولو رجالي محبوك بياقة مفتوحة ونقشة هندسية بارزة على الصدر، بأكمام قصيرة وقصّة عادية أنيقة.",
+      "description_en": "A men's knit johnny-collar polo with a raised geometric jacquard front, short sleeves and a refined regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1012-silver-1.jpg",
+            "/images/1012-silver-2.jpg",
+            "/images/1012-silver-3.jpg"
+          ]
+        },
+        {
+          "name": "سماوي",
+          "name_en": "Sky blue",
+          "hex": "#B9CDEB",
+          "images": [
+            "/images/1012-skyblue-1.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D3C4B0",
+          "images": [
+            "/images/1012-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "بني",
+          "name_en": "Brown",
+          "hex": "#6A4632",
+          "images": [
+            "/images/1012-brown-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "بولو تريكو كلاسيكي",
+      "name_en": "Classic knit polo",
+      "code": "1013",
+      "season": "صيف ٢٠٢٦",
+      "category": "بولو",
+      "category_en": "Polos",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "بولو رجالي محبوك سادة بياقة كلاسيكية وفتحة بزرّين، بملمس ناعم، مع أساور وحاشية مضلّعة، متوفر بتشكيلة واسعة من الألوان.",
+      "description_en": "A classic men's fine-knit polo with a two-button placket, soft finish and ribbed cuffs and hem, in a wide range of colours.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "فانيلا",
+          "name_en": "Vanilla",
+          "hex": "#EDE6D8",
+          "images": [
+            "/images/1013-cream-1.jpg",
+            "/images/1013-cream-2.jpg",
+            "/images/1013-cream-3.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D3C4B0",
+          "images": [
+            "/images/1013-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "عسلي",
+          "name_en": "Camel",
+          "hex": "#B98A5E",
+          "images": [
+            "/images/1013-camel-1.jpg"
+          ]
+        },
+        {
+          "name": "سماوي",
+          "name_en": "Sky blue",
+          "hex": "#B9CDEB",
+          "images": [
+            "/images/1013-skyblue-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1F2D5C",
+          "images": [
+            "/images/1013-navy-1.jpg"
+          ]
+        },
+        {
+          "name": "نعناعي",
+          "name_en": "Mint",
+          "hex": "#8FD1B5",
+          "images": [
+            "/images/1013-mint-1.jpg"
+          ]
+        },
+        {
+          "name": "زيتي فاتح",
+          "name_en": "Sage green",
+          "hex": "#A9BE8C",
+          "images": [
+            "/images/1013-sage-1.jpg"
+          ]
+        },
+        {
+          "name": "أخضر غامق",
+          "name_en": "Forest green",
+          "hex": "#24502F",
+          "images": [
+            "/images/1013-green-1.jpg"
+          ]
+        },
+        {
+          "name": "احمر",
+          "name_en": "Red",
+          "hex": "#D61F26",
+          "images": [
+            "/images/1013-red-1.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1013-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "أزرق رمادي",
+          "name_en": "Dusty blue",
+          "hex": "#5E7590",
+          "images": [
+            "/images/1013-dustyblue-1.jpg"
+          ]
+        },
+        {
+          "name": "اسود",
+          "name_en": "Black",
+          "hex": "#141414",
+          "images": [
+            "/images/1013-black-1.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "تيشرت تريكو راغلان بحواف مقلّمة",
+      "name_en": "Tipped raglan knit tee",
+      "code": "1014",
+      "season": "صيف ٢٠٢٦",
+      "category": "تيشرت",
+      "category_en": "T-shirts",
+      "sizes": [
+        "M",
+        "L",
+        "XL",
+        "2XL"
+      ],
+      "description": "تيشرت رجالي محبوك بأكمام راغلان، وياقة وأساور بخطوط متباينة، بملمس ناعم وقصّة عادية.",
+      "description_en": "A men's raglan-sleeve knit tee with contrast-striped neckline and cuffs, a soft finish and a regular fit.",
+      "featured": false,
+      "colors": [
+        {
+          "name": "سماوي",
+          "name_en": "Sky blue",
+          "hex": "#B9CDEB",
+          "images": [
+            "/images/1014-skyblue-1.jpg",
+            "/images/1014-skyblue-2.jpg",
+            "/images/1014-skyblue-3.jpg",
+            "/images/1014-skyblue-4.jpg",
+            "/images/1014-skyblue-5.jpg",
+            "/images/1014-skyblue-6.jpg"
+          ]
+        },
+        {
+          "name": "فضي",
+          "name_en": "Silver",
+          "hex": "#D3D4D8",
+          "images": [
+            "/images/1014-silver-1.jpg"
+          ]
+        },
+        {
+          "name": "بيج",
+          "name_en": "Beige",
+          "hex": "#D3C4B0",
+          "images": [
+            "/images/1014-beige-1.jpg"
+          ]
+        },
+        {
+          "name": "كحلي",
+          "name_en": "Navy",
+          "hex": "#1F2D5C",
+          "images": [
+            "/images/1014-navy-1.jpg"
+          ]
+        }
+      ]
     }
   ]
 }
