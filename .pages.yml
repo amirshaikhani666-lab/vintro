@@ -10,10 +10,7 @@ content:
   type: file
   path: data/collections.json
   format: json
-  list:
-    collapsible:
-      collapsed: true
-      summary: '{id}'
+  list: true
   fields:
   - name: id
     label: المجموعة
@@ -50,10 +47,7 @@ content:
   type: file
   path: data/products.json
   format: json
-  list:
-    collapsible:
-      collapsed: true
-      summary: '{code}  ·  {name}  ·  {season}'
+  list: true
   fields:
   - name: name
     label: اسم الموديل
