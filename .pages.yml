@@ -45,102 +45,109 @@ content:
 - name: products
   label: الموديلات
   type: file
-  path: data/products.json
+  path: data/catalog.json
   format: json
-  list: true
   fields:
-  - name: name
-    label: اسم الموديل
-    type: string
-    required: true
-  - name: name_en
-    label: اسم الموديل بالإنجليزي
-    type: string
-  - name: code
-    label: رقم الموديل (مثال S26-101)
-    type: string
-    required: true
-  - name: season
-    label: الموسم
-    type: select
-    required: true
-    options:
-      values:
-      - name: summer-2027
-        label: صيف ٢٠٢٧
-      - name: winter-2027
-        label: شتاء ٢٠٢٧
-      - name: summer-2026
-        label: صيف ٢٠٢٦
-      - name: winter-2026
-        label: شتاء ٢٠٢٦
-      - name: summer-2025
-        label: صيف ٢٠٢٥
-      - name: winter-2025
-        label: شتاء ٢٠٢٥
-  - name: category
-    label: النوع (تيشرت، قميص، فستان، بنطال، جاكيت، كنزة…)
-    type: string
-  - name: category_en
-    label: النوع بالإنجليزي (اختياري، مثال T-shirts)
-    type: string
-  - name: colors
-    label: الألوان والصور
+  - name: models
+    label: الموديلات
     type: object
     list:
       collapsible:
         collapsed: true
-        summary: '{name}'
+        summary: '{code}  ·  {season}'
     fields:
     - name: name
-      label: اسم اللون
+      label: اسم الموديل
       type: string
       required: true
     - name: name_en
-      label: اسم اللون بالإنجليزي (اختياري)
+      label: اسم الموديل بالإنجليزي
       type: string
-    - name: hex
-      label: كود اللون (اختياري، مثال 1E2A44#)
+    - name: code
+      label: رقم الموديل (مثال S26-101)
       type: string
-    - name: images
-      label: صور هذا اللون (أول صورة هي الغلاف)
-      type: image
+      required: true
+    - name: season
+      label: الموسم
+      type: select
+      required: true
       options:
-        multiple:
-          max: 8
-        extensions:
-        - jpg
-        - jpeg
-        - png
-        - webp
-  - name: sizes
-    label: المقاسات (مقاس بكل سطر)
-    type: string
-    list: true
-  - name: fabric
-    label: القماش
-    type: string
-  - name: fabric_en
-    label: القماش بالإنجليزي
-    type: string
-  - name: price
-    label: السعر (اتركه فارغاً ليظهر «السعر عند الطلب»)
-    type: string
-  - name: min_order
-    label: أقل كمية للطلب
-    type: string
-  - name: min_order_en
-    label: أقل كمية بالإنجليزي
-    type: string
-  - name: description
-    label: وصف قصير
-    type: text
-  - name: description_en
-    label: الوصف بالإنجليزي
-    type: text
-  - name: featured
-    label: عرضه بالصفحة الرئيسية
-    type: boolean
+        values:
+        - name: صيف ٢٠٢٧
+          label: صيف ٢٠٢٧
+        - name: شتاء ٢٠٢٧
+          label: شتاء ٢٠٢٧
+        - name: صيف ٢٠٢٦
+          label: صيف ٢٠٢٦
+        - name: شتاء ٢٠٢٦
+          label: شتاء ٢٠٢٦
+        - name: صيف ٢٠٢٥
+          label: صيف ٢٠٢٥
+        - name: شتاء ٢٠٢٥
+          label: شتاء ٢٠٢٥
+    - name: category
+      label: النوع (تيشرت، قميص، فستان، بنطال، جاكيت، كنزة…)
+      type: string
+    - name: category_en
+      label: النوع بالإنجليزي (اختياري، مثال T-shirts)
+      type: string
+    - name: colors
+      label: الألوان والصور
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{name}'
+      fields:
+      - name: name
+        label: اسم اللون
+        type: string
+        required: true
+      - name: name_en
+        label: اسم اللون بالإنجليزي (اختياري)
+        type: string
+      - name: hex
+        label: كود اللون (اختياري، مثال 1E2A44#)
+        type: string
+      - name: images
+        label: صور هذا اللون (أول صورة هي الغلاف)
+        type: image
+        options:
+          multiple:
+            max: 8
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+    - name: sizes
+      label: المقاسات (مقاس بكل سطر)
+      type: string
+      list: true
+    - name: fabric
+      label: القماش
+      type: string
+    - name: fabric_en
+      label: القماش بالإنجليزي
+      type: string
+    - name: price
+      label: السعر (اتركه فارغاً ليظهر «السعر عند الطلب»)
+      type: string
+    - name: min_order
+      label: أقل كمية للطلب
+      type: string
+    - name: min_order_en
+      label: أقل كمية بالإنجليزي
+      type: string
+    - name: description
+      label: وصف قصير
+      type: text
+    - name: description_en
+      label: الوصف بالإنجليزي
+      type: text
+    - name: featured
+      label: عرضه بالصفحة الرئيسية
+      type: boolean
 - name: brand
   label: معلومات الشركة
   type: file
