@@ -110,11 +110,11 @@ content:
         label: كود اللون (اختياري، مثال 1E2A44#)
         type: string
       - name: images
-        label: صور هذا اللون (أول صورة هي الغلاف)
+        label: صور هذا اللون (فيك تختار كذا صورة مع بعض، أول وحدة هي الغلاف)
         type: image
         options:
           multiple:
-            max: 8
+            max: 20
           extensions:
           - jpg
           - jpeg
