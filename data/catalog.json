@@ -161,12 +161,18 @@
         {
           "name": "اسود",
           "name_en": "Black",
-          "hex": "#141414"
+          "hex": "#141414",
+          "images": [
+            "/images/11037-copy-1.jpg"
+          ]
         },
         {
           "name": "سماوي",
           "name_en": "Sky blue",
-          "hex": "#9CC3D5"
+          "hex": "#9CC3D5",
+          "images": [
+            "/images/11038-copy.jpg"
+          ]
         }
       ],
       "sizes": [
