@@ -717,4 +717,32 @@ html[dir="ltr"] .sec-head h2{font-size:clamp(2rem,3.6vw,3rem)}
   .hx.art .hx-in{grid-area:2/1/3/2;padding-block:6px 66px}
 }
 
+
+/* ---------- the opening keeps moving ---------- */
+.hx.art{--px:0;--py:0}
+.hx-knit{inset:-40px;animation:knitdrift 60s linear infinite;transform:translate(calc(var(--px) * 18px),calc(var(--py) * 18px));transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+@keyframes knitdrift{to{background-position:180px 180px}}
+.hx-threads{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;transform:translate(calc(var(--px) * -26px),calc(var(--py) * -20px));transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.hx-threads .tw{fill:none;stroke:var(--gold);stroke-width:1;opacity:.22;vector-effect:non-scaling-stroke}
+.hx-threads .tw.spark{stroke:#F3E6C8;stroke-width:1.6;opacity:.85;stroke-dasharray:.07 .93;animation:spark var(--sd,7s) var(--sl,0s) linear infinite}
+@keyframes spark{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.hx-dust{position:absolute;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.hx-dust i{position:absolute;bottom:-10px;width:var(--s);height:var(--s);border-radius:50%;background:#EAD9B2;box-shadow:0 0 6px rgb(234 217 178 / .8);opacity:0;animation:dust var(--t) var(--l) linear infinite}
+@keyframes dust{0%{transform:translate(0,0);opacity:0}10%{opacity:.7}85%{opacity:.5}100%{transform:translate(var(--x),-110vh);opacity:0}}
+.hx-art{transform:translate(calc(var(--px) * 22px),calc(var(--py) * 16px));transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.hx-svg{animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-10px) rotate(-.6deg)}}
+.hx-svg .glint{fill:none;stroke:#FFF6E0;stroke-width:2.4;stroke-linecap:round;stroke-dasharray:.06 .94;filter:drop-shadow(0 0 4px rgb(201 168 106 / .9));animation:fadein 1s 3s both,glint 6s 3s linear infinite}
+@keyframes glint{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.hx-svg .cut{fill:none;stroke:currentColor;stroke-width:.8;stroke-dasharray:7 5;opacity:.35;animation:fadein 1.2s 4s both}
+.hx-svg .scis{animation:fadein 1s 4.2s both}
+.hx-svg .scis path,.hx-svg .scis circle{fill:none;stroke:#F3E6C8;stroke-width:1.2;stroke-linejoin:round}
+.hx-svg .scis .bl path:first-of-type{fill:#F3E6C8}
+.hx-svg .scis .piv{fill:var(--gold);stroke:none}
+.hx-svg .det{transition:opacity .6s ease}
+.hx-svg .det.out{opacity:0}
+.hx-svg .btns circle{fill:none;stroke:currentColor;stroke-width:1.1;animation:fadein .6s .9s both}
+.hx-svg .teeth{fill:none;stroke:currentColor;stroke-width:.8;opacity:.7;animation:fadein .6s .9s both}
+.hx-svg .pull{fill:none;stroke:#F3E6C8;stroke-width:1.1;animation:fadein .6s 1.1s both}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

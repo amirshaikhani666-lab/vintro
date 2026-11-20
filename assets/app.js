@@ -569,7 +569,7 @@
     }
 
     /* 1. opening: an animated tech sketch of a knit sweater, drawn line by line in gold */
-    var hero = '<section class="hx art" aria-label="VINTRO"><div class="hx-knit" aria-hidden="true"></div>' +
+    var hero = '<section class="hx art" aria-label="VINTRO"><div class="hx-knit" aria-hidden="true"></div>' + threads() + '<div class="hx-dust" aria-hidden="true"></div>' +
       '<div class="hx-in pad"><span class="hx-eyebrow latin">VINTRO · Collections ' + top + '</span><h1>' + esc(bt("headline")) + '</h1>' +
       (bt("tagline") ? '<p>' + esc(bt("tagline")) + '</p>' : "") +
       '<div class="op-btns"><a class="btn gold" href="' + pageUrl("collections") + '">' + t("discover") + '</a><a class="btn light" href="' + pageUrl("wholesale") + '">' + t("howOrder") + '</a></div></div>' +
@@ -640,9 +640,59 @@
       (bt("address") ? '<div><dt class="latin">Address</dt><dd>' + esc(bt("address")) + '</dd></div>' : "") + '</dl>' +
       (wa ? '<a class="btn wa block" href="https://wa.me/' + wa + '" target="_blank" rel="noopener">' + IC.wa + t("waUs") + '</a>' : "") + '</div></div></section>';
     rails();
+    heroLife();
     if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) setTimeout(function () { el.scrollIntoView(); }, 50); }
   }
 
+  /* three garments the sketch changes between: crew neck sweater, polo, half-zip */
+  function P_(d, dl) { return '<path class="d" d="' + d + '" pathLength="1" style="--dl:' + (dl || 0) + 's"/>'; }
+  var zipTeeth = (function () { var z = "", y; for (y = 92; y <= 226; y += 6) z += "M297 " + y + "h6"; return z; })();
+  var STYLES = [
+    ["KNITWEAR · CREW NECK", P_("M232 99Q300 156 368 99", 2.3)],
+    ["KNITWEAR · POLO", P_("M245 95L262 136L300 128L338 136L355 95", .1) + P_("M292 128V206H308V128", .5) +
+      '<g class="btns"><circle cx="300" cy="150" r="2.6"/><circle cx="300" cy="171" r="2.6"/><circle cx="300" cy="192" r="2.6"/></g>'],
+    ["KNITWEAR · HALF-ZIP", P_("M245 95L249 70Q300 82 351 70L355 95", .1) + P_("M300 78V232", .5) +
+      '<path class="teeth" d="' + zipTeeth + '"/><rect class="pull" x="295.5" y="86" width="9" height="16" rx="2"/>']
+  ];
+  /* moves every point of a path outward from a centre, for the cutting line around the sweater */
+  function grow(d, k, cx, cy) {
+    var i = 0; return d.replace(/-?\d+(\.\d+)?/g, function (n) { var v = +n, r = (i++ % 2 ? cy + (v - cy) * k : cx + (v - cx) * k); return r.toFixed(1); });
+  }
+  /* loose golden threads waving across the background */
+  function threads() {
+    var w = [
+      ["M-20 140C180 60 320 240 520 150S860 40 1020 120", "M-20 120C200 200 340 70 520 170S880 210 1020 90", 11],
+      ["M-20 420C160 360 360 520 560 430S880 330 1020 400", "M-20 460C200 520 380 360 560 450S860 520 1020 430", 14],
+      ["M-20 560C220 500 420 600 640 540S900 500 1020 560", "M-20 540C180 600 440 500 640 570S920 590 1020 520", 17]
+    ];
+    return '<svg class="hx-threads" viewBox="0 0 1000 600" preserveAspectRatio="none" aria-hidden="true">' + w.map(function (x, i) {
+      var a = '<animate attributeName="d" values="' + x[0] + ";" + x[1] + ";" + x[0] + '" dur="' + x[2] + 's" repeatCount="indefinite" calcMode="spline" keySplines=".45 0 .55 1;.45 0 .55 1"/>';
+      return '<path class="tw" d="' + x[0] + '">' + a + '</path><path class="tw spark" style="--sd:' + (6 + i * 2) + 's;--sl:' + (-i * 2.3) + 's" d="' + x[0] + '" pathLength="1">' + a + '</path>';
+    }).join("") + '</svg>';
+  }
+  /* keeps the opening alive: floating dust, the drawing following the mouse, and the garment changing every few seconds */
+  function heroLife() {
+    var hx = $(".hx.art"); if (!hx) return;
+    var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var dust = $(".hx-dust"), h = "", i;
+    for (i = 0; i < 26; i++) h += '<i style="left:' + (Math.random() * 100).toFixed(1) + '%;--s:' + (1 + Math.random() * 2.4).toFixed(1) + 'px;--t:' + (12 + Math.random() * 16).toFixed(1) + 's;--l:-' + (Math.random() * 28).toFixed(1) + 's;--x:' + (Math.random() * 60 - 30).toFixed(0) + 'px"></i>';
+    dust.innerHTML = h;
+    if (still) return;
+    if (window.matchMedia && matchMedia("(hover: hover)").matches) {
+      var raf = 0;
+      hx.addEventListener("mousemove", function (e) {
+        var r = hx.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        cancelAnimationFrame(raf); raf = requestAnimationFrame(function () { hx.style.setProperty("--px", x.toFixed(3)); hx.style.setProperty("--py", y.toFixed(3)); });
+      });
+      hx.addEventListener("mouseleave", function () { hx.style.setProperty("--px", 0); hx.style.setProperty("--py", 0); });
+    }
+    var k = 0, det = $("#hx-det"), lab = $("#hx-style");
+    setInterval(function () {
+      if (document.hidden || !det) return;
+      det.classList.add("out");
+      setTimeout(function () { k = (k + 1) % STYLES.length; det.innerHTML = STYLES[k][1].replace(/--dl:[\d.]+s/g, function (m) { return "--dl:" + (parseFloat(m.slice(5)) % 1 + .1) + "s"; }); lab.textContent = STYLES[k][0]; det.classList.remove("out"); }, 650);
+    }, 7000);
+  }
   /* the opening drawing: a pattern-maker's sketch of a knit sweater with seams, stitches, measurements and a sewing needle */
   function sketch() {
     function L(d, cls, delay, extra) { return '<path class="' + cls + '" d="' + d + '"' + (delay != null ? ' style="--dl:' + delay + 's"' : "") + (extra || "") + '/>'; }
@@ -660,11 +710,17 @@
       '<mask id="hx-sew" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="640"><rect x="0" y="0" height="640" width="204" fill="#fff"><animate attributeName="width" values="204;396;396" keyTimes="0;.82;1" dur="6s" repeatCount="indefinite"/></rect></mask></defs>' +
       '<rect class="g-grid" x="20" y="20" width="600" height="600" fill="url(#hx-grid)"/>' +
       '<path class="g-ticks" d="' + ticks + '"/>' +
-      '<g class="g-tag latin"><text x="40" y="58">VINTRO · TECH SKETCH</text><text x="40" y="74" class="sm">KNITWEAR · STYLE N° 26</text></g>' +
+      '<g class="g-tag latin"><text x="40" y="58">VINTRO · TECH SKETCH</text><text x="40" y="74" class="sm" id="hx-style">' + STYLES[0][0] + '</text></g>' +
       '<g transform="translate(20 20)">' +
         '<rect class="g-fill" x="60" y="80" width="480" height="500" fill="url(#hx-knit)" clip-path="url(#hx-body)"/>' +
         L(outline, "d", .2, ' pathLength="1"') +
-        L("M232 99Q300 156 368 99", "d", 2.3, ' pathLength="1"') +
+        '<g class="det" id="hx-det">' + STYLES[0][1] + '</g>' +
+        '<path class="glint" d="' + outline + '" pathLength="1"/>' +
+        '<path class="cut" d="' + grow(outline, 1.075, 300, 330) + '"/>' +
+        '<g class="scis"><animateMotion dur="22s" repeatCount="indefinite" rotate="auto" path="' + grow(outline, 1.075, 300, 330) + '"/>' +
+          '<g class="bl"><animateTransform attributeName="transform" type="rotate" values="-14;0;-14" dur=".55s" repeatCount="indefinite"/><path d="M0 0L19 -3.2L19 -1.2Z"/><circle cx="-9" cy="-5.5" r="4.2"/><path d="M0 0L-5.5 -3.5"/></g>' +
+          '<g class="bl"><animateTransform attributeName="transform" type="rotate" values="14;0;14" dur=".55s" repeatCount="indefinite"/><path d="M0 0L19 3.2L19 1.2Z"/><circle cx="-9" cy="5.5" r="4.2"/><path d="M0 0L-5.5 3.5"/></g>' +
+          '<circle class="piv" r="1.4"/></g>' +
         L("M200 530H400", "d", 2.5, ' pathLength="1"') +
         L("M84 431L135 441M516 431L465 441", "d", 2.7, ' pathLength="1"') +
         '<path class="ribs" d="' + ribs + '"/>' +
