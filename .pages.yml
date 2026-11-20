@@ -157,6 +157,41 @@ content:
   - name: name
     label: اسم الشركة
     type: string
+  - name: hero_image
+    label: صورة الواجهة الكبيرة بأول الصفحة الرئيسية (مثلاً صورة المصنع بالدرون، عرضية 2400×1400 أو أكبر)
+    type: image
+  - name: founder_photo
+    label: صورة أنس (بتظهر على زر واتساب وجنب اسم المؤسس)
+    type: image
+  - name: factory_text
+    label: نص قسم «من داخل مصنعنا» (القسم بيظهر بس لما تعبّي النص أو الصور أو الأرقام)
+    type: text
+  - name: factory_text_en
+    label: نص قسم المصنع بالإنجليزي
+    type: text
+  - name: factory_images
+    label: صور المصنع (لحد ٣ صور، أول وحدة بتطلع كبيرة)
+    type: image
+    options:
+      multiple:
+        max: 3
+  - name: stats
+    label: أرقام المصنع (مثال 500,000+ ← قطعة بالسنة)
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{value}  {label}'
+    fields:
+    - name: value
+      label: الرقم
+      type: string
+    - name: label
+      label: شو بيعني الرقم
+      type: string
+    - name: label_en
+      label: شو بيعني الرقم بالإنجليزي
+      type: string
   - name: headline
     label: العنوان الكبير بالصفحة الرئيسية
     type: string
