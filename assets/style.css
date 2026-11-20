@@ -672,4 +672,49 @@ body[data-page="catalog"] .wa-float{display:none}
 html[dir="ltr"] .sec-head h2{font-size:clamp(2rem,3.6vw,3rem)}
 .sec-head .latin{letter-spacing:.3em}
 
+
+/* ---------- opening animation: a knitwear tech sketch drawn in gold ---------- */
+.hx.art{min-height:clamp(560px,calc(100svh - 101px),880px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;padding-bottom:34px;
+  background:radial-gradient(ellipse 70% 80% at var(--hx-glow,30%) 45%,#22304B 0%,var(--navy) 55%,#0F1626 100%)}
+[dir="ltr"] .hx.art{--hx-glow:70%}
+.hx-knit{position:absolute;inset:0;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpath d='M2 3l7 12l7-12' fill='none' stroke='%23C9A86A' stroke-opacity='.075' stroke-width='1.2'/%3E%3C/svg%3E")}
+.hx-knit::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgb(201 168 106 / .08) 50%,transparent 62%);background-size:300% 100%;animation:sweep 10s ease-in-out infinite}
+@keyframes sweep{from{background-position:100% 0}to{background-position:0 0}}
+.hx.art .hx-in{grid-area:1/1/2/2;align-self:center;padding-block:56px}
+.hx-art{grid-area:1/2/2/3;display:grid;place-items:center;padding:28px max(20px,env(safe-area-inset-left,0px));color:var(--gold);min-width:0}
+.hx-svg{width:min(100%,620px);height:auto;max-height:calc(100svh - 180px);overflow:visible;direction:ltr}
+.hx-svg .g-grid{opacity:.16}
+.hx-svg .g-ticks{fill:none;stroke:currentColor;stroke-width:.8;opacity:.45}
+.hx-svg .g-tag text{fill:currentColor;font-family:var(--f-latin);font-size:11px;letter-spacing:.32em}
+.hx-svg .g-tag .sm{font-size:8.5px;opacity:.6}
+.hx-svg .d{fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:0;animation:draw 2.4s var(--dl,0s) cubic-bezier(.6,.1,.3,1) both}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+@keyframes fadein{from{opacity:0}}
+.hx-svg .g-fill{opacity:.32;animation:fadein 1.8s 2.4s both}
+.hx-svg .ribs{fill:none;stroke:currentColor;stroke-width:.7;opacity:.6;animation:fadein 1s 3s both}
+.hx-svg .st{fill:none;stroke:var(--gold-soft);stroke-width:1;stroke-dasharray:4 3.5;opacity:.75;animation:fadein 1s 3.2s both,march 1.4s linear infinite}
+@keyframes march{to{stroke-dashoffset:-15}}
+.hx-svg .st.sew{stroke:#fff;stroke-width:1.4;opacity:.95;animation:fadein 1s 3.8s both}
+.hx-svg .ms{animation:fadein 1.2s 3.5s both}
+.hx-svg .ms path{fill:none;stroke:currentColor;stroke-width:.8;opacity:.75}
+.hx-svg .ms .gd{stroke-dasharray:2 3;opacity:.4}
+.hx-svg .ms text{fill:var(--gold-soft);font-family:var(--f-latin);font-size:10px;letter-spacing:.24em;text-anchor:middle}
+.hx-svg .needle{animation:fadein .8s 3.8s both}
+.hx-svg .nf{fill:#F1E7D2}
+.hx-svg .nd{display:none}
+.hx-svg .ne{fill:var(--navy)}
+.hx-svg .th{fill:none;stroke:#fff;stroke-width:.8;opacity:.7}
+.hx-tape{position:absolute;left:0;right:0;bottom:0;height:34px;background:#E9DCC3;color:var(--navy);overflow:hidden;box-shadow:inset 0 1px 0 rgb(255 255 255 / .5)}
+.tp-track{display:flex;width:max-content;animation:tape 70s linear infinite}
+.tp-track svg{display:block;flex:none}
+.tp-track path{stroke:currentColor;stroke-width:1;fill:none;opacity:.8}
+.tp-track text{fill:currentColor;font:500 10px "IBM Plex Sans",system-ui,sans-serif;text-anchor:middle}
+@keyframes tape{to{transform:translateX(-1800px)}}
+@media (max-width:860px){
+  .hx.art{grid-template-columns:1fr;min-height:0;align-items:start}
+  .hx-art{grid-area:1/1/2/2;padding-block:18px 0}
+  .hx-svg{max-height:46svh}
+  .hx.art .hx-in{grid-area:2/1/3/2;padding-block:6px 66px}
+}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

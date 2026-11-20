@@ -568,22 +568,12 @@
       a = a.slice(0, n); used = used.concat(a); return a;
     }
 
-    /* 1. opening: the photo or video chosen in the CMS (e.g. the factory from a drone); until then, three models */
-    var media, himg = B.hero_image, hvid = B.hero_video;
-    if (himg || hvid) media = '<div class="hx-media">' + (hvid ? '<video autoplay muted loop playsinline' + (himg ? ' poster="' + esc(url(himg)) + '"' : "") + ' src="' + esc(url(hvid)) + '"></video>' : '<img src="' + esc(url(himg)) + '" alt="" fetchpriority="high">') + '</div>';
-    else {
-      var cats0 = {}, heroP = [];
-      latest.forEach(function (p) { if (!cats0[p.category] && hasCrop(heroImg(p))) { cats0[p.category] = 1; heroP.push(p); } });
-      heroP = heroP.concat(pick(latest, 4)).filter(function (p, i, a) { return a.indexOf(p) === i; }).slice(0, 4);
-      used = used.concat(heroP);
-      media = '<div class="hx-tiles">' + heroP.map(function (p, i) { return '<div class="hx-tile">' + pic(heroImg(p), .62, "", i > 0) + '</div>'; }).join("") + '</div>';
-    }
-    var hero = '<section class="hx' + (himg || hvid ? " has-media" : "") + '" aria-label="VINTRO">' + media + '<div class="hx-shade"></div>' +
+    /* 1. opening: an animated tech sketch of a knit sweater, drawn line by line in gold */
+    var hero = '<section class="hx art" aria-label="VINTRO"><div class="hx-knit" aria-hidden="true"></div>' +
       '<div class="hx-in pad"><span class="hx-eyebrow latin">VINTRO · Collections ' + top + '</span><h1>' + esc(bt("headline")) + '</h1>' +
       (bt("tagline") ? '<p>' + esc(bt("tagline")) + '</p>' : "") +
       '<div class="op-btns"><a class="btn gold" href="' + pageUrl("collections") + '">' + t("discover") + '</a><a class="btn light" href="' + pageUrl("wholesale") + '">' + t("howOrder") + '</a></div></div>' +
-      '<div class="hx-foot pad latin" dir="ltr"><span>Ready-to-wear</span><span>Made in Egypt</span><span>Wholesale &amp; export</span></div>' +
-      '<a class="op-down" href="#seasons" aria-label="' + t("scrollDown") + '"><span></span></a></section>';
+      '<div class="hx-art">' + sketch() + '</div>' + tape() + '</section>';
 
     /* 2. a moving ribbon of words */
     var words = ["Ready-to-wear", "Made in Egypt"].concat(LATEST.map(function (s) { return s.latin; })).concat(["Wholesale & export", "Knitwear"]);
@@ -651,6 +641,50 @@
       (wa ? '<a class="btn wa block" href="https://wa.me/' + wa + '" target="_blank" rel="noopener">' + IC.wa + t("waUs") + '</a>' : "") + '</div></div></section>';
     rails();
     if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) setTimeout(function () { el.scrollIntoView(); }, 50); }
+  }
+
+  /* the opening drawing: a pattern-maker's sketch of a knit sweater with seams, stitches, measurements and a sewing needle */
+  function sketch() {
+    function L(d, cls, delay, extra) { return '<path class="' + cls + '" d="' + d + '"' + (delay != null ? ' style="--dl:' + delay + 's"' : "") + (extra || "") + '/>'; }
+    var ribs = "", i;
+    for (i = 206; i <= 396; i += 7) ribs += "M" + i + " 532V558";
+    for (i = 0; i <= 6; i++) { ribs += "M" + (86 + i * 7.6) + " " + (432 + i * 1.6) + "L" + (82 + i * 7.6) + " " + (455 + i * 1.6); ribs += "M" + (514 - i * 7.6) + " " + (432 + i * 1.6) + "L" + (518 - i * 7.6) + " " + (455 + i * 1.6); }
+    var ticks = "";
+    for (i = 0; i <= 600; i += 10) { var k = i % 100 === 0 ? 9 : i % 50 === 0 ? 6 : 3.5; ticks += "M" + (20 + i) + " 20v" + k + "M20 " + (20 + i) + "h" + k; }
+    var outline = "M245 95Q300 138 355 95L435 120Q472 134 486 200L520 455L472 465L405 250L400 560L200 560L195 250L128 465L80 455L114 200Q128 134 165 120Z";
+    return '<svg class="hx-svg" viewBox="0 0 640 640" role="img" aria-label="VINTRO knitwear sketch"><defs>' +
+      '<pattern id="hx-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="currentColor" stroke-width=".35"/></pattern>' +
+      '<pattern id="hx-knit" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M1 1.5L4.5 7.5L8 1.5" fill="none" stroke="currentColor" stroke-width=".55"/></pattern>' +
+      '<marker id="hx-ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="currentColor" stroke-width="1.1"/></marker>' +
+      '<clipPath id="hx-body"><path d="' + outline + '"/></clipPath>' +
+      '<mask id="hx-sew" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="640"><rect x="0" y="0" height="640" width="204" fill="#fff"><animate attributeName="width" values="204;396;396" keyTimes="0;.82;1" dur="6s" repeatCount="indefinite"/></rect></mask></defs>' +
+      '<rect class="g-grid" x="20" y="20" width="600" height="600" fill="url(#hx-grid)"/>' +
+      '<path class="g-ticks" d="' + ticks + '"/>' +
+      '<g class="g-tag latin"><text x="40" y="58">VINTRO · TECH SKETCH</text><text x="40" y="74" class="sm">KNITWEAR · STYLE N° 26</text></g>' +
+      '<g transform="translate(20 20)">' +
+        '<rect class="g-fill" x="60" y="80" width="480" height="500" fill="url(#hx-knit)" clip-path="url(#hx-body)"/>' +
+        L(outline, "d", .2, ' pathLength="1"') +
+        L("M232 99Q300 156 368 99", "d", 2.3, ' pathLength="1"') +
+        L("M200 530H400", "d", 2.5, ' pathLength="1"') +
+        L("M84 431L135 441M516 431L465 441", "d", 2.7, ' pathLength="1"') +
+        '<path class="ribs" d="' + ribs + '"/>' +
+        L("M246 103L170 126M354 103L430 126M168 126Q186 190 198 250M432 126Q414 190 402 250M198 256L202 552M402 256L398 552", "st") +
+        '<path class="st sew" d="M204 525H396" mask="url(#hx-sew)"/>' +
+        '<g class="ms"><path d="M200 300H400" marker-start="url(#hx-ar)" marker-end="url(#hx-ar)"/><text x="300" y="290">CHEST · 56</text>' +
+          '<path class="gd" d="M440 95H572M412 560H572"/><path d="M560 98V557" marker-start="url(#hx-ar)" marker-end="url(#hx-ar)"/><text x="0" y="0" transform="translate(576 330) rotate(90)">LENGTH · 72</text>' +
+          '<path d="M96 186L61 438" marker-start="url(#hx-ar)" marker-end="url(#hx-ar)"/><text x="0" y="0" transform="translate(66 300) rotate(-82)">SLEEVE · 64</text></g>' +
+        '<g class="needle"><animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.82;1" calcMode="linear" path="M204 525H396"/>' +
+          '<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -11;0 0" dur=".42s" repeatCount="indefinite"/>' +
+          '<path d="M0 -62V-3" class="nd"/><path d="M-1.6 -60V-6L0 0L1.6 -6V-60Z" class="nf"/><ellipse cx="0" cy="-54" rx=".8" ry="3" class="ne"/>' +
+          '<path d="M0 -54C14 -70 26 -96 70 -118" class="th"/></g></g>' +
+      '</g></svg>';
+  }
+  /* a tailor's tape measure that slides along the bottom of the opening */
+  function tape() {
+    var t1 = "", n = "", i;
+    for (i = 0; i <= 150; i++) { var x = i * 12; t1 += "M" + x + " 0v" + (i % 10 === 0 ? 14 : i % 5 === 0 ? 10 : 6); if (i % 10 === 0 && i) n += '<text x="' + x + '" y="27">' + i + '</text>'; }
+    var one = '<svg width="1800" height="34" viewBox="0 0 1800 34"><path d="' + t1 + '"/>' + n + '</svg>';
+    return '<div class="hx-tape" aria-hidden="true" dir="ltr"><div class="tp-track">' + one + one + '</div></div>';
   }
 
   /* arrows and progress bar under a row of cards */
