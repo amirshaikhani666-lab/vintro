@@ -1,4 +1,4 @@
-/* VINTRO catalog — shared code for every page, in Arabic and English.
+/* VINTRO catalog — shared code for every page, in Arabic, English, Turkish, German, French and Italian.
    Data: data/brand.json, data/products.json, data/collections.json (edited from Pages CMS).
    English text comes from the "_en" fields; when one is empty the Arabic text is shown. */
 (function () {
@@ -13,11 +13,15 @@
 
   /* ---------- language ---------- */
   var QS = new URLSearchParams(location.search);
+  /* Arabic and English are built in; Turkish, German, French and Italian come from assets/i18n.js */
+  var LANGS = [["ar", "العربية", "ع"], ["en", "English", "EN"], ["tr", "Türkçe", "TR"], ["de", "Deutsch", "DE"], ["fr", "Français", "FR"], ["it", "Italiano", "IT"]];
+  function okLang(l) { return LANGS.some(function (x) { return x[0] === l; }); }
   var LANG = QS.get("lang");
-  if (LANG !== "en" && LANG !== "ar") { LANG = null; try { LANG = localStorage.getItem("vintro-lang"); } catch (e) {} }
-  if (LANG !== "en") LANG = "ar";
+  if (!okLang(LANG)) { LANG = null; try { LANG = localStorage.getItem("vintro-lang"); } catch (e) {} }
+  if (!okLang(LANG)) LANG = "ar";
   try { localStorage.setItem("vintro-lang", LANG); } catch (e) {}
-  var EN = LANG === "en";
+  var EN = LANG !== "ar"; /* every language except Arabic: Latin script, left to right, English as the fallback */
+  var X = {}, XD = {};
   document.documentElement.lang = LANG;
   document.documentElement.dir = EN ? "ltr" : "rtl";
 
@@ -52,11 +56,23 @@
     phone: ["هاتف", "Phone"], email: ["البريد الإلكتروني", "Email"], map: ["افتح على الخريطة", "Open in Maps"], hours: ["أوقات العمل", "Opening hours"],
     formH: ["أرسل استفسارك", "Send an enquiry"], fName: ["الاسم", "Name"], fCo: ["اسم المحل أو الشركة", "Shop or company"], fCity: ["المدينة والبلد", "City and country"],
     fCodes: ["أرقام الموديلات (اختياري)", "Model numbers (optional)"], fMsg: ["رسالتك", "Your message"], fErr: ["اكتب اسمك ورسالتك قبل الإرسال.", "Please add your name and your message."],
-    sendMail: ["إرسال بالبريد", "Send by email"], langName: ["English", "العربية"], langCode: ["EN", "ع"], logoHome: ["VINTRO — الرئيسية", "VINTRO — Home"]
+    sendMail: ["إرسال بالبريد", "Send by email"],
+    shopBy: ["تصفّح حسب النوع", "Shop by category"], quick: ["نظرة سريعة", "Quick view"], fullDetails: ["عرض التفاصيل الكاملة", "View full details"],
+    sample: ["اطلب عيّنة", "Request a sample"], sampleH: ["اطلب عيّنة قبل الطلبية", "Request a sample before you order"],
+    sampleP: ["أرسل لنا الموديل واللون والمقاس، ونرتّب معك إرسال عيّنة لتعاين القماش والقصّة بنفسك.", "Tell us the model, colour and size, and we'll arrange a sample so you can check the fabric and fit yourself."],
+    fModel: ["رقم الموديل", "Model number"], sendReq: ["أرسل الطلب عبر واتساب", "Send the request on WhatsApp"], sErr: ["اكتب اسمك ورقم الموديل.", "Please add your name and the model number."],
+    catalog: ["الكتالوج", "Catalogue"], catalogH: ["كتالوج المجموعة", "Collection catalogue"], dlCatalog: ["حمّل الكتالوج", "Download the catalogue"],
+    catalogP: ["كل موديلات الموسم في ملف واحد مرتّب، جاهز للطباعة أو للحفظ PDF وإرساله لشركائك.", "Every model of the season in one tidy file, ready to print or save as a PDF and share with your partners."],
+    savePdf: ["حفظ PDF أو طباعة", "Save as PDF or print"], pdfHint: ["اضغط الزر، ثم اختر «حفظ بصيغة PDF» من نافذة الطباعة.", "Press the button, then choose “Save as PDF” in the print window."],
+    factoryH: ["من داخل مصنعنا", "Inside our factory"], chatWith: ["تحدّث مع ", "Chat with "], salesRole: ["مبيعات الجملة", "Wholesale sales"],
+    prev: ["السابق", "Previous"], next: ["التالي", "Next"], editOf: ["مختارات ", "The edit · "], language: ["اللغة", "Language"], logoHome: ["VINTRO — الرئيسية", "VINTRO — Home"]
   };
-  function t(k) { var v = S[k]; return v ? v[EN ? 1 : 0] : k; }
+  function t(k) { if (X.s && X.s[k]) return X.s[k]; var v = S[k]; return v ? v[EN ? 1 : 0] : k; }
   var ONE = { models: " model", results: " result", types: " category" };
-  function cnt(n, k) { return (EN ? String(n) : String(n).replace(/\d/g, function (x) { return "٠١٢٣٤٥٦٧٨٩"[x]; })) + (EN && +n === 1 && ONE[k] ? ONE[k] : t(k)); }
+  function cnt(n, k) {
+    var one = LANG === "en" ? ONE : (X.one || {});
+    return (EN ? String(n) : String(n).replace(/\d/g, function (x) { return "٠١٢٣٤٥٦٧٨٩"[x]; })) + (EN && +n === 1 && one[k] ? one[k] : t(k));
+  }
 
   /* English versions of the texts written for the site; the CMS "_en" fields override them */
   var EN_DEFAULT = {
@@ -76,8 +92,27 @@
       { q: "Can I order colours or sizes that aren't shown?", a: "Send us the details and we'll look at what we can produce." }]
   };
   var PLACES = { "مصر": "Egypt", "سوريا": "Syria", "سورية": "Syria", "تركيا": "Turkey", "العراق": "Iraq", "الأردن": "Jordan", "لبنان": "Lebanon", "السعودية": "Saudi Arabia", "الإمارات": "UAE" };
-  function bt(f) { if (!EN) return B[f] || ""; return B[f + "_en"] || EN_DEFAULT[f] || B[f] || ""; }
-  function px(o, f) { return (EN && o && o[f + "_en"]) || (o && o[f]) || ""; }
+  /* Arabic texts used until they are filled in the CMS */
+  var AR_DEFAULT = { headline: "ألبسة جاهزة بتصميم عصري وجودة تصنيع تليق بالتصدير", tagline: "مصنع ألبسة جاهزة — بيع بالجملة وتصدير" };
+  function bt(f) { if (!EN) return B[f] || AR_DEFAULT[f] || ""; return B[f + "_" + LANG] || (LANG !== "en" && XD[f]) || B[f + "_en"] || EN_DEFAULT[f] || B[f] || ""; }
+  /* a field in the current language: "name_tr" from the CMS, then the translation file, then English, then Arabic */
+  function px(o, f) {
+    if (!o) return "";
+    if (!EN) return o[f] || "";
+    if (o[f + "_" + LANG]) return o[f + "_" + LANG];
+    if (LANG !== "en" && X.models && o.code != null) {
+      var m = X.models[String(o.code).trim()], i = f === "name" ? 0 : f === "description" ? 1 : -1;
+      if (m && i >= 0 && m[i]) return m[i];
+    }
+    return o[f + "_en"] || o[f] || "";
+  }
+  /* a value or question written in the CMS, in the current language */
+  function vt(v, f, i, list) {
+    if (!EN) return v[f] || "";
+    var d = (LANG !== "en" && XD[list] && XD[list][i]) || (EN_DEFAULT[list] && EN_DEFAULT[list][i]) || {};
+    return v[f + "_" + LANG] || (LANG !== "en" && d[f]) || v[f + "_en"] || d[f] || v[f] || "";
+  }
+  function place(en) { return (X.places && X.places[en]) || en; }
 
   /* ---------- helpers ---------- */
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -111,8 +146,10 @@
     var m = /^(summer|winter)-(\d{4})$/.exec(String(id || "").trim()); if (!m) return null;
     var ty = TYPES[m[1]], y = m[2]; cfg = cfg || {};
     var introAr = cfg.intro || B[m[1] + "_intro"] || ty.intro;
-    var introEn = cfg.intro_en || B[m[1] + "_intro_en"] || ty.introEn;
-    return { id: m[0], type: m[1], year: +y, cls: m[1], latin: ty.en + " " + y, label: EN ? ty.en + " " + y : ty.ar + " " + toAr(y),
+    var xs = X.seasons || {};
+    var introEn = cfg["intro_" + LANG] || B[m[1] + "_intro_" + LANG] || xs[m[1] + "Intro"] || cfg.intro_en || B[m[1] + "_intro_en"] || ty.introEn;
+    var nameL = xs[m[1]] || ty.en;
+    return { id: m[0], type: m[1], year: +y, cls: m[1], latin: ty.en + " " + y, label: EN ? nameL + " " + y : ty.ar + " " + toAr(y),
       intro: EN ? introEn : introAr, cover: cfg.cover || (y === "2026" ? B[m[1] + "_cover"] : "") || "", hidden: !!cfg.hidden };
   }
   function countOf(id) { return P.filter(function (p) { return p.season === id; }).length; }
@@ -137,8 +174,10 @@
     "معطف": "Coats", "كنزة": "Sweaters", "هودي": "Hoodies", "شورت": "Shorts", "بلوزة": "Blouses", "تنورة": "Skirts", "عباية": "Abayas", "بيجامة": "Pyjamas", "سويت شيرت": "Sweatshirts", "طقم": "Sets", "بدلة": "Suits", "بولو": "Polos", "تريكو": "Knitwear", "كنزات": "Sweaters" };
   function catL(c) {
     if (!EN) return c;
-    var p = P.find(function (x) { return x.category === c && x.category_en; });
-    return (p && p.category_en) || CAT_EN[c] || c;
+    var p = P.find(function (x) { return x.category === c && (x["category_" + LANG] || x.category_en); });
+    if (p && p["category_" + LANG]) return p["category_" + LANG];
+    var en = (p && p.category_en) || CAT_EN[c] || c;
+    return (X.cats && X.cats[en]) || en;
   }
   var COLORS = { "أسود": ["#1A1A1A", "Black"], "اسود": ["#1A1A1A", "Black"], "نبيتي": ["#4E1428", "Burgundy"], "فانيلا": ["#EEE6D3", "Vanilla"], "كاميل": ["#B06E3B", "Camel"], "أوف وايت": ["#F2EEE4", "Off-white"], "بترولي": ["#0E5047", "Petrol"], "أبيض": ["#F4F4F2", "White"], "ابيض": ["#F4F4F2", "White"], "كحلي": ["#1E2A44", "Navy"], "رمادي": ["#8A8D91", "Grey"],
     "زيتي": ["#5B6033", "Olive"], "بيج": ["#D9C7A7", "Beige"], "خمري": ["#6E1F2E", "Burgundy"], "أحمر": ["#B3261E", "Red"], "احمر": ["#B3261E", "Red"],
@@ -153,14 +192,30 @@
     for (var k in COLORS) if (n.indexOf(k) === 0) return COLORS[k][0];
     return "#9A9C98";
   }
-  function colL(c) {
-    if (!c) return "";
-    if (!EN) return c.name || "";
+  function colEn(c) {
     if (c.name_en) return c.name_en;
     var n = String(c.name || "").trim(), shade = "";
     if (/ فاتح$/.test(n)) { shade = "Light "; n = n.replace(/ فاتح$/, ""); }
     else if (/ (غامق|داكن)$/.test(n)) { shade = "Dark "; n = n.replace(/ (غامق|داكن)$/, ""); }
     return COLORS[n] ? shade + (shade ? COLORS[n][1].toLowerCase() : COLORS[n][1]) : (c.name || "");
+  }
+  /* English colour name -> current language; "White / navy stripe" and "Navy / red tipping" are built from their parts */
+  function colX(en) {
+    var C = X.colours || {}, cap = function (s) { return s.charAt(0).toUpperCase() + s.slice(1); };
+    function one(w) { w = String(w).trim(); var k = cap(w.toLowerCase()); return C[w] || C[k] || w; }
+    var m = /^(.+?)\s*\/\s*(.+?)\s+(stripe|stripes|striped|tipping)$/i.exec(en);
+    if (m) {
+      var a = one(m[1]), b = one(m[2]), f = /tip/i.test(m[3]) ? X.tipping : X.stripe;
+      if (f) return f(a, b);
+    }
+    return one(en);
+  }
+  function colL(c) {
+    if (!c) return "";
+    if (!EN) return c.name || "";
+    if (c["name_" + LANG]) return c["name_" + LANG];
+    var en = colEn(c);
+    return LANG === "en" ? en : colX(en);
   }
   function mix(hex, k) { // blend a colour toward ivory
     var h = hex.replace("#", ""); if (h.length === 3) h = h.replace(/./g, "$&$&");
@@ -215,8 +270,10 @@
     document.documentElement.classList.add("js-rv");
   }
   function reveal() {
+    /* the small decorative labels are English; keep Turkish capitalisation rules (i → İ) off them */
+    if (LANG === "tr") document.querySelectorAll(".latin, .new").forEach(function (el) { el.setAttribute("lang", "en"); });
     if (!IO) return;
-    document.querySelectorAll(".sec-head, #main .card, .cats a, .arch-card, .value, .step, .coll-txt, .c-card, .year-head, .ab-txt, .ab-mark, .tpl").forEach(function (el, i) {
+    document.querySelectorAll(".sec-head, #main .card, .cats a, .arch-card, .value, .step, .coll-txt, .c-card, .year-head, .ab-txt, .ab-mark, .tpl, .ctile, .ed-big, .ed-txt, .fx-txt, .fx-pic, .stats>div, .smp-in").forEach(function (el, i) {
       if (el.classList.contains("rv")) return;
       el.classList.add("rv"); el.style.setProperty("--rd", (i % 4) * 70 + "ms"); IO.observe(el);
     });
@@ -227,25 +284,152 @@
     var showLatin = latin && !(EN && latin.toLowerCase() === String(title).toLowerCase());
     return '<div class="sec-head"><div>' + (showLatin ? '<span class="latin">' + latin + '</span>' : "") + '<h2>' + title + '</h2></div>' + (link || "") + '</div>';
   }
+  /* ---------- photos ----------
+     The winter photos are sheets with several shots and printed text. In cards and tiles only the main shot is shown,
+     using the positions in assets/crops.js. The photo files themselves are never changed. */
+  var CROPS = {};
+  function cropOf(src) {
+    var k = String(src || "").replace(/^https?:\/\/[^\/]+/, "").replace(/^.*?(\/images\/)/, "$1");
+    if (k.charAt(0) !== "/") k = "/" + k;
+    return CROPS[k];
+  }
+  function hasCrop(src) { return !!cropOf(src); }
+  /* a photo that fills a box whose width ÷ height is A */
+  function pic(src, A, alt, lazy, cls) {
+    var at = ' src="' + esc(url(src)) + '" alt="' + esc(alt || "") + '"' + (lazy ? ' loading="lazy"' : "") + ' decoding="async"';
+    var c = cropOf(src);
+    if (!c) return '<img class="fill' + (cls ? " " + cls : "") + '"' + at + '>';
+    var W = c[0], H = c[1], x0 = c[2] * W, y0 = c[3] * H, rw = (c[4] - c[2]) * W, rh = (c[5] - c[3]) * H, cw, ch, cx, cy;
+    y0 += rh * .05; rh *= .95; /* leaves out the small logo printed at the top of some sheets */
+    if (rw / rh > A) { ch = rh; cw = rh * A; cx = x0 + (rw - cw) / 2; cy = y0; }
+    else { cw = rw; ch = rw / A; cx = x0; cy = y0 + (rh - ch) * .12; }
+    var st = "width:" + (W / cw * 100).toFixed(3) + "%;height:" + (H / ch * 100).toFixed(3) + "%;left:" + (-cx / cw * 100).toFixed(3) + "%;top:" + (-cy / ch * 100).toFixed(3) + "%";
+    return '<img class="crop' + (cls ? " " + cls : "") + '" style="' + st + '"' + at + '>';
+  }
+  /* the photo that represents a model in tiles: the main shot of a sheet, or the first photo */
+  function heroImg(p) { var im = imagesOf(p); return im.find(hasCrop) || im[0] || ""; }
+  function byCode(code) { return P.find(function (x) { return String(x.code || x.name) === String(code); }); }
+
+  var CARD_A = 808 / 951;
+  function cardMedia(p, ci) {
+    var cols = arr(p.colors), c = cols[ci] || cols[0] || {}, name = px(p, "name");
+    var im = arr(c.images).filter(Boolean), all = imagesOf(p);
+    if (!im.length) im = all;
+    if (!im.length) return art(p, hexOf(c));
+    var nx = cols[(ci + 1) % cols.length], second = im[1] || (nx && nx !== c ? arr(nx.images)[0] : "");
+    return pic(im[0], CARD_A, name, true) + (second ? pic(second, CARD_A, "", true, "alt") : "");
+  }
   function card(p) {
-    var imgs = imagesOf(p), cols = arr(p.colors), first = cols[0] || {}, name = px(p, "name"), sz = arr(p.sizes);
-    var media = imgs.length
-      ? '<img src="' + esc(url(imgs[0])) + '" alt="' + esc(name) + '" loading="lazy">' + (imgs[1] ? '<img class="alt" src="' + esc(url(imgs[1])) + '" alt="" loading="lazy">' : "")
-      : art(p, hexOf(first));
-    return '<a class="card" href="' + esc(modelUrl(p)) + '"><div class="ph">' + media + (p.featured ? '<span class="new latin">New</span>' : "") +
+    var cols = arr(p.colors), first = cols[0] || {}, name = px(p, "name"), sz = arr(p.sizes);
+    return '<a class="card" href="' + esc(modelUrl(p)) + '" data-code="' + esc(p.code || p.name) + '"><div class="ph"><div class="ph-m">' + cardMedia(p, 0) + '</div>' + (p.featured ? '<span class="new latin">New</span>' : "") +
+      '<span class="qv" role="button" tabindex="0">' + t("quick") + '</span>' +
       (sz.length ? '<div class="qs" dir="ltr">' + sz.map(function (z) { return '<span>' + esc(z) + '</span>'; }).join("") + '</div>' : "") + '</div>' +
       '<div class="body"><span class="nm">' + esc(name) + '</span><div class="sub"><span class="code">' + esc(p.code || "") + '</span><span>' +
       (cols.length > 1 ? num(cols.length) + t("colorsN") : esc(colL(first))) + '</span></div>' +
-      '<div class="sws">' + cols.slice(0, 6).map(function (c) { return '<i style="background:' + esc(hexOf(c)) + '"></i>'; }).join("") + '</div></div></a>';
+      '<div class="sws">' + cols.slice(0, 7).map(function (c, i) { return '<i data-k="' + i + '"' + (i ? "" : ' class="on"') + ' title="' + esc(colL(c)) + '" style="background:' + esc(hexOf(c)) + '"></i>'; }).join("") +
+      (cols.length > 7 ? '<small>+' + num(cols.length - 7) + '</small>' : "") + '</div></div></a>';
   }
+  /* hovering (or tapping) a colour dot shows that colour on the card */
+  function swapCard(sw) {
+    var cd = sw.closest(".card"), p = cd && byCode(cd.getAttribute("data-code")); if (!p) return;
+    var k = +sw.getAttribute("data-k"); if (cd.getAttribute("data-k") === String(k)) return;
+    cd.setAttribute("data-k", k);
+    cd.querySelector(".ph-m").innerHTML = cardMedia(p, k);
+    cd.querySelectorAll(".sws i").forEach(function (x) { x.classList.toggle("on", x === sw); });
+  }
+  document.addEventListener("mouseover", function (e) { var sw = e.target.closest && e.target.closest(".card .sws i[data-k]"); if (sw) swapCard(sw); });
+  document.addEventListener("click", function (e) {
+    var sw = e.target.closest(".card .sws i[data-k]");
+    if (sw) { e.preventDefault(); swapCard(sw); return; }
+    var q = e.target.closest(".card .qv");
+    if (q) { e.preventDefault(); var cd = q.closest(".card"), p = byCode(cd.getAttribute("data-code")); if (p) quickView(p, +(cd.getAttribute("data-k") || 0)); }
+  });
+  document.addEventListener("keydown", function (e) {
+    var q = e.target.closest && e.target.closest(".card .qv");
+    if (q && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); q.click(); }
+  });
+
+  /* ---------- pop-up windows: quick view and sample request ---------- */
+  function modal(html, cls) {
+    var m = document.createElement("div");
+    m.className = "modal " + (cls || ""); m.setAttribute("role", "dialog"); m.setAttribute("aria-modal", "true");
+    m.innerHTML = '<div class="modal-bg" data-mclose></div><div class="modal-box"><button class="ico-btn modal-x" type="button" data-mclose aria-label="' + t("close") + '">' + IC.close + '</button>' + html + '</div>';
+    document.body.appendChild(m); document.body.classList.add("lock");
+    requestAnimationFrame(function () { m.classList.add("on"); });
+    function onKey(e) { if (e.key === "Escape") close(); }
+    function close() { m.remove(); document.removeEventListener("keydown", onKey); if (!document.querySelector(".modal")) document.body.classList.remove("lock"); }
+    m.addEventListener("click", function (e) { if (e.target.closest("[data-mclose]")) close(); });
+    document.addEventListener("keydown", onKey);
+    setTimeout(function () { var f = m.querySelector("input, .qv-info button, .modal-x"); if (f) f.focus(); }, 60);
+    return { el: m, close: close };
+  }
+  /* WhatsApp message about a model: Arabic on the Arabic site, English for every other language */
+  function askMsg(p, c, size) {
+    var name = px(p, "name"), cn = c ? colL(c) : "";
+    return EN
+      ? "Hello VINTRO, I'd like to ask about model " + (p.code || name) + " (" + name + ")" + (cn ? "\nColour: " + (LANG === "en" ? cn : colEn(c)) : "") + (size ? "\nSize: " + size : "")
+      : "مرحباً VINTRO، أرغب بالاستفسار عن الموديل " + (p.code || p.name) + " (" + p.name + ")" + (c && c.name ? "\nاللون: " + c.name : "") + (size ? "\nالمقاس: " + size : "");
+  }
+  function quickView(p, ci0) {
+    var cols = arr(p.colors), ci = ci0 || 0, size = null, ii = 0, name = px(p, "name"), s = seasonOf(p.season);
+    if (!arr((cols[ci] || {}).images).length) ci = Math.max(0, cols.findIndex(function (c) { return arr(c.images).length; }));
+    var M = modal('<div class="qv-in"></div>', "qv-modal"), wa = digits(B.whatsapp);
+    function draw() {
+      var c = cols[ci] || {}, imgs = arr(c.images).filter(Boolean), cn = colL(c), sizes = arr(p.sizes);
+      if (ii >= imgs.length) ii = 0;
+      M.el.querySelector(".qv-in").innerHTML =
+        '<div class="qv-gal"><div class="qv-pic">' + (imgs.length ? '<img src="' + esc(url(imgs[ii])) + '" alt="' + esc(name + " — " + cn) + '">' : art(p, hexOf(c))) + '</div>' +
+        (imgs.length > 1 ? '<div class="thumbs">' + imgs.map(function (im, i) { return '<button type="button" data-qi="' + i + '" aria-pressed="' + (i === ii) + '" aria-label="' + t("image") + num(i + 1) + '"><img src="' + esc(url(im)) + '" alt=""></button>'; }).join("") + '</div>' : "") + '</div>' +
+        '<div class="qv-info">' + (p.code ? '<div class="code">' + esc(p.code) + '</div>' : "") + '<h2>' + esc(name) + '</h2>' +
+        '<p class="muted qv-meta">' + (s ? s.label : "") + (p.category ? " · " + esc(catL(p.category)) : "") + '</p>' +
+        (p.price ? '<div class="price">' + esc(p.price) + '</div>' : '<div class="price ask">' + t("priceAsk") + '</div>') +
+        (cols.length ? '<div><div class="opt-label"><span>' + t("color") + '</span><b>' + esc(cn) + '</b></div><div class="colors">' + cols.map(function (k, i) {
+          var im = arr(k.images)[0];
+          return '<button type="button" data-qc="' + i + '" aria-pressed="' + (i === ci) + '" aria-label="' + esc(colL(k)) + '" title="' + esc(colL(k)) + '">' + (im ? '<img src="' + esc(url(im)) + '" alt="">' : '<span class="fill" style="background:' + esc(hexOf(k)) + '"></span>') + '</button>';
+        }).join("") + '</div></div>' : "") +
+        (sizes.length ? '<div><div class="opt-label"><span>' + t("size") + '</span><b>' + esc(size || t("pickSize")) + '</b></div><div class="sizes" dir="ltr">' + sizes.map(function (z) { return '<button type="button" data-qs="' + esc(z) + '" aria-pressed="' + (z === size) + '">' + esc(z) + '</button>'; }).join("") + '</div></div>' : "") +
+        '<div class="cta">' + (wa ? '<a class="btn wa block" href="https://wa.me/' + wa + '?text=' + encodeURIComponent(askMsg(p, c, size)) + '" target="_blank" rel="noopener">' + IC.wa + t("orderWa") + '</a>' : "") +
+        '<button class="btn block" type="button" data-qsample>' + t("sample") + '</button>' +
+        '<a class="link-u qv-more" href="' + esc(modelUrl(p)) + '">' + t("fullDetails") + '</a></div></div>';
+    }
+    M.el.addEventListener("click", function (e) {
+      var b;
+      if ((b = e.target.closest("[data-qi]"))) { ii = +b.getAttribute("data-qi"); draw(); }
+      else if ((b = e.target.closest("[data-qc]"))) { ci = +b.getAttribute("data-qc"); ii = 0; draw(); }
+      else if ((b = e.target.closest("[data-qs]"))) { var v = b.getAttribute("data-qs"); size = size === v ? null : v; draw(); }
+      else if (e.target.closest("[data-qsample]")) sampleForm(p, cols[ci], size);
+    });
+    draw();
+  }
+  function field(id, label, val, extra) {
+    return '<label class="f" for="' + id + '"><span>' + label + '</span><input id="' + id + '"' + (val ? ' value="' + esc(val) + '"' : "") + (extra ? " " + extra : "") + '></label>';
+  }
+  function sampleForm(p, c, size) {
+    var M = modal('<form class="c-form sample-form" novalidate><span class="latin eyebrow">Sample request</span><h2>' + t("sampleH") + '</h2><p class="muted">' + t("sampleP") + '</p>' +
+      field("s-name", t("fName"), "", 'autocomplete="name" required') + field("s-co", t("fCo"), "", 'autocomplete="organization"') + field("s-city", t("fCity")) +
+      '<div class="f-row">' + field("s-model", t("fModel"), p ? (p.code || p.name) : "", 'dir="ltr" required') + field("s-size", t("size"), size || "", 'dir="ltr"') + '</div>' +
+      field("s-col", t("color"), c ? (EN ? colL(c) : c.name) : "") +
+      '<p class="err" hidden>' + t("sErr") + '</p>' + (digits(B.whatsapp) ? '<button class="btn wa block" type="submit">' + IC.wa + t("sendReq") + '</button>' : "") + '</form>', "form-modal");
+    M.el.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = function (i) { return M.el.querySelector("#" + i).value.trim(); };
+      if (!v("s-name") || !v("s-model")) { M.el.querySelector(".err").hidden = false; return; }
+      var msg = EN
+        ? "Hello VINTRO, I'd like to request a sample.\nName: " + v("s-name") + (v("s-co") ? "\nShop/company: " + v("s-co") : "") + (v("s-city") ? "\nCity: " + v("s-city") : "") + "\nModel: " + v("s-model") + (v("s-col") ? "\nColour: " + v("s-col") : "") + (v("s-size") ? "\nSize: " + v("s-size") : "")
+        : "مرحباً VINTRO، أرغب بطلب عيّنة.\nالاسم: " + v("s-name") + (v("s-co") ? "\nالمحل/الشركة: " + v("s-co") : "") + (v("s-city") ? "\nالمدينة: " + v("s-city") : "") + "\nالموديل: " + v("s-model") + (v("s-col") ? "\nاللون: " + v("s-col") : "") + (v("s-size") ? "\nالمقاس: " + v("s-size") : "");
+      var a = document.createElement("a"); a.href = waLink(msg); a.target = "_blank"; a.rel = "noopener"; document.body.appendChild(a); a.click(); a.remove(); M.close();
+    });
+  }
+  function catalogUrl(id) { return pageUrl("catalog") + "?id=" + encodeURIComponent(id); }
   function catsOf(list) { var c = []; list.forEach(function (p) { if (p.category && c.indexOf(p.category) < 0) c.push(p.category); }); return c; }
   function waLink(text) { var wa = digits(B.whatsapp); return wa ? "https://wa.me/" + wa + (text ? "?text=" + encodeURIComponent(text) : "") : ""; }
-  function phoneLabel(raw) { return EN ? (PLACES[raw] || raw) : raw; }
+  function phoneLabel(raw) { return EN ? place(PLACES[raw] || raw) : raw; }
 
+  function langMenu(cls) { return LANGS.map(function (l) { return '<li><button type="button" class="' + cls + '" data-lang="' + l[0] + '" lang="' + l[0] + '"' + (l[0] === LANG ? ' aria-current="true"' : "") + '>' + l[1] + '</button></li>'; }).join(""); }
   function header(current) {
     var top = LATEST.length ? LATEST[0].year : "";
-    var ann = EN ? (B.announcement_en || (B.announcement === "-" ? "-" : "")) : (B.announcement || "");
-    if (!ann) ann = EN ? "Wholesale only  ·  Collections " + top : "البيع بالجملة فقط  ·  مجموعات " + num(top);
+    var ann = EN ? (B["announcement_" + LANG] || (LANG === "en" || !X.ann ? B.announcement_en : "") || (B.announcement === "-" ? "-" : "")) : (B.announcement || "");
+    if (!ann) ann = EN ? (X.ann || "Wholesale only  ·  Collections ") + top : "البيع بالجملة فقط  ·  مجموعات " + num(top);
     if (ann !== "-") {
       var bar = document.createElement("div");
       bar.className = "ann"; bar.innerHTML = '<div class="pad">' + esc(ann) + '</div>';
@@ -258,7 +442,8 @@
     h.innerHTML = '<div class="head-in pad"><div class="start"><button class="ico-btn" id="open-menu" aria-label="' + t("menu") + '">' + IC.menu + '<span class="t">' + t("menu") + '</span></button>' +
       '<nav class="links" aria-label="' + t("menu") + '">' + NAV.map(function (n) { return '<a href="' + n.href + '"' + (current === n.id ? ' aria-current="page"' : "") + '>' + n.label + '</a>'; }).join("") + '</nav></div>' +
       '<a class="brand" href="' + d(ROOT) + '" aria-label="' + t("logoHome") + '"><span class="bm">' + logo("mark") + '</span><span class="bw">' + logo("word") + '</span></a>' +
-      '<div class="end"><button class="lang" id="lang" type="button" lang="' + (EN ? "ar" : "en") + '" aria-label="' + t("langName") + '" title="' + t("langName") + '">' + t("langCode") + '</button>' +
+      '<div class="end"><div class="lang-pick"><button class="lang" id="lang" type="button" aria-haspopup="true" aria-expanded="false" aria-label="' + t("language") + '" title="' + t("language") + '"><span lang="' + LANG + '">' + LANGS.filter(function (l) { return l[0] === LANG; })[0][2] + '</span></button>' +
+      '<ul class="lang-menu" id="lang-menu" hidden>' + langMenu("") + '</ul></div>' +
       '<button class="ico-btn" id="open-search" aria-label="' + t("search") + '">' + IC.search + '<span class="t">' + t("search") + '</span></button>' +
       '<a class="ico-btn" href="' + pageUrl("contact") + '" aria-label="' + t("contact") + '"' + (current === "contact" ? ' aria-current="page"' : "") + '>' + IC.phone + '<span class="t">' + t("contactShort") + '</span></a></div></div>';
     window.addEventListener("scroll", function () { h.classList.toggle("scrolled", window.scrollY > 4); }, { passive: true });
@@ -277,7 +462,7 @@
           ss.map(function (s) { return '<li><a href="' + seasonUrl(s.id) + '"' + (current === s.id ? ' aria-current="page"' : "") + '>' + s.label + ' <small>(' + num(countOf(s.id)) + ')</small></a></li>'; }).join("") + '</ul></details></li>';
       }).join("") +
       li("about", pageUrl("about"), t("aboutUs")) + li("wholesale", pageUrl("wholesale"), t("wholesaleFull")) + li("contact", pageUrl("contact"), t("contact")) + '</ul>' +
-      '<div class="drawer-foot"><button class="lang-row" type="button" data-lang>' + t("langName") + '</button>' +
+      '<div class="drawer-foot"><ul class="lang-list" aria-label="' + t("language") + '">' + langMenu("") + '</ul>' +
       [B.phone, B.phone2].filter(Boolean).map(function (ph) { return '<a class="ltr" ' + tel(ph) + '>' + esc(ph) + '</a>'; }).join("") +
       (waM ? '<a class="btn wa block" href="https://wa.me/' + waM + '" target="_blank" rel="noopener">' + IC.wa + t("wa") + '</a>' : "") + '</div></nav>';
     document.body.appendChild(menu);
@@ -298,7 +483,7 @@
     $("#q").addEventListener("input", function (e) {
       var q = e.target.value.trim().toLowerCase();
       var res = q ? P.filter(function (p) {
-        return [p.name, p.name_en, p.code, p.category, catL(p.category), p.fabric, p.fabric_en].concat(arr(p.colors).map(function (c) { return c.name + " " + colL(c) + " " + (c.name_en || ""); })).join(" ").toLowerCase().indexOf(q) >= 0;
+        return [p.name, p.name_en, px(p, "name"), p.code, p.category, catL(p.category), p.fabric, p.fabric_en].concat(arr(p.colors).map(function (c) { return c.name + " " + colL(c) + " " + (c.name_en || ""); })).join(" ").toLowerCase().indexOf(q) >= 0;
       }) : [];
       $("#q-res").innerHTML = res.slice(0, 24).map(card).join("");
       $("#q-hint").textContent = q ? (res.length ? cnt(res.length, "results") : t("noResults")) : t("searchHint");
@@ -306,26 +491,35 @@
   }
 
   /* switching language reloads the same page in the other language */
-  function switchLang() {
-    var other = EN ? "ar" : "en";
-    try { localStorage.setItem("vintro-lang", other); } catch (e) {}
-    var q = new URLSearchParams(location.search); q.set("lang", other);
+  function switchLang(code) {
+    if (!okLang(code) || code === LANG) return;
+    try { localStorage.setItem("vintro-lang", code); } catch (e) {}
+    var q = new URLSearchParams(location.search); q.set("lang", code);
     location.search = q.toString();
   }
+  function langPop(show) {
+    var m = $("#lang-menu"), b = $("#lang"); if (!m) return;
+    if (show === undefined) show = m.hidden;
+    m.hidden = !show; b.setAttribute("aria-expanded", show ? "true" : "false");
+  }
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") langPop(false); });
   document.addEventListener("click", function (e) {
-    if (e.target.closest("#lang, [data-lang]")) { e.preventDefault(); switchLang(); return; }
-    /* keep English while moving between pages, even when the browser blocks storage */
+    var lb = e.target.closest("[data-lang]");
+    if (lb) { e.preventDefault(); switchLang(lb.getAttribute("data-lang")); return; }
+    if (e.target.closest("#lang")) { e.preventDefault(); langPop(); return; }
+    if (!e.target.closest("#lang-menu")) langPop(false);
+    /* keep the chosen language while moving between pages, even when the browser blocks storage */
     var a = e.target.closest("a[href]"); if (!a || !EN) return;
     var h = a.getAttribute("href");
     if (!h || /^(https?:|mailto:|tel:|#|javascript:)/i.test(h) || /[?&]lang=/.test(h)) return;
     var hash = ""; var hi = h.indexOf("#"); if (hi >= 0) { hash = h.slice(hi); h = h.slice(0, hi); }
-    a.setAttribute("href", h + (h.indexOf("?") >= 0 ? "&" : "?") + "lang=en" + hash);
+    a.setAttribute("href", h + (h.indexOf("?") >= 0 ? "&" : "?") + "lang=" + LANG + hash);
   }, true);
 
   function footer() {
     var wa = digits(B.whatsapp);
     $("#foot").innerHTML = '<div class="foot-in pad"><div class="fbrand">' + logo("full") + '<p>' + esc(bt("tagline")) + '</p></div>' +
-      '<div><h4>' + t("collections") + '</h4><ul>' + LATEST.map(function (s) { return '<li><a href="' + seasonUrl(s.id) + '">' + s.label + '</a></li>'; }).join("") + '<li><a href="' + pageUrl("collections") + '">' + t("allCollections") + '</a></li></ul>' +
+      '<div><h4>' + t("collections") + '</h4><ul>' + LATEST.map(function (s) { return '<li><a href="' + seasonUrl(s.id) + '">' + s.label + '</a></li>'; }).join("") + '<li><a href="' + pageUrl("collections") + '">' + t("allCollections") + '</a></li>' + (LATEST.length ? '<li><a href="' + catalogUrl(LATEST[0].id) + '">' + t("catalog") + '</a></li>' : "") + '</ul>' +
       '<h4 style="margin-top:22px">' + t("company") + '</h4><ul><li><a href="' + pageUrl("about") + '">' + t("aboutUs") + '</a></li><li><a href="' + pageUrl("wholesale") + '">' + t("wholesaleFull") + '</a></li><li><a href="' + pageUrl("contact") + '">' + t("contact") + '</a></li></ul></div>' +
       '<div><h4>' + t("contact") + '</h4><ul>' +
       [B.phone, B.phone2].filter(Boolean).map(function (ph) { return '<li><a class="ltr" ' + tel(ph) + '>' + esc(ph) + '</a></li>'; }).join("") +
@@ -333,11 +527,14 @@
       '<div><h4>' + t("address") + '</h4><ul>' + (bt("address") ? '<li>' + esc(bt("address")) + '</li>' : "") +
       (B.instagram ? '<li><a class="ltr" href="https://instagram.com/' + esc(String(B.instagram).replace(/^@/, "")) + '" target="_blank" rel="noopener">Instagram</a></li>' : "") +
       (B.facebook ? '<li><a class="ltr" href="' + esc(B.facebook) + '" target="_blank" rel="noopener">Facebook</a></li>' : "") +
-      '<li><button class="lang-row" type="button" data-lang>' + t("langName") + '</button></li></ul></div></div>' +
+      '</ul><ul class="lang-list" aria-label="' + t("language") + '">' + langMenu("") + '</ul></div></div>' +
       '<div class="pad"><div class="foot-bot"><span>© ' + num(new Date().getFullYear()) + ' VINTRO. ' + t("rights") + '</span><span class="latin" style="font-size:.7rem">Ready-to-wear manufacturer</span></div></div>';
     if (wa && PAGE !== "model") {
       var a = document.createElement("a");
-      a.className = "wa-float"; a.href = "https://wa.me/" + wa; a.target = "_blank"; a.rel = "noopener"; a.setAttribute("aria-label", t("waUs")); a.innerHTML = IC.wa;
+      var first = String(bt("founder") || "").split(/\s+/)[0];
+      a.className = "wa-float"; a.href = "https://wa.me/" + wa; a.target = "_blank"; a.rel = "noopener"; a.setAttribute("aria-label", t("waUs"));
+      a.innerHTML = '<span class="wf-av">' + (B.founder_photo ? '<img src="' + esc(url(B.founder_photo)) + '" alt="">' : IC.wa) + '</span>' +
+        (first ? '<span class="wf-t"><b>' + esc(t("chatWith").indexOf("{n}") >= 0 ? t("chatWith").replace("{n}", first) : t("chatWith") + first) + '</b><small>' + t("salesRole") + '</small></span>' : "");
       document.body.appendChild(a);
     }
   }
@@ -360,42 +557,154 @@
     var top = LATEST.length ? LATEST[0].year : new Date().getFullYear();
     document.title = "VINTRO";
     var inLatest = function (p) { return LATEST.some(function (s) { return s.id === p.season; }); };
+    var latest = P.filter(inLatest);
     var featured = P.filter(function (p) { return p.featured; });
-    if (featured.length < 4) featured = featured.concat(P.filter(function (p) { return featured.indexOf(p) < 0 && inLatest(p); })).slice(0, 10);
+    if (featured.length < 4) featured = featured.concat(latest.filter(function (p) { return featured.indexOf(p) < 0; })).slice(0, 12);
     var older = SEASONS.filter(function (s) { return s.year !== top; });
-    var wa = digits(B.whatsapp);
-    $("#main").innerHTML =
-      '<section class="opening" aria-label="VINTRO">' + lines() + '<div class="op-in pad">' +
-        '<span class="op-logo">' + logo("full") + '</span>' +
-        '<span class="op-eyebrow latin">Collections ' + top + '</span>' +
-        '<h1>' + esc(bt("headline")) + '</h1>' + (bt("tagline") ? '<p>' + esc(bt("tagline")) + '</p>' : "") +
-        '<div class="op-btns"><a class="btn gold" href="' + pageUrl("collections") + '">' + t("discover") + '</a><a class="btn light" href="' + pageUrl("contact") + '">' + t("contact") + '</a></div>' +
-        '</div><a class="op-down" href="#seasons" aria-label="' + t("scrollDown") + '"><span></span></a></section>' +
-      '<section class="hero' + (LATEST.length === 1 ? " one" : "") + '" id="seasons" aria-label="' + t("collections") + '">' + LATEST.slice(0, 2).map(function (s) {
-        var cover = s.cover, n = countOf(s.id);
-        return '<a class="panel ' + s.cls + (cover ? " has-img" : "") + '" href="' + seasonUrl(s.id) + '"><div class="media">' + (cover ? '<img src="' + esc(url(cover)) + '" alt="">' : lines()) + '</div>' +
-          (cover ? "" : '<span class="mark">' + logo("mark") + '</span>') +
-          '<div class="cap fade"><span class="latin">' + s.latin + '</span><span class="ar">' + esc(s.intro) + '</span><span class="go">' + t("explore") + cnt(n, "models") + '</span></div></a>';
-      }).join("") + '</section>' +
-      (featured.length ? '<section class="sec pad" style="padding-top:56px">' + secHead("New In", t("newIn"), '<a class="link-u" href="' + pageUrl("collections") + '">' + t("allCollections") + '</a>') + '<div class="strip">' + featured.map(card).join("") + '</div></section>' : "") +
-      LATEST.map(function (s) {
-        var cats = catsOf(P.filter(function (p) { return p.season === s.id; }));
-        return cats.length ? '<section class="sec pad" style="padding-top:24px">' + secHead(s.latin, s.label, '<a class="link-u" href="' + seasonUrl(s.id) + '">' + t("allModels") + '</a>') + '<div class="cats">' +
-          cats.map(function (c) { var n = P.filter(function (p) { return p.season === s.id && p.category === c; }).length; return '<a href="' + seasonUrl(s.id, c) + '"><strong>' + esc(catL(c)) + '</strong><span>' + cnt(n, "models") + '</span></a>'; }).join("") + '</div></section>' : "";
-      }).join("") +
-      (older.length ? '<section class="sec pad" style="padding-top:24px">' + secHead("Archive", t("archive"), '<a class="link-u" href="' + pageUrl("collections") + '">' + t("allCollections") + '</a>') + '<div class="arch">' +
+    var wa = digits(B.whatsapp), used = [];
+    function pick(list, n) { /* models with a clean main shot first, each used once on the page */
+      var a = list.filter(function (p) { return used.indexOf(p) < 0 && imagesOf(p).length; });
+      a.sort(function (x, y) { return hasCrop(heroImg(y)) - hasCrop(heroImg(x)); });
+      a = a.slice(0, n); used = used.concat(a); return a;
+    }
+
+    /* 1. opening: the photo or video chosen in the CMS (e.g. the factory from a drone); until then, three models */
+    var media, himg = B.hero_image, hvid = B.hero_video;
+    if (himg || hvid) media = '<div class="hx-media">' + (hvid ? '<video autoplay muted loop playsinline' + (himg ? ' poster="' + esc(url(himg)) + '"' : "") + ' src="' + esc(url(hvid)) + '"></video>' : '<img src="' + esc(url(himg)) + '" alt="" fetchpriority="high">') + '</div>';
+    else {
+      var cats0 = {}, heroP = [];
+      latest.forEach(function (p) { if (!cats0[p.category] && hasCrop(heroImg(p))) { cats0[p.category] = 1; heroP.push(p); } });
+      heroP = heroP.concat(pick(latest, 4)).filter(function (p, i, a) { return a.indexOf(p) === i; }).slice(0, 4);
+      used = used.concat(heroP);
+      media = '<div class="hx-tiles">' + heroP.map(function (p, i) { return '<div class="hx-tile">' + pic(heroImg(p), .62, "", i > 0) + '</div>'; }).join("") + '</div>';
+    }
+    var hero = '<section class="hx' + (himg || hvid ? " has-media" : "") + '" aria-label="VINTRO">' + media + '<div class="hx-shade"></div>' +
+      '<div class="hx-in pad"><span class="hx-eyebrow latin">VINTRO · Collections ' + top + '</span><h1>' + esc(bt("headline")) + '</h1>' +
+      (bt("tagline") ? '<p>' + esc(bt("tagline")) + '</p>' : "") +
+      '<div class="op-btns"><a class="btn gold" href="' + pageUrl("collections") + '">' + t("discover") + '</a><a class="btn light" href="' + pageUrl("wholesale") + '">' + t("howOrder") + '</a></div></div>' +
+      '<div class="hx-foot pad latin" dir="ltr"><span>Ready-to-wear</span><span>Made in Egypt</span><span>Wholesale &amp; export</span></div>' +
+      '<a class="op-down" href="#seasons" aria-label="' + t("scrollDown") + '"><span></span></a></section>';
+
+    /* 2. a moving ribbon of words */
+    var words = ["Ready-to-wear", "Made in Egypt"].concat(LATEST.map(function (s) { return s.latin; })).concat(["Wholesale & export", "Knitwear"]);
+    var once = words.map(function (w) { return '<span>' + esc(w) + '</span><i>' + logo("mark") + '</i>'; }).join("");
+    var ribbon = '<div class="mq latin" aria-hidden="true"><div class="mq-track">' + once + once + '</div></div>';
+
+    /* 3. the season panels; a season without a cover shows two of its photos */
+    function panelMedia(s) {
+      if (s.cover) return '<img src="' + esc(url(s.cover)) + '" alt="">';
+      var two = P.filter(function (p) { return p.season === s.id; }).map(function (p) { return imagesOf(p)[0]; }).filter(function (im) { return im && !hasCrop(im); }).slice(0, 2);
+      return two.length === 2 ? '<div class="duo">' + two.map(function (im) { return '<img src="' + esc(url(im)) + '" alt="" loading="lazy">'; }).join("") + '</div>' : lines();
+    }
+    var panels = '<section class="hero' + (LATEST.length === 1 ? " one" : "") + '" id="seasons" aria-label="' + t("collections") + '">' + LATEST.slice(0, 2).map(function (s) {
+      var pm = panelMedia(s), img = /<img/.test(pm);
+      return '<a class="panel ' + s.cls + (img ? " has-img" : "") + '" href="' + seasonUrl(s.id) + '"><div class="media">' + pm + '</div>' +
+        (img ? "" : '<span class="mark">' + logo("mark") + '</span>') +
+        '<div class="cap"><span class="latin">' + s.latin + '</span><span class="ar">' + esc(s.intro) + '</span><span class="go">' + t("explore") + cnt(countOf(s.id), "models") + '</span></div></a>';
+    }).join("") + '</section>';
+
+    /* 4. newest models on a rail with arrows */
+    var rail = featured.length ? '<section class="sec pad" style="padding-top:72px">' + secHead("New In", t("newIn"), '<a class="link-u" href="' + pageUrl("collections") + '">' + t("allCollections") + '</a>') +
+      '<div class="rail"><div class="strip big">' + featured.map(card).join("") + '</div>' +
+      '<div class="rail-ctl"><button type="button" class="r-btn" data-rail="-1" aria-label="' + t("prev") + '"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="r-bar"><i></i></span>' +
+      '<button type="button" class="r-btn" data-rail="1" aria-label="' + t("next") + '"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button></div></div></section>' : "";
+
+    /* 5. categories as photo tiles */
+    var byCat = {}, catOrder = [];
+    latest.forEach(function (p) { if (!p.category) return; if (!byCat[p.category]) { byCat[p.category] = []; catOrder.push(p.category); } byCat[p.category].push(p); });
+    catOrder.sort(function (a, b) { return byCat[b].length - byCat[a].length; });
+    var tiles = catOrder.length > 1 ? '<section class="sec pad">' + secHead("Categories", t("shopBy")) + '<div class="ctiles n' + Math.min(catOrder.length, 5) + '">' + catOrder.map(function (c) {
+      var list = byCat[c], rep = pick(list, 1)[0] || list[0], cnts = {};
+      list.forEach(function (p) { cnts[p.season] = (cnts[p.season] || 0) + 1; });
+      var sid = Object.keys(cnts).sort(function (a, b) { return cnts[b] - cnts[a]; })[0];
+      return '<a class="ctile" href="' + seasonUrl(sid, c) + '"><div class="ct-m">' + (imagesOf(rep).length ? pic(heroImg(rep), .75, "", true) : art(rep, hexOf(arr(rep.colors)[0]))) + '</div>' +
+        '<div class="ct-t"><strong>' + esc(catL(c)) + '</strong><span>' + cnt(list.length, "models") + '</span></div></a>';
+    }).join("") + '</div></section>' : "";
+
+    /* 6. one editorial block per season, like a magazine spread */
+    var edits = LATEST.map(function (s, i) {
+      var two = pick(P.filter(function (p) { return p.season === s.id; }), 2);
+      if (!two.length) return "";
+      var a = two[0], b = two[1];
+      return '<section class="edit' + (i % 2 ? " flip" : "") + '"><a class="ed-big" href="' + esc(modelUrl(a)) + '">' + pic(heroImg(a), .8, px(a, "name"), true) + '</a>' +
+        '<div class="ed-txt"><span class="latin eyebrow">The ' + (s.type === "summer" ? "Summer" : "Winter") + ' Edit</span><h2>' + s.label + '</h2><p>' + esc(s.intro) + '</p>' +
+        (b ? '<a class="ed-small" href="' + esc(modelUrl(b)) + '"><span class="ed-m">' + pic(heroImg(b), .8, px(b, "name"), true) + '</span><span class="ed-cap"><b>' + esc(px(b, "name")) + '</b><small class="ltr">' + esc(b.code || "") + '</small></span></a>' : "") +
+        '<div class="band-btns"><a class="btn solid" href="' + seasonUrl(s.id) + '">' + t("browse") + s.label + '</a><a class="btn" href="' + catalogUrl(s.id) + '">' + t("dlCatalog") + '</a></div></div></section>';
+    }).join("");
+
+    /* 7. catalogue download */
+    var catBand = LATEST.length ? '<section class="band cat-band"><div class="pad band-in"><div><span class="latin">Catalogue ' + top + '</span><h2>' + t("catalogH") + '</h2><p>' + t("catalogP") + '</p></div><div class="band-btns">' +
+      LATEST.map(function (s) { return '<a class="btn light" href="' + catalogUrl(s.id) + '">' + t("dlCatalog") + ' · ' + s.label + '</a>'; }).join("") + '</div></div></section>' : "";
+
+    $("#main").innerHTML = hero + ribbon + panels + rail + tiles + edits + factory() + catBand +
+      (older.length ? '<section class="sec pad" style="padding-top:72px">' + secHead("Archive", t("archive"), '<a class="link-u" href="' + pageUrl("collections") + '">' + t("allCollections") + '</a>') + '<div class="arch">' +
         older.map(function (s) {
           return '<a class="arch-card ' + s.cls + '" href="' + seasonUrl(s.id) + '"><div class="am">' + (s.cover ? '<img src="' + esc(url(s.cover)) + '" alt="" loading="lazy">' : lines() + '<span class="mark">' + logo("mark") + '</span>') + '</div>' +
             '<div class="at">' + (EN ? "" : '<span class="latin">' + s.latin + '</span>') + '<strong>' + s.label + '</strong><small>' + cnt(countOf(s.id), "models") + '</small></div></a>';
         }).join("") + '</div></section>' : "") +
-      '<section class="sec pad" id="about" style="padding-block:88px"><div class="about"><div class="txt"><span class="eyebrow latin">About VINTRO</span><h2 style="font-size:clamp(1.6rem,3vw,2.3rem)">' + t("aboutUs") + '</h2><p>' + esc(bt("about")) + '</p><a class="link-u" style="justify-self:start" href="' + pageUrl("about") + '">' + t("readMore") + '</a>' +
-      (bt("founder") ? '<div class="founder"><span class="m">' + logo("mark") + '</span><div><b>' + esc(bt("founder")) + '</b><small>' + esc(bt("founder_title")) + '</small></div></div>' : "") + '</div>' +
-      '<div class="contact-card" id="contact"><h3>' + t("contact") + '</h3><dl>' +
+      '<section class="sec pad" id="about" style="padding-block:96px"><div class="about"><div class="txt"><span class="eyebrow latin">About VINTRO</span><h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">' + t("aboutUs") + '</h2><p>' + esc(bt("about")) + '</p><a class="link-u" style="justify-self:start" href="' + pageUrl("about") + '">' + t("readMore") + '</a>' +
+      founderCard() + '</div>' +
+      '<div class="contact-card" id="contact">' + lines() + '<h3>' + t("contact") + '</h3><dl>' +
       [[B.phone, B.phone_label], [B.phone2, B.phone2_label]].filter(function (x) { return x[0]; }).map(function (x) { return '<div><dt class="latin">' + esc(EN ? (phoneLabel(x[1]) || "Phone") : (x[1] || "Phone")) + '</dt><dd><a class="ltr" ' + tel(x[0]) + '>' + esc(x[0]) + '</a></dd></div>'; }).join("") +
       [B.email, B.email2].filter(Boolean).map(function (m) { return '<div><dt class="latin">Email</dt><dd><a class="ltr" href="mailto:' + esc(m) + '">' + esc(m) + '</a></dd></div>'; }).join("") +
       (bt("address") ? '<div><dt class="latin">Address</dt><dd>' + esc(bt("address")) + '</dd></div>' : "") + '</dl>' +
       (wa ? '<a class="btn wa block" href="https://wa.me/' + wa + '" target="_blank" rel="noopener">' + IC.wa + t("waUs") + '</a>' : "") + '</div></div></section>';
+    rails();
     if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) setTimeout(function () { el.scrollIntoView(); }, 50); }
+  }
+
+  /* arrows and progress bar under a row of cards */
+  function rails() {
+    document.querySelectorAll(".rail").forEach(function (r) {
+      var st = r.querySelector(".strip"), bar = r.querySelector(".r-bar i"); if (!st) return;
+      function upd() { var m = st.scrollWidth - st.clientWidth, f = m > 0 ? Math.abs(st.scrollLeft) / m : 1; bar.style.width = Math.max(12, Math.round((st.clientWidth / st.scrollWidth) * 100)) + "%"; bar.style.insetInlineStart = (f * (100 - parseFloat(bar.style.width))) + "%"; r.classList.toggle("no-ctl", m <= 2); }
+      st.addEventListener("scroll", upd, { passive: true }); window.addEventListener("resize", upd); upd();
+      r.addEventListener("click", function (e) { var b = e.target.closest("[data-rail]"); if (!b) return; st.scrollBy({ left: +b.getAttribute("data-rail") * st.clientWidth * .85 * (EN ? 1 : -1), behavior: "smooth" }); });
+    });
+  }
+  /* the founder, with a photo when one is added in the CMS */
+  function founderCard() {
+    if (!bt("founder")) return "";
+    return '<div class="founder"><span class="m">' + (B.founder_photo ? '<img src="' + esc(url(B.founder_photo)) + '" alt="">' : logo("mark")) + '</span><div><b>' + esc(bt("founder")) + '</b><small>' + esc(bt("founder_title")) + '</small></div></div>';
+  }
+  /* "inside our factory": shown only once there are photos, numbers or text for it in the CMS */
+  function factory() {
+    var imgs = arr(B.factory_images).filter(Boolean), stats = arr(B.stats).filter(function (x) { return x && x.value; }), txt = bt("factory_text");
+    if (!imgs.length && !stats.length && !txt) return "";
+    return '<section class="fx"><div class="pad fx-in"><div class="fx-txt"><span class="latin eyebrow">Inside the factory</span><h2>' + t("factoryH") + '</h2>' + (txt ? '<p>' + esc(txt) + '</p>' : "") +
+      (stats.length ? '<dl class="stats">' + stats.map(function (x, i) { return '<div><dt class="ltr">' + esc(x.value) + '</dt><dd>' + esc(vt(x, "label", i, "stats")) + '</dd></div>'; }).join("") + '</dl>' : "") + '</div>' +
+      (imgs.length ? '<div class="fx-pics n' + Math.min(imgs.length, 3) + '">' + imgs.slice(0, 3).map(function (im) { return '<div class="fx-pic"><img src="' + esc(url(im)) + '" alt="" loading="lazy"></div>'; }).join("") + '</div>' : "") + '</div></section>';
+  }
+
+  /* ---------- printable catalogue: every model of a season, six to a page ---------- */
+  function catalog() {
+    var id = normSeason(QS.get("id") || (LATEST[0] && LATEST[0].id) || ""), s = seasonOf(id);
+    if (!s) { $("#main").innerHTML = '<div class="loading pad">' + t("notFoundColl") + ' <a class="link-u" href="' + pageUrl("collections") + '">' + t("allCollections") + '</a></div>'; return; }
+    var items = P.filter(function (p) { return p.season === s.id; });
+    document.title = t("catalogH") + " · " + s.label + " — VINTRO";
+    function item(p) {
+      var cols = arr(p.colors), im = heroImg(p), name = px(p, "name");
+      return '<article class="ci"><div class="ci-m">' + (im ? pic(im, .78, name, false) : art(p, hexOf(cols[0] || {}))) + '</div><div class="ci-t">' +
+        '<b class="ltr">' + esc(p.code || "") + '</b><strong>' + esc(name) + '</strong>' +
+        '<span class="ci-c">' + cols.map(function (c) { return '<i style="background:' + esc(hexOf(c)) + '"></i>'; }).join("") + '</span>' +
+        '<small>' + esc(cols.map(colL).join(" · ")) + '</small>' + (arr(p.sizes).length ? '<small class="ltr">' + esc(arr(p.sizes).join(" · ")) + '</small>' : "") + '</div></article>';
+    }
+    var pages = [];
+    for (var i = 0; i < items.length; i += 6) pages.push(items.slice(i, i + 6));
+    var contact = [B.whatsapp ? "WhatsApp " + B.whatsapp : "", B.email || ""].filter(Boolean);
+    $("#main").innerHTML =
+      '<div class="cat-tools pad"><div><span class="latin eyebrow">Catalogue</span><h1>' + t("catalogH") + '</h1><p class="muted">' + t("pdfHint") + '</p></div><div class="band-btns">' +
+      '<select id="cat-s" aria-label="' + t("season") + '">' + SEASONS.map(function (x) { return '<option value="' + x.id + '"' + (x.id === s.id ? " selected" : "") + '>' + x.label + '</option>'; }).join("") + '</select>' +
+      '<button class="btn solid" type="button" id="cat-print">' + t("savePdf") + '</button></div></div>' +
+      '<div class="book">' +
+      '<section class="sheet cover">' + lines() + '<div class="cv-in"><span class="cv-logo">' + logo("full") + '</span><span class="latin cv-l">' + s.latin + '</span><h2>' + s.label + '</h2>' + (s.intro ? '<p>' + esc(s.intro) + '</p>' : "") + '<span class="cv-n">' + cnt(items.length, "models") + '</span></div>' +
+      '<div class="cv-foot">' + contact.map(function (c) { return '<span class="ltr">' + esc(c) + '</span>'; }).join("") + (bt("address") ? '<span>' + esc(bt("address")) + '</span>' : "") + '</div></section>' +
+      pages.map(function (pg, n) {
+        return '<section class="sheet"><header class="sh-head"><span class="sh-logo">' + logo("word") + '</span><span>' + s.label + '</span></header><div class="sh-grid">' + pg.map(item).join("") + '</div>' +
+          '<footer class="sh-foot"><span class="ltr">' + esc(contact.join("  ·  ")) + '</span><span>' + num(n + 2) + '</span></footer></section>';
+      }).join("") + '</div>';
+    $("#cat-print").addEventListener("click", function () { window.print(); });
+    $("#cat-s").addEventListener("change", function (e) { var q = new URLSearchParams(location.search); q.set("id", e.target.value); location.search = q.toString(); });
   }
 
   function collection() {
@@ -405,7 +714,7 @@
     var items = P.filter(function (p) { return p.season === s.id; }), cats = catsOf(items);
     var cat = QS.get("cat") || "all"; if (cat !== "all" && cats.indexOf(cat) < 0) cat = "all";
     var big = false; try { big = localStorage.getItem("vintro-view") === "2"; } catch (e) {}
-    $("#main").innerHTML = '<header class="col-head pad">' + (EN ? '<span class="latin">' + t("collections") + '</span>' : '<span class="latin">' + s.latin + '</span>') + '<h1>' + s.label + '</h1>' + (s.intro ? '<p>' + esc(s.intro) + '</p>' : "") + '</header>' +
+    $("#main").innerHTML = '<header class="col-head pad">' + (EN ? '<span class="latin">' + t("collections") + '</span>' : '<span class="latin">' + s.latin + '</span>') + '<h1>' + s.label + '</h1>' + (s.intro ? '<p>' + esc(s.intro) + '</p>' : "") + (items.length ? '<a class="link-u col-cat" href="' + catalogUrl(s.id) + '">' + t("dlCatalog") + '</a>' : "") + '</header>' +
       '<div class="toolbar"><div class="toolbar-in pad"><div class="filters" role="group" aria-label="' + t("typeFilter") + '"></div><span class="count" id="count"></span>' +
       '<div class="view" role="group" aria-label="' + t("view") + '"><button data-view="2" aria-label="' + t("bigView") + '">' + IC.g2 + '</button><button data-view="4" aria-label="' + t("smallView") + '">' + IC.g4 + '</button></div></div></div>' +
       '<section class="grid pad" id="grid" aria-live="polite"></section>';
@@ -444,9 +753,7 @@
       var pics = imgs.length ? imgs.map(function (im, i) { return '<div class="pic' + (i === ii ? " on" : "") + '"><img src="' + esc(url(im)) + '" alt="' + esc(name + " — " + cn + " " + (i + 1)) + '"' + (i ? ' loading="lazy"' : "") + '></div>'; }).join("")
         : '<div class="pic on">' + art(p, hexOf(c)) + '</div>';
       var thumbs = imgs.length > 1 ? '<div class="thumbs">' + imgs.map(function (im, i) { return '<button data-i="' + i + '" aria-pressed="' + (i === ii) + '" aria-label="' + t("image") + num(i + 1) + '"><img src="' + esc(url(im)) + '" alt=""></button>'; }).join("") + '</div>' : "";
-      var msg = EN
-        ? "Hello VINTRO, I'd like to ask about model " + (p.code || name) + " (" + name + ")" + (cn ? "\nColour: " + cn : "") + (size ? "\nSize: " + size : "")
-        : "مرحباً VINTRO، أرغب بالاستفسار عن الموديل " + (p.code || p.name) + " (" + p.name + ")" + (c.name ? "\nاللون: " + c.name : "") + (size ? "\nالمقاس: " + size : "");
+      var msg = askMsg(p, c, size);
       var desc = px(p, "description"), fabric = px(p, "fabric"), minO = px(p, "min_order");
       $("#main").innerHTML = '<nav class="crumbs pad" aria-label="' + t("path") + '"><a href="' + d(ROOT) + '">' + t("home") + '</a> / <a href="' + seasonUrl(s.id) + '">' + s.label + '</a>' +
         (p.category ? ' / <a href="' + seasonUrl(s.id, p.category) + '">' + esc(catL(p.category)) + '</a>' : "") + '</nav>' +
@@ -459,7 +766,8 @@
         }).join("") + '</div></div>' : "") +
         (sizes.length ? '<div><div class="opt-label"><span>' + t("size") + '</span><b>' + esc(size || t("pickSize")) + '</b></div><div class="sizes" dir="ltr">' + sizes.map(function (z) { return '<button data-s="' + esc(z) + '" aria-pressed="' + (z === size) + '">' + esc(z) + '</button>'; }).join("") + '</div></div>' : "") +
         '<div class="cta">' + (wa ? '<a class="btn wa block" href="https://wa.me/' + wa + '?text=' + encodeURIComponent(msg) + '" target="_blank" rel="noopener">' + IC.wa + t("orderWa") + '</a>' : "") +
-        (B.email ? '<a class="btn block" href="mailto:' + esc(B.email) + '?subject=' + encodeURIComponent((EN ? "Enquiry about " : "استفسار عن ") + (p.code || name)) + '&body=' + encodeURIComponent(msg) + '">' + t("mailUs") + '</a>' : "") +
+        '<button class="btn block" type="button" id="ask-sample">' + t("sample") + '</button>' +
+        (B.email ? '<a class="link-u mail-l" href="mailto:' + esc(B.email) + '?subject=' + encodeURIComponent((EN ? "Enquiry about " : "استفسار عن ") + (p.code || name)) + '&body=' + encodeURIComponent(msg) + '">' + t("mailUs") + '</a>' : "") +
         '<p class="note">' + t("wsNote") + '</p></div>' +
         '<div>' + (desc ? '<details class="acc" open><summary>' + t("desc") + '</summary><div class="in">' + esc(desc) + '</div></details>' : "") +
         '<details class="acc"' + (desc ? "" : " open") + '><summary>' + t("details") + '</summary><div class="in"><dl class="specs">' +
@@ -484,6 +792,7 @@
     document.addEventListener("click", function (e) {
       var tb = e.target.closest("[data-i]"); if (tb) { ii = +tb.getAttribute("data-i"); var y0 = window.scrollY; draw(); window.scrollTo(0, y0); return; }
       var cb = e.target.closest("[data-c]"); if (cb) { ci = +cb.getAttribute("data-c"); ii = 0; var y = window.scrollY; draw(); window.scrollTo(0, y); return; }
+      if (e.target.closest("#ask-sample")) { sampleForm(p, cols[ci], size); return; }
       var sb = e.target.closest("[data-s]"); if (sb) { var v = sb.getAttribute("data-s"); size = size === v ? null : v; var y2 = window.scrollY; draw(); window.scrollTo(0, y2); }
     });
     draw();
@@ -519,13 +828,12 @@
   function about() {
     document.title = t("aboutUs") + " — VINTRO";
     var values = arr(B.values).filter(function (v) { return v && v.title; }).map(function (v, i) {
-      var dv = EN_DEFAULT.values[i] || {};
-      return EN ? { title: v.title_en || dv.title || v.title, text: v.text_en || dv.text || v.text } : v;
+      return { title: vt(v, "title", i, "values"), text: vt(v, "text", i, "values") };
     });
     $("#main").innerHTML = pageHead("About VINTRO", t("aboutUs"), bt("tagline")) +
       '<section class="pad about-hero"><div class="ab-mark">' + lines() + logo("full") + '</div><div class="ab-txt"><p class="big">' + esc(bt("headline")) + '</p><p>' + esc(bt("about")) + '</p>' +
       (bt("story") ? '<p>' + esc(bt("story")) + '</p>' : "") +
-      (bt("founder") ? '<div class="founder"><span class="m">' + logo("mark") + '</span><div><b>' + esc(bt("founder")) + '</b><small>' + esc(bt("founder_title")) + '</small></div></div>' : "") + '</div></section>' +
+      founderCard() + '</div></section>' + factory() +
       (values.length ? '<section class="sec pad">' + secHead("What we stand for", t("valuesH")) + '<div class="values">' +
         values.map(function (v) { return '<div class="value"><span class="vm">' + logo("mark") + '</span><h3>' + esc(v.title) + '</h3><p>' + esc(v.text || "") + '</p></div>'; }).join("") + '</div></section>' : "") +
       '<section class="band"><div class="pad band-in"><div><span class="latin">Wholesale</span><h2>' + t("bandH") + '</h2><p>' + t("bandP") + '</p></div><div class="band-btns"><a class="btn light" href="' + pageUrl("wholesale") + '">' + t("howOrder") + '</a>' +
@@ -534,7 +842,7 @@
 
   function wholesale() {
     document.title = t("wholesaleFull") + " — VINTRO";
-    var steps = EN ? [
+    var steps = (LANG !== "ar" && LANG !== "en" && X.steps) || (EN ? [
       ["Choose your models", "Browse the collections and note the model numbers you're interested in."],
       ["Send your order", "Send us each model number with the colours, sizes and quantities you need."],
       ["Get a quote", "We reply with a price and delivery date based on quantity and model."],
@@ -544,10 +852,9 @@
       ["أرسل طلبك", "أرسل لنا رقم كل موديل مع الألوان والمقاسات والكمية المطلوبة."],
       ["عرض السعر", "نرسل لك عرض سعر وموعد تسليم حسب الكمية والموديل."],
       ["التصنيع والتسليم", "بعد التأكيد نبدأ الإنتاج ونتابع معك حتى استلام الطلبية."]
-    ];
+    ]);
     var faq = arr(B.faq).filter(function (f) { return f && f.q; }).map(function (f, i) {
-      var df = EN_DEFAULT.faq[i] || {};
-      return EN ? { q: f.q_en || df.q || f.q, a: f.a_en || df.a || f.a } : f;
+      return { q: vt(f, "q", i, "faq"), a: vt(f, "a", i, "faq") };
     });
     var tpl = EN ? "Name / shop name:\nCity and country:\n\nModel number:\nColours:\nSizes and quantity:\n\nModel number:\nColours:\nSizes and quantity:"
       : "الاسم / اسم المحل:\nالمدينة والبلد:\n\nرقم الموديل:\nالألوان:\nالمقاسات والكمية:\n\nرقم الموديل:\nالألوان:\nالمقاسات والكمية:";
@@ -556,7 +863,10 @@
       '<section class="sec pad"><div class="ws-grid"><div>' + secHead("Order template", t("tplH")) +
       '<p class="muted">' + t("tplP") + '</p><pre class="tpl" id="tpl">' + esc(tpl) + '</pre>' +
       '<div class="band-btns">' + (waLink() ? '<a class="btn wa" id="tpl-wa" href="#" target="_blank" rel="noopener">' + IC.wa + t("sendWa") + '</a>' : "") + '<button class="btn" id="tpl-copy" type="button">' + t("copyTpl") + '</button></div></div>' +
-      (faq.length ? '<div>' + secHead("FAQ", t("faqH")) + faq.map(function (f, i) { return '<details class="acc"' + (i ? "" : " open") + '><summary>' + esc(f.q) + '</summary><div class="in">' + esc(f.a || "") + '</div></details>'; }).join("") + '</div>' : "") + '</div></section>';
+      (faq.length ? '<div>' + secHead("FAQ", t("faqH")) + faq.map(function (f, i) { return '<details class="acc"' + (i ? "" : " open") + '><summary>' + esc(f.q) + '</summary><div class="in">' + esc(f.a || "") + '</div></details>'; }).join("") + '</div>' : "") + '</div></section>' +
+      '<section class="smp"><div class="pad smp-in"><div><span class="latin">Samples</span><h2>' + t("sampleH") + '</h2><p>' + t("sampleP") + '</p></div><div class="band-btns">' +
+      '<button class="btn gold" type="button" id="ws-sample">' + t("sample") + '</button>' + (LATEST.length ? '<a class="btn light" href="' + catalogUrl(LATEST[0].id) + '">' + t("dlCatalog") + '</a>' : "") + '</div></div></section>';
+    $("#ws-sample").addEventListener("click", function () { sampleForm(null, null, null); });
     var w = $("#tpl-wa");
     if (w) w.href = waLink((EN ? "Hello VINTRO, I'd like to place an order:\n\n" : "مرحباً VINTRO، أرغب بتقديم طلبية:\n\n") + tpl);
     $("#tpl-copy").addEventListener("click", function (e) {
@@ -606,16 +916,29 @@
       s.onerror = fail; document.head.appendChild(s);
     });
   }
-  ((LOCAL || FRAMED) ? loadPreview() : Promise.all([getJSON("data/brand.json"),
+  /* Turkish, German, French and Italian load their texts first; if the file can't load, the page shows in English */
+  function loadScript(src) { return new Promise(function (ok) { var sc = document.createElement("script"); sc.src = ROOT + src; sc.onload = sc.onerror = function () { ok(); }; document.head.appendChild(sc); }); }
+  function loadCrops() { return loadScript("assets/crops.js?v=1").then(function () { CROPS = window.VINTRO_CROPS || {}; }); }
+  function loadLang() {
+    if (LANG === "ar" || LANG === "en") return Promise.resolve();
+    return new Promise(function (ok) {
+      var s = document.createElement("script"); s.src = ROOT + "assets/i18n.js?v=1";
+      s.onload = s.onerror = function () {
+        X = (window.VINTRO_I18N && window.VINTRO_I18N[LANG]) || {}; XD = X.defaults || {}; ok();
+      };
+      document.head.appendChild(s);
+    });
+  }
+  Promise.all([loadLang(), loadCrops()]).then(function () { return (LOCAL || FRAMED) ? loadPreview() : Promise.all([getJSON("data/brand.json"),
     /* models live in data/catalog.json ({ "models": [...] }); the older data/products.json is read only if that file is missing */
     getJSON("data/catalog.json").then(function (c) { if (!c || !Array.isArray(c.models)) throw 0; return c.models; }).catch(function () { return getJSON("data/products.json"); }),
-    getJSON("data/collections.json").catch(function () { return []; })])).then(function (res) {
+    getJSON("data/collections.json").catch(function () { return []; })]); }).then(function (res) {
     B = res[0] || {}; P = arr(res[1]).filter(function (p) { return p && p.name; });
     P.forEach(function (p) { p.season = normSeason(p.season); });
     buildSeasons(res[2]);
     var qid = QS.get("id");
     header(PAGE === "season" ? (document.body.getAttribute("data-season") || qid) : (PAGE === "collections" && qid) ? qid : PAGE);
-    var R = { home: home, season: collection, model: model, collections: collections, about: about, wholesale: wholesale, contact: contact };
+    var R = { home: home, season: collection, model: model, collections: collections, about: about, wholesale: wholesale, contact: contact, catalog: catalog };
     (R[PAGE] || home)();
     footer();
     reveal();
