@@ -65,7 +65,8 @@
     catalogP: ["كل موديلات الموسم في ملف واحد مرتّب، جاهز للطباعة أو للحفظ PDF وإرساله لشركائك.", "Every model of the season in one tidy file, ready to print or save as a PDF and share with your partners."],
     savePdf: ["حفظ PDF أو طباعة", "Save as PDF or print"], pdfHint: ["اضغط الزر، ثم اختر «حفظ بصيغة PDF» من نافذة الطباعة.", "Press the button, then choose “Save as PDF” in the print window."],
     factoryH: ["من داخل مصنعنا", "Inside our factory"], chatWith: ["تحدّث مع ", "Chat with "], salesRole: ["مبيعات الجملة", "Wholesale sales"],
-    prev: ["السابق", "Previous"], next: ["التالي", "Next"], editOf: ["مختارات ", "The edit · "], language: ["اللغة", "Language"], logoHome: ["VINTRO — الرئيسية", "VINTRO — Home"]
+    prev: ["السابق", "Previous"], colorsH: ["ألوان الموسم", "Colours of the season"],
+    colorsP: ["كل لون هنا موجود بموديلات حقيقية من المجموعة. اضغط على أي لون لتشوف موديلاً منه.", "Every colour here comes from real models in the collection. Tap a colour to see a model in it."], next: ["التالي", "Next"], editOf: ["مختارات ", "The edit · "], language: ["اللغة", "Language"], logoHome: ["VINTRO — الرئيسية", "VINTRO — Home"]
   };
   function t(k) { if (X.s && X.s[k]) return X.s[k]; var v = S[k]; return v ? v[EN ? 1 : 0] : k; }
   var ONE = { models: " model", results: " result", types: " category" };
@@ -435,7 +436,7 @@
       bar.className = "ann"; bar.innerHTML = '<div class="pad">' + esc(ann) + '</div>';
       $("#head").parentNode.insertBefore(bar, $("#head"));
     }
-    var NAV = [{ id: "collections", label: t("collections"), href: pageUrl("collections") }].concat(LATEST.map(function (s) { return { id: s.id, label: s.label, href: seasonUrl(s.id) }; }))
+    var NAV = [{ id: "home", label: t("home"), href: d(ROOT) }, { id: "collections", label: t("collections"), href: pageUrl("collections") }].concat(LATEST.map(function (s) { return { id: s.id, label: s.label, href: seasonUrl(s.id) }; }))
       .concat([{ id: "about", label: t("about"), href: pageUrl("about") }, { id: "wholesale", label: t("wholesale"), href: pageUrl("wholesale") }]);
     var h = $("#head");
     h.className = "head";
@@ -626,7 +627,7 @@
     var catBand = LATEST.length ? '<section class="band cat-band"><div class="pad band-in"><div><span class="latin">Catalogue ' + top + '</span><h2>' + t("catalogH") + '</h2><p>' + t("catalogP") + '</p></div><div class="band-btns">' +
       LATEST.map(function (s) { return '<a class="btn light" href="' + catalogUrl(s.id) + '">' + t("dlCatalog") + ' · ' + s.label + '</a>'; }).join("") + '</div></div></section>' : "";
 
-    $("#main").innerHTML = hero + ribbon + panels + rail + tiles + edits + factory() + catBand +
+    $("#main").innerHTML = hero + ribbon + panels + rail + tiles + colourFan(latest) + edits + factory() + catBand +
       (older.length ? '<section class="sec pad" style="padding-top:72px">' + secHead("Archive", t("archive"), '<a class="link-u" href="' + pageUrl("collections") + '">' + t("allCollections") + '</a>') + '<div class="arch">' +
         older.map(function (s) {
           return '<a class="arch-card ' + s.cls + '" href="' + seasonUrl(s.id) + '"><div class="am">' + (s.cover ? '<img src="' + esc(url(s.cover)) + '" alt="" loading="lazy">' : lines() + '<span class="mark">' + logo("mark") + '</span>') + '</div>' +
@@ -641,17 +642,22 @@
       (wa ? '<a class="btn wa block" href="https://wa.me/' + wa + '" target="_blank" rel="noopener">' + IC.wa + t("waUs") + '</a>' : "") + '</div></div></section>';
     rails();
     heroLife();
+    var fanEl = $(".cf-fan");
+    if (fanEl) {
+      if ("IntersectionObserver" in window) { var fio = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { fanEl.classList.add("open"); fio.disconnect(); } }, { threshold: .25 }); fio.observe(fanEl.parentNode); }
+      else fanEl.classList.add("open");
+    }
     if (location.hash) { var el = document.getElementById(location.hash.slice(1)); if (el) setTimeout(function () { el.scrollIntoView(); }, 50); }
   }
 
   /* three garments the sketch changes between: crew neck sweater, polo, half-zip */
   function P_(d, dl) { return '<path class="d" d="' + d + '" pathLength="1" style="--dl:' + (dl || 0) + 's"/>'; }
-  var zipTeeth = (function () { var z = "", y; for (y = 92; y <= 226; y += 6) z += "M297 " + y + "h6"; return z; })();
+  var zipTeeth = (function () { var z = "", y; for (y = 92; y <= 198; y += 6) z += "M297 " + y + "h6"; return z; })();
   var STYLES = [
     ["KNITWEAR · CREW NECK", P_("M232 99Q300 156 368 99", 2.3)],
     ["KNITWEAR · POLO", P_("M245 95L262 136L300 128L338 136L355 95", .1) + P_("M292 128V206H308V128", .5) +
       '<g class="btns"><circle cx="300" cy="150" r="2.6"/><circle cx="300" cy="171" r="2.6"/><circle cx="300" cy="192" r="2.6"/></g>'],
-    ["KNITWEAR · HALF-ZIP", P_("M245 95L249 70Q300 82 351 70L355 95", .1) + P_("M300 78V232", .5) +
+    ["KNITWEAR · HALF-ZIP", P_("M245 95L249 70Q300 82 351 70L355 95", .1) + P_("M300 78V204", .5) +
       '<path class="teeth" d="' + zipTeeth + '"/><rect class="pull" x="295.5" y="86" width="9" height="16" rx="2"/>']
   ];
   /* moves every point of a path outward from a centre, for the cutting line around the sweater */
@@ -670,9 +676,41 @@
       return '<path class="tw" d="' + x[0] + '">' + a + '</path><path class="tw spark" style="--sd:' + (6 + i * 2) + 's;--sl:' + (-i * 2.3) + 's" d="' + x[0] + '" pathLength="1">' + a + '</path>';
     }).join("") + '</svg>';
   }
+  /* the VINTRO logo embroidered on the chest of the sweater in gold satin stitches, after the sketch is drawn.
+     The stitches were worked out once from the logo: x1,y1,x2,y2 in tenths, relative to the top-left corner of the logo. */
+  var EMB = "314,208,323,194;315,216,323,203;315,198,324,183;315,224,324,210;316,188,325,173;316,231,325,217;317,177,324,166;317,238,325,225;319,244,327,231;320,251,329,237;321,258,330,243;323,263,332,248;325,269,334,254;327,274,337,259;329,280,338,265;331,285,341,270;333,290,343,275;336,295,346,278;339,299,349,283;341,304,351,287;343,309,354,291;347,313,357,296;348,101,351,96;349,317,360,299;351,106,357,96;352,321,363,304;353,111,362,96;355,73,363,60;356,324,367,306;356,115,368,96;358,328,370,310;359,120,373,96;361,73,376,49;361,125,379,96;362,332,373,314;363,130,384,96;365,336,377,316;366,134,389,96;366,73,386,41;368,339,380,319;368,139,395,96;371,144,400,96;371,343,384,323;372,72,395,35;374,148,406,96;375,346,387,326;376,153,411,96;377,72,404,30;378,158,415,98;379,348,391,328;381,162,418,103;382,351,395,331;382,73,411,26;383,167,404,134;386,354,399,333;386,171,407,138;388,73,418,24;388,176,409,143;389,358,403,336;391,181,411,148;393,360,406,338;393,73,427,19;394,185,414,152;396,190,417,157;397,363,410,341;398,195,419,162;400,365,414,343;401,199,422,166;403,204,424,171;404,368,419,345;405,63,433,18;406,209,426,176;406,130,428,96;408,370,423,346;409,213,429,180;411,218,432,185;412,130,433,96;413,372,427,349;413,223,434,189;415,55,440,16;416,227,437,194;417,374,432,349;417,130,438,96;418,232,439,199;419,102,422,96;421,376,435,353;421,237,442,203;423,130,444,96;423,51,446,15;423,242,444,208;425,378,440,353;426,246,446,213;428,130,449,96;429,251,449,218;430,379,445,355;431,256,452,223;432,46,452,14;433,261,454,228;434,130,455,96;434,381,450,356;436,265,457,232;438,383,454,357;438,270,459,237;438,131,459,98;439,43,458,12;441,275,461,242;441,136,461,103;443,384,456,362;444,279,464,246;444,140,464,107;446,284,483,224;446,145,467,111;447,39,464,11;447,386,460,366;448,289,485,229;448,150,469,116;451,293,488,234;451,154,472,121;452,387,463,370;453,298,490,239;453,159,474,126;454,37,470,10;456,303,493,244;456,164,477,130;457,387,465,374;458,307,496,248;459,168,479,135;461,312,498,253;461,173,482,140;461,34,476,10;461,389,468,379;463,178,484,145;464,316,501,257;466,321,477,304;466,182,487,149;466,390,471,382;467,33,482,8;468,187,489,154;471,192,490,161;471,391,474,386;474,31,488,8;478,302,480,298;480,30,493,9;483,224,521,164;485,359,523,300;486,29,498,9;486,229,523,169;488,363,525,304;489,233,526,173;491,238,528,178;491,368,528,309;492,27,503,10;493,243,530,183;493,373,530,314;496,378,532,319;496,247,533,187;498,27,509,9;498,252,535,192;499,382,535,323;499,191,535,132;501,387,538,327;501,256,510,242;503,28,513,11;503,392,515,372;505,320,542,260;508,28,519,11;511,240,513,237;514,28,523,13;519,28,528,13;521,163,558,105;523,299,560,240;523,168,560,110;525,28,534,13;526,303,563,244;526,173,563,114;528,308,565,249;529,177,565,119;529,29,538,15;530,132,553,96;531,313,568,254;531,182,567,124;533,318,570,259;534,187,570,128;534,29,542,16;535,263,572,203;536,322,573,263;536,131,558,96;536,192,538,189;539,326,544,318;539,30,546,19;540,185,543,181;543,259,580,200;544,31,551,20;548,33,556,21;552,166,560,153;552,383,556,376;553,34,560,23;557,166,565,153;558,35,564,25;558,104,563,96;559,380,565,371;560,109,568,96;561,239,597,180;562,167,571,153;563,36,569,26;563,113,574,96;564,243,600,184;566,379,572,368;566,118,579,96;566,248,602,189;566,204,603,146;567,38,573,28;568,167,576,154;568,123,585,96;568,253,605,194;570,258,607,200;571,127,590,96;571,40,577,31;573,203,609,144;573,375,581,362;573,262,577,257;573,167,581,154;574,131,596,96;575,42,581,33;578,255,579,253;579,166,587,154;580,130,601,96;580,43,585,35;580,199,617,141;581,372,590,357;584,45,589,37;584,166,592,154;585,130,606,96;588,47,593,40;589,367,602,347;591,130,612,96;592,51,597,42;596,52,600,46;596,130,617,96;597,363,615,335;598,179,634,121;599,143,628,96;600,55,604,49;601,184,637,125;602,130,623,96;603,189,640,130;603,145,634,96;603,58,608,51;605,194,638,142;607,356,644,297;607,60,611,54;608,199,610,194;610,143,639,96;611,63,614,58;614,66,618,61;617,349,654,290;617,140,645,96;618,69,622,63;621,73,624,68;630,336,667,277;635,120,650,96;638,124,655,96;639,140,643,133;640,129,661,96;644,296,681,237;646,320,648,317;648,281,684,224;649,315,664,290;651,173,672,140;652,162,670,134;653,178,674,145;654,264,685,213;654,289,680,247;655,184,676,149;656,191,678,155;657,198,679,162;657,250,685,205;658,204,681,169;658,230,684,189;658,213,682,175;658,239,684,198;659,221,683,182;668,276,677,262;682,237,683,234;13,508,16,503;18,509,21,503;23,510,26,504;26,512,32,504;30,516,37,504;32,521,43,504;34,526,48,503;37,530,54,503;40,535,59,503;41,540,65,503;43,546,70,504;46,550,67,517;47,557,65,528;50,562,67,535;51,568,69,539;54,573,71,546;56,578,73,551;57,585,74,557;60,590,76,562;61,595,79,567;64,600,81,573;66,605,83,578;67,612,84,585;69,514,75,504;69,617,86,590;71,623,88,597;74,628,91,601;76,633,92,607;77,639,94,612;77,509,81,504;79,644,96,618;81,650,98,624;83,508,86,504;84,655,99,630;86,660,118,609;87,667,110,630;90,670,99,657;110,614,126,587;118,591,136,562;127,508,130,504;127,568,145,539;132,509,135,503;134,548,162,504;135,512,140,503;139,515,146,503;139,531,156,504;140,522,151,503;162,513,167,504;170,509,173,504;192,507,195,503;194,670,197,665;197,509,200,504;199,670,205,661;201,511,205,504;204,671,240,613;206,511,211,504;209,515,216,504;210,670,240,621;211,520,222,503;213,535,233,503;213,639,240,595;214,525,227,503;214,647,241,604;214,541,238,503;214,567,241,524;215,593,240,552;215,619,241,578;215,550,243,504;215,576,240,535;215,602,240,561;215,628,240,587;215,558,249,504;215,584,240,543;215,610,240,569;215,670,241,630;221,670,240,639;226,670,241,646;232,670,243,652;237,670,245,657;242,671,248,661;248,671,252,664;248,514,254,504;253,670,257,664;257,509,260,504;259,670,262,665;263,508,264,505;289,508,292,504;291,671,295,665;294,509,298,504;296,670,301,664;299,510,303,504;302,670,319,643;304,511,309,503;307,514,314,503;307,670,320,650;310,519,320,503;312,524,325,503;312,576,319,564;312,602,319,590;312,628,319,617;312,533,330,504;312,559,319,548;312,585,319,574;312,611,319,600;312,637,319,626;312,541,334,506;312,567,319,556;312,593,319,582;312,619,319,608;312,645,319,634;312,549,319,538;313,670,322,655;318,670,325,659;322,534,338,509;324,670,329,662;326,537,340,514;328,542,344,517;329,671,333,664;332,545,346,521;334,549,349,525;334,671,338,665;337,553,352,529;340,670,343,666;341,556,355,534;343,561,358,538;346,566,361,541;349,569,364,545;352,573,367,549;355,577,370,553;358,580,372,558;361,585,375,562;364,589,379,565;367,593,382,569;370,597,384,573;373,600,387,577;376,604,390,581;379,608,393,586;381,613,396,589;385,616,399,593;387,621,402,597;390,624,405,601;393,628,408,605;396,632,410,610;399,637,413,614;402,640,417,617;403,508,406,503;405,644,420,621;408,509,412,503;409,647,430,613;411,652,430,621;413,510,417,504;414,656,430,630;416,513,422,504;417,660,430,638;420,516,428,504;420,664,431,647;422,521,433,504;423,668,430,656;423,589,431,577;423,615,430,604;423,546,430,535;423,572,430,561;423,598,430,587;423,528,439,503;423,554,430,543;424,580,430,569;424,606,430,595;424,536,432,524;424,562,431,551;427,670,430,664;437,515,444,503;446,509,450,503;453,507,454,505;474,551,480,541;475,533,493,503;475,541,498,504;476,514,482,503;476,522,488,503;496,517,504,504;503,513,509,504;510,511,515,504;516,510,520,504;519,670,522,665;521,510,526,503;524,670,529,663;527,510,531,503;530,670,565,613;533,509,537,503;535,670,565,622;538,509,542,504;539,603,565,561;539,629,565,587;539,533,558,504;539,559,565,518;540,585,565,544;540,611,566,570;540,516,547,504;540,637,566,596;540,542,563,504;540,568,565,527;540,594,565,553;540,620,565,579;540,524,552,504;540,646,565,605;540,550,569,503;540,576,565,535;541,670,565,631;546,671,567,638;551,670,567,646;557,670,568,653;562,670,570,658;568,670,574,660;571,509,574,503;573,670,578,663;576,509,580,503;579,670,582,665;581,510,585,504;584,670,587,665;587,510,590,504;592,511,596,504;597,511,601,504;601,513,607,504;606,514,612,503;610,516,618,503;613,519,623,503;617,522,628,504;619,527,631,509;622,531,631,517;625,536,632,525;626,542,632,533;628,548,631,542;654,507,656,503;655,669,658,665;658,509,661,503;661,669,665,662;663,510,667,503;666,669,703,611;667,512,672,504;671,514,677,504;672,669,703,619;673,519,683,504;675,524,688,504;676,532,694,504;676,645,703,601;677,635,703,593;677,539,699,503;677,565,703,523;677,591,703,549;677,617,703,575;677,547,705,503;677,669,703,627;677,573,703,532;677,599,703,559;677,625,703,585;677,556,703,515;677,582,703,541;677,608,703,567;683,669,703,637;688,669,703,645;694,669,705,651;699,669,707,656;704,669,710,660;706,589,708,585;706,509,710,503;710,669,714,662;711,589,714,584;712,509,715,504;715,669,718,665;715,590,719,585;717,509,721,504;720,592,725,583;721,669,723,665;722,511,726,504;723,595,732,581;727,511,731,504;727,598,764,538;729,603,767,543;731,513,736,505;732,607,769,547;735,515,741,506;736,610,749,589;738,615,752,592;739,519,745,508;740,620,755,596;741,523,750,508;743,625,758,600;744,527,755,510;745,630,760,605;746,533,759,511;747,635,763,609;748,555,769,521;748,538,763,515;748,546,766,517;750,640,765,614;751,647,767,621;752,584,778,542;754,651,769,626;756,656,772,630;758,661,774,635;760,580,777,553;760,666,776,640;764,669,779,644;765,537,772,526;767,542,774,531;769,669,782,649;770,546,777,535;775,669,784,654;780,669,787,658;785,669,790,663;791,669,794,664;796,669,799,665;823,582,861,523;824,591,860,532;824,598,861,539;825,571,859,517;826,605,856,556;827,612,854,568;828,618,853,578;829,555,847,527;831,622,852,589;833,627,853,596;836,632,853,604;838,636,854,611;841,641,856,618;845,644,857,623;847,648,859,629;851,651,861,634;855,654,864,638;858,658,867,643;861,531,876,508;861,522,868,511;862,660,869,648;862,538,864,535;865,663,873,651;870,664,876,655;872,523,884,503;874,667,879,658;878,668,883,661;883,670,887,663;885,510,890,502;887,672,890,666;892,672,895,667;893,506,896,501;897,673,901,667;899,505,902,499;902,673,905,669;904,505,907,500;907,674,911,669;910,505,913,500;913,673,917,668;915,505,918,501;919,673,924,665;920,507,923,501;924,507,928,502;925,672,931,661;928,510,932,504;932,669,969,610;932,512,937,506;936,516,941,507;939,666,976,607;940,518,945,510;942,522,949,511;945,526,953,514;948,661,984,603;948,530,956,518;950,535,960,520;953,540,963,523;954,546,967,527;956,657,989,603;957,551,970,531;958,618,989,569;959,557,973,534;960,564,976,538;961,580,981,547;961,606,988,562;961,570,979,542;962,586,983,552;962,595,985,557;969,610,990,576;969,644,971,641;973,639,982,624;977,606,990,584;985,602,990,593";
+  function embroider() {
+    var g = $("#hx-emb"), nd = $("#hx-en"); if (!g) return;
+    var BX = 250, BY = 213, NS = "http://www.w3.org/2000/svg", TONES = ["#E4C68C", "#F4E0B0", "#CDAA6B", "#EBD39F"];
+    var list = EMB.split(";").map(function (q) { var v = q.split(","); return [BX + v[0] / 10, BY + v[1] / 10, BX + v[2] / 10, BY + v[3] / 10]; });
+    var i = 0, start = 0, DUR = 5, DELAY = 3.6;
+    function add(n) {
+      var f = document.createDocumentFragment();
+      for (; n > 0 && i < list.length; n--, i++) {
+        var q = list[i], l = document.createElementNS(NS, "line");
+        l.setAttribute("x1", q[0].toFixed(1)); l.setAttribute("y1", q[1].toFixed(1)); l.setAttribute("x2", q[2].toFixed(1)); l.setAttribute("y2", q[3].toFixed(1));
+        l.setAttribute("stroke", TONES[i % 4]); f.appendChild(l);
+      }
+      g.appendChild(f);
+    }
+    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) { add(list.length); g.classList.add("done"); return; }
+    function tick(now) {
+      if (!start) start = now;
+      var t = (now - start) / 1000 - DELAY;
+      if (t < 0) { requestAnimationFrame(tick); return; }
+      var want = Math.min(list.length, Math.floor(t / DUR * list.length)); add(want - i);
+      if (i < list.length) {
+        var q = list[Math.max(0, i - 1)], up = Math.floor(now / 60) % 2;
+        nd.style.opacity = 1; nd.setAttribute("transform", "translate(" + (up ? q[2] : q[0]).toFixed(1) + " " + ((up ? q[3] : q[1]) - (up ? 4 : 0)).toFixed(1) + ") rotate(18)");
+        requestAnimationFrame(tick);
+      } else { nd.style.opacity = 0; g.classList.add("done"); }
+    }
+    requestAnimationFrame(tick);
+  }
   /* keeps the opening alive: floating dust, the drawing following the mouse, and the garment changing every few seconds */
   function heroLife() {
     var hx = $(".hx.art"); if (!hx) return;
+    embroider();
     var still = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
     var dust = $(".hx-dust"), h = "", i;
     for (i = 0; i < 26; i++) h += '<i style="left:' + (Math.random() * 100).toFixed(1) + '%;--s:' + (1 + Math.random() * 2.4).toFixed(1) + 'px;--t:' + (12 + Math.random() * 16).toFixed(1) + 's;--l:-' + (Math.random() * 28).toFixed(1) + 's;--x:' + (Math.random() * 60 - 30).toFixed(0) + 'px"></i>';
@@ -707,6 +745,7 @@
       '<pattern id="hx-knit" width="9" height="9" patternUnits="userSpaceOnUse"><path d="M1 1.5L4.5 7.5L8 1.5" fill="none" stroke="currentColor" stroke-width=".55"/></pattern>' +
       '<marker id="hx-ar" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L9 5L1 9" fill="none" stroke="currentColor" stroke-width="1.1"/></marker>' +
       '<clipPath id="hx-body"><path d="' + outline + '"/></clipPath>' +
+      '<filter id="hx-embsh" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx=".25" dy=".45" stdDeviation=".25" flood-color="#000" flood-opacity=".7"/></filter>' +
       '<mask id="hx-sew" maskUnits="userSpaceOnUse" x="0" y="0" width="640" height="640"><rect x="0" y="0" height="640" width="204" fill="#fff"><animate attributeName="width" values="204;396;396" keyTimes="0;.82;1" dur="6s" repeatCount="indefinite"/></rect></mask></defs>' +
       '<rect class="g-grid" x="20" y="20" width="600" height="600" fill="url(#hx-grid)"/>' +
       '<path class="g-ticks" d="' + ticks + '"/>' +
@@ -726,9 +765,11 @@
         '<path class="ribs" d="' + ribs + '"/>' +
         L("M246 103L170 126M354 103L430 126M168 126Q186 190 198 250M432 126Q414 190 402 250M198 256L202 552M402 256L398 552", "st") +
         '<path class="st sew" d="M204 525H396" mask="url(#hx-sew)"/>' +
-        '<g class="ms"><path d="M200 300H400" marker-start="url(#hx-ar)" marker-end="url(#hx-ar)"/><text x="300" y="290">CHEST · 56</text>' +
+        '<g class="ms"><path d="M200 300H400" marker-start="url(#hx-ar)" marker-end="url(#hx-ar)"/><text x="300" y="318">CHEST · 56</text>' +
           '<path class="gd" d="M440 95H572M412 560H572"/><path d="M560 98V557" marker-start="url(#hx-ar)" marker-end="url(#hx-ar)"/><text x="0" y="0" transform="translate(576 330) rotate(90)">LENGTH · 72</text>' +
           '<path d="M96 186L61 438" marker-start="url(#hx-ar)" marker-end="url(#hx-ar)"/><text x="0" y="0" transform="translate(66 300) rotate(-82)">SLEEVE · 64</text></g>' +
+        '<g id="hx-emb" class="emb" filter="url(#hx-embsh)"></g>' +
+        '<g id="hx-en" class="en"><path d="M0 -40V-2" class="enl"/><path d="M-1.1 -38V-4L0 0L1.1 -4V-38Z" class="nf"/><ellipse cx="0" cy="-34" rx=".55" ry="2.2" class="ne"/><path id="hx-eth" class="th" d="M0 -34Q40 -90 140 -170"/></g>' +
         '<g class="needle"><animateMotion dur="6s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;.82;1" calcMode="linear" path="M204 525H396"/>' +
           '<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -11;0 0" dur=".42s" repeatCount="indefinite"/>' +
           '<path d="M0 -62V-3" class="nd"/><path d="M-1.6 -60V-6L0 0L1.6 -6V-60Z" class="nf"/><ellipse cx="0" cy="-54" rx=".8" ry="3" class="ne"/>' +
@@ -743,6 +784,30 @@
     return '<div class="hx-tape" aria-hidden="true" dir="ltr"><div class="tp-track">' + one + one + '</div></div>';
   }
 
+  /* the season's colour card: the real colours of the newest models, fanned out; each one opens a model in that colour */
+  function colourFan(list) {
+    var by = {}, order = [];
+    list.forEach(function (p) {
+      arr(p.colors).forEach(function (c, i) {
+        var en = colEn(c); if (!en || /\//.test(en)) return;
+        var k = en.toLowerCase();
+        if (!by[k]) { by[k] = { c: c, p: p, i: i, n: 0, hex: hexOf(c) }; order.push(k); }
+        if (by[k].last !== p) { by[k].n++; by[k].last = p; }
+      });
+    });
+    order.sort(function (a, b) { return by[b].n - by[a].n; });
+    var top = order.slice(0, 13);
+    if (top.length < 4) return "";
+    function lum(h) { h = h.replace("#", ""); if (h.length === 3) h = h.replace(/./g, "$&$&"); var v = parseInt(h, 16); return .3 * (v >> 16) + .59 * (v >> 8 & 255) + .11 * (v & 255); }
+    top.sort(function (a, b) { return lum(by[a].hex) - lum(by[b].hex); });
+    var n = top.length;
+    return '<section class="cfan"><div class="pad cf-in"><div class="cf-txt"><span class="latin eyebrow">Colour card</span><h2>' + t("colorsH") + '</h2><p>' + t("colorsP") + '</p></div>' +
+      '<div class="cf-stage"><div class="cf-fan">' + top.map(function (k, j) {
+        var x = by[k], a = -58 + 116 * j / (n - 1);
+        return '<a class="cf-card" href="' + esc(modelUrl(x.p) + "&c=" + x.i) + '" style="--c:' + esc(x.hex) + ';--a:' + a.toFixed(1) + 'deg;--j:' + j + '" title="' + esc(colL(x.c)) + '">' +
+          '<span class="cf-lab"><b>' + esc(colL(x.c)) + '</b><small class="latin">' + esc(colEn(x.c)) + '</small><i>' + cnt(x.n, "models") + '</i></span><span class="cf-rivet"></span></a>';
+      }).join("") + '</div></div></div></section>';
+  }
   /* arrows and progress bar under a row of cards */
   function rails() {
     document.querySelectorAll(".rail").forEach(function (r) {
@@ -833,6 +898,7 @@
     var s = seasonOf(p.season) || mkSeason("summer-2026"), cols = arr(p.colors), sizes = arr(p.sizes), name = px(p, "name");
     document.title = name + (p.code ? " · " + p.code : "") + " — VINTRO";
     var ci = Math.max(0, cols.findIndex(function (c) { return arr(c.images).length; })), size = null, ii = 0;
+    var qc = parseInt(QS.get("c"), 10); if (qc >= 0 && qc < cols.length) ci = qc;   /* a colour chosen on the colour card */
     var wa = digits(B.whatsapp);
     var related = P.filter(function (x) { return x !== p && x.season === p.season; });
     related.sort(function (a, b) { return (b.category === p.category) - (a.category === p.category); });

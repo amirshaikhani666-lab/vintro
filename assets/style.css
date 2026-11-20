@@ -745,4 +745,47 @@ html[dir="ltr"] .sec-head h2{font-size:clamp(2rem,3.6vw,3rem)}
 .hx-svg .teeth{fill:none;stroke:currentColor;stroke-width:.8;opacity:.7;animation:fadein .6s .9s both}
 .hx-svg .pull{fill:none;stroke:#F3E6C8;stroke-width:1.1;animation:fadein .6s 1.1s both}
 
+
+
+/* ---------- the logo embroidered on the sweater ---------- */
+.hx-svg .emb line{stroke-width:.56;stroke-linecap:round}
+.hx-svg .emb.done{animation:embshine 4.5s ease-in-out infinite}
+@keyframes embshine{0%,100%{filter:url(#hx-embsh) brightness(1)}50%{filter:url(#hx-embsh) brightness(1.28)}}
+.hx-svg .en{opacity:0;transition:opacity .4s}
+.hx-svg .en .enl{display:none}
+
+
+/* ---------- the season's colour card ---------- */
+.cfan{position:relative;isolation:isolate;overflow:hidden;color:#fff;margin-top:56px;background:radial-gradient(ellipse 80% 80% at var(--cf-glow,30%) 70%,#22304B 0%,var(--navy) 55%,#0F1626 100%)}
+[dir="ltr"] .cfan{--cf-glow:70%}
+.cfan::before{content:"";position:absolute;inset:0;z-index:-1;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18'%3E%3Cpath d='M2 3l7 12l7-12' fill='none' stroke='%23C9A86A' stroke-opacity='.06' stroke-width='1.2'/%3E%3C/svg%3E")}
+.cf-in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);align-items:center;min-height:620px}
+.cf-txt{display:grid;gap:16px;justify-items:start;padding-block:64px}
+.cf-txt .eyebrow{color:var(--gold)}
+.cf-txt h2{font-size:clamp(2.2rem,4.6vw,3.8rem);line-height:1.1}
+.cf-txt p{color:#B9C0CC;max-width:42ch;font-size:1.02rem}
+.cf-stage{position:relative;height:600px;align-self:stretch}
+.cf-fan{position:absolute;left:50%;bottom:-24px;width:0;height:0}
+.cf-fan.open{animation:cfbreathe 7s ease-in-out 2.2s infinite}
+@keyframes cfbreathe{0%,100%{transform:rotate(0)}50%{transform:rotate(3deg)}}
+.cf-card{position:absolute;left:-56px;bottom:0;width:112px;height:470px;border-radius:10px 10px 6px 6px;background:var(--c);overflow:hidden;
+  transform-origin:56px calc(100% - 42px);transform:rotate(0);transition:transform 1.3s cubic-bezier(.2,.8,.2,1) calc(var(--j) * 45ms),filter .3s;
+  box-shadow:0 12px 30px rgb(0 0 0 / .4),inset 0 0 0 1px rgb(255 255 255 / .08)}
+.cf-card::before{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='9'%3E%3Cpath d='M1 1.5l4 6l4-6' fill='none' stroke='%23fff' stroke-opacity='.14' stroke-width='1.1'/%3E%3C/svg%3E")}
+.cf-card::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgb(0 0 0 / .26),transparent 30%,rgb(255 255 255 / .09) 55%,rgb(0 0 0 / .22))}
+.cf-fan.open .cf-card{transform:rotate(var(--a))}
+.cf-fan.open .cf-card:hover,.cf-fan.open .cf-card:focus-visible{transform:rotate(var(--a)) translateY(-34px);transition-delay:0s;filter:brightness(1.1)}
+.cf-lab{position:absolute;top:0;left:0;right:0;z-index:2;display:grid;gap:3px;padding:14px 8px 12px;background:#F6F0E4;color:var(--navy);text-align:center}
+.cf-lab b{font-weight:500;font-size:.88rem;line-height:1.3}
+.cf-lab small{font-size:.54rem;letter-spacing:.18em;color:#6E727B}
+.cf-lab i{font-style:normal;font-size:.68rem;color:var(--gold)}
+.cf-rivet{position:absolute;left:50%;bottom:32px;width:20px;height:20px;margin-left:-10px;border-radius:50%;z-index:3;background:radial-gradient(circle at 35% 35%,#FBEFCF,#C9A86A 55%,#7D6234);box-shadow:0 1px 3px rgb(0 0 0 / .5)}
+@media (max-width:860px){
+  .cf-in{grid-template-columns:1fr;min-height:0}
+  .cf-txt{padding-block:56px 0}
+  .cf-stage{height:430px}
+  .cf-card{width:80px;left:-40px;height:340px;transform-origin:40px calc(100% - 40px)}
+  .cf-lab{padding:10px 4px}.cf-lab b{font-size:.74rem}.cf-lab small{display:none}
+}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

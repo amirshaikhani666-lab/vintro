@@ -45,6 +45,7 @@ tr: {
     catalogP: "Sezonun tüm modelleri tek ve düzenli bir dosyada; yazdırmaya ya da PDF olarak kaydedip iş ortaklarınızla paylaşmaya hazır.",
     savePdf: "PDF olarak kaydet veya yazdır", pdfHint: "Düğmeye basın, ardından yazdırma penceresinde “PDF olarak kaydet”i seçin.",
     factoryH: "Fabrikamızdan", chatWith: "{n} ile yazışın", salesRole: "Toptan satış", prev: "Önceki", next: "Sonraki",
+    colorsH: "Sezonun renkleri", colorsP: "Buradaki her renk koleksiyondaki gerçek modellerden. O renkte bir model görmek için renge dokunun.",
     sendMail: "E-posta ile gönder", logoHome: "VINTRO — Ana sayfa", language: "Dil"
   },
   one: {},
@@ -167,6 +168,7 @@ de: {
     catalogP: "Alle Modelle der Saison in einer übersichtlichen Datei – zum Drucken oder als PDF für Ihre Partner.",
     savePdf: "Als PDF speichern oder drucken", pdfHint: "Drücken Sie die Schaltfläche und wählen Sie im Druckfenster „Als PDF speichern“.",
     factoryH: "Aus unserer Fabrik", chatWith: "Chat mit ", salesRole: "Großhandelsvertrieb", prev: "Zurück", next: "Weiter",
+    colorsH: "Die Farben der Saison", colorsP: "Jede Farbe stammt von echten Modellen der Kollektion. Tippen Sie auf eine Farbe, um ein Modell darin zu sehen.",
     sendMail: "Per E-Mail senden", logoHome: "VINTRO — Startseite", language: "Sprache"
   },
   one: { models: " Modell", results: " Ergebnis", types: " Kategorie", colorsN: " Farbe" },
@@ -289,6 +291,7 @@ fr: {
     catalogP: "Tous les modèles de la saison dans un seul fichier soigné, prêt à imprimer ou à enregistrer en PDF pour vos partenaires.",
     savePdf: "Enregistrer en PDF ou imprimer", pdfHint: "Appuyez sur le bouton, puis choisissez « Enregistrer au format PDF » dans la fenêtre d'impression.",
     factoryH: "Dans notre atelier", chatWith: "Discuter avec ", salesRole: "Ventes en gros", prev: "Précédent", next: "Suivant",
+    colorsH: "Les couleurs de la saison", colorsP: "Chaque couleur vient de modèles réels de la collection. Touchez une couleur pour voir un modèle dans ce coloris.",
     sendMail: "Envoyer par e-mail", logoHome: "VINTRO — Accueil", language: "Langue"
   },
   one: { models: " modèle", results: " résultat", types: " catégorie", colorsN: " coloris" },
@@ -411,6 +414,7 @@ it: {
     catalogP: "Tutti i modelli della stagione in un unico file ordinato, pronto da stampare o salvare in PDF per i tuoi partner.",
     savePdf: "Salva in PDF o stampa", pdfHint: "Premi il pulsante, poi scegli “Salva come PDF” nella finestra di stampa.",
     factoryH: "Dalla nostra fabbrica", chatWith: "Scrivi a ", salesRole: "Vendite all'ingrosso", prev: "Precedente", next: "Successivo",
+    colorsH: "I colori della stagione", colorsP: "Ogni colore viene da modelli reali della collezione. Tocca un colore per vedere un modello in quella tinta.",
     sendMail: "Invia per e-mail", logoHome: "VINTRO — Home", language: "Lingua"
   },
   one: { models: " modello", results: " risultato", types: " categoria", colorsN: " colore" },
