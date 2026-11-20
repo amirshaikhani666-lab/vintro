@@ -1,5 +1,10 @@
 {
   "name": "VINTRO",
+  "factory_images": [
+    "/images/3.jpeg",
+    "/images/1.jpeg",
+    "/images/2.jpeg"
+  ],
   "founder": "أنس الخطيب",
   "founder_title": "المؤسس والمدير التنفيذي",
   "phone": "+20 10 1026 4434",
