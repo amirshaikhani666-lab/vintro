@@ -788,4 +788,14 @@ html[dir="ltr"] .sec-head h2{font-size:clamp(2rem,3.6vw,3rem)}
   .cf-lab{padding:10px 4px}.cf-lab b{font-size:.74rem}.cf-lab small{display:none}
 }
 
+
+/* ---------- collection covers made from the models' photos ---------- */
+.acov{position:absolute;inset:0;background:#E9EAEC;overflow:hidden}
+.acov-t{position:absolute;overflow:hidden;box-shadow:0 0 0 1px rgb(250 248 244 / .9)}
+.acov-t img{transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.panel:hover .acov-t img,.coll-media:hover .acov-t img,.arch-card:hover .acov-t img{transform:scale(1.04)}
+.coll-media.has-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgb(10 14 22 / .55),transparent 45%);pointer-events:none}
+.coll-media .latin.big{z-index:2}
+.arch-card .am .acov{position:absolute}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}

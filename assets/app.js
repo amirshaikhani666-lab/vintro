@@ -582,13 +582,9 @@
     var ribbon = '<div class="mq latin" aria-hidden="true"><div class="mq-track">' + once + once + '</div></div>';
 
     /* 3. the season panels; a season without a cover shows two of its photos */
-    function panelMedia(s) {
-      if (s.cover) return '<img src="' + esc(url(s.cover)) + '" alt="">';
-      var two = P.filter(function (p) { return p.season === s.id; }).map(function (p) { return imagesOf(p)[0]; }).filter(function (im) { return im && !hasCrop(im); }).slice(0, 2);
-      return two.length === 2 ? '<div class="duo">' + two.map(function (im) { return '<img src="' + esc(url(im)) + '" alt="" loading="lazy">'; }).join("") + '</div>' : lines();
-    }
+    function panelMedia(s) { return autoCover(s.id) || lines(); }
     var panels = '<section class="hero' + (LATEST.length === 1 ? " one" : "") + '" id="seasons" aria-label="' + t("collections") + '">' + LATEST.slice(0, 2).map(function (s) {
-      var pm = panelMedia(s), img = /<img/.test(pm);
+      var pm = panelMedia(s), img = /acov/.test(pm);
       return '<a class="panel ' + s.cls + (img ? " has-img" : "") + '" href="' + seasonUrl(s.id) + '"><div class="media">' + pm + '</div>' +
         (img ? "" : '<span class="mark">' + logo("mark") + '</span>') +
         '<div class="cap"><span class="latin">' + s.latin + '</span><span class="ar">' + esc(s.intro) + '</span><span class="go">' + t("explore") + cnt(countOf(s.id), "models") + '</span></div></a>';
@@ -630,7 +626,7 @@
     $("#main").innerHTML = hero + ribbon + panels + rail + tiles + colourFan(latest) + edits + factory() + catBand +
       (older.length ? '<section class="sec pad" style="padding-top:72px">' + secHead("Archive", t("archive"), '<a class="link-u" href="' + pageUrl("collections") + '">' + t("allCollections") + '</a>') + '<div class="arch">' +
         older.map(function (s) {
-          return '<a class="arch-card ' + s.cls + '" href="' + seasonUrl(s.id) + '"><div class="am">' + (s.cover ? '<img src="' + esc(url(s.cover)) + '" alt="" loading="lazy">' : lines() + '<span class="mark">' + logo("mark") + '</span>') + '</div>' +
+          return '<a class="arch-card ' + s.cls + '" href="' + seasonUrl(s.id) + '"><div class="am">' + (autoCover(s.id) || lines() + '<span class="mark">' + logo("mark") + '</span>') + '</div>' +
             '<div class="at">' + (EN ? "" : '<span class="latin">' + s.latin + '</span>') + '<strong>' + s.label + '</strong><small>' + cnt(countOf(s.id), "models") + '</small></div></a>';
         }).join("") + '</div></section>' : "") +
       '<section class="sec pad" id="about" style="padding-block:96px"><div class="about"><div class="txt"><span class="eyebrow latin">About VINTRO</span><h2 style="font-size:clamp(1.8rem,3.4vw,2.6rem)">' + t("aboutUs") + '</h2><p>' + esc(bt("about")) + '</p><a class="link-u" style="justify-self:start" href="' + pageUrl("about") + '">' + t("readMore") + '</a>' +
@@ -808,6 +804,37 @@
           '<span class="cf-lab"><b>' + esc(colL(x.c)) + '</b><small class="latin">' + esc(colEn(x.c)) + '</small><i>' + cnt(x.n, "models") + '</i></span><span class="cf-rivet"></span></a>';
       }).join("") + '</div></div></div></section>';
   }
+  /* ---------- collection covers, made from the collection's own photos ----------
+     A cover is a few photos of the season's models side by side; the layout follows the shape of the space it fills. */
+  function coverImgs(sid, n) {
+    var ms = P.filter(function (p) { return p.season === sid && imagesOf(p).length; }), out = [], seen = {};
+    /* different categories first, so a cover shows the range of the collection */
+    ms.sort(function (a, b) { return hasCrop(heroImg(b)) - hasCrop(heroImg(a)); });
+    ms.forEach(function (p) { if (out.length < n && !seen[p.category]) { seen[p.category] = 1; out.push(p); } });
+    var step = Math.max(1, Math.floor(ms.length / n));
+    for (var i = 0; out.length < n && i < ms.length; i += step) if (out.indexOf(ms[i]) < 0) out.push(ms[i]);
+    ms.forEach(function (p) { if (out.length < n && out.indexOf(p) < 0) out.push(p); });
+    return out.map(heroImg);
+  }
+  function autoCover(sid) { return P.some(function (p) { return p.season === sid && imagesOf(p).length; }) ? '<div class="acov" data-sid="' + esc(sid) + '"></div>' : ""; }
+  function fillCovers() {
+    document.querySelectorAll(".acov").forEach(function (el) {
+      var w = el.clientWidth, h = el.clientHeight; if (!w || !h) return;
+      var key = Math.round(w / 8) + "x" + Math.round(h / 8); if (el.getAttribute("data-k") === key) return; el.setAttribute("data-k", key);
+      var a = w / h, L;
+      if (a >= 1.25) L = [[0, 0, 1 / 3, 1], [1 / 3, 0, 1 / 3, 1], [2 / 3, 0, 1 / 3, 1]];
+      else if (a >= .72) L = [[0, 0, .58, 1], [.58, 0, .42, .5], [.58, .5, .42, .5]];
+      else L = [[0, 0, 1, .64], [0, .64, .5, .36], [.5, .64, .5, .36]];
+      var imgs = coverImgs(el.getAttribute("data-sid"), L.length);
+      if (imgs.length === 1) L = [[0, 0, 1, 1]]; else if (imgs.length === 2) L = a >= .9 ? [[0, 0, .5, 1], [.5, 0, .5, 1]] : [[0, 0, 1, .5], [0, .5, 1, .5]];
+      if (!EN) L = L.map(function (r) { return [1 - r[0] - r[2], r[1], r[2], r[3]]; });   /* the big photo on the reading side */
+      el.innerHTML = L.map(function (r, i) {
+        return '<div class="acov-t" style="left:' + (r[0] * 100).toFixed(3) + '%;top:' + (r[1] * 100).toFixed(3) + '%;width:' + (r[2] * 100).toFixed(3) + '%;height:' + (r[3] * 100).toFixed(3) + '%">' + pic(imgs[i], (w * r[2]) / (h * r[3]), "", true) + '</div>';
+      }).join("");
+    });
+  }
+  var covT = 0;
+  window.addEventListener("resize", function () { clearTimeout(covT); covT = setTimeout(fillCovers, 200); });
   /* arrows and progress bar under a row of cards */
   function rails() {
     document.querySelectorAll(".rail").forEach(function (r) {
@@ -971,9 +998,9 @@
       }).join("");
   }
   function collBlock(s, i) {
-    var items = P.filter(function (p) { return p.season === s.id; }), cats = catsOf(items), cover = s.cover;
+    var items = P.filter(function (p) { return p.season === s.id; }), cats = catsOf(items), cover = autoCover(s.id);
     return '<section class="coll ' + s.cls + (i % 2 ? " flip" : "") + '"><a class="coll-media' + (cover ? " has-img" : "") + '" href="' + seasonUrl(s.id) + '" aria-label="' + s.label + '">' +
-      (cover ? '<img src="' + esc(url(cover)) + '" alt="">' : lines() + '<span class="mark">' + logo("mark") + '</span>') + '<span class="latin big">' + s.latin + '</span></a>' +
+      (cover || lines() + '<span class="mark">' + logo("mark") + '</span>') + '<span class="latin big">' + s.latin + '</span></a>' +
       '<div class="coll-txt pad">' + (EN ? "" : '<span class="latin">' + s.latin + '</span>') + '<h2>' + s.label + '</h2><p>' + esc(s.intro || "") + '</p>' +
       '<div class="coll-meta"><span>' + cnt(items.length, "models") + '</span><span>' + cnt(cats.length, "types") + '</span></div>' +
       (cats.length ? '<ul class="coll-cats">' + cats.map(function (c) { return '<li><a href="' + seasonUrl(s.id, c) + '">' + esc(catL(c)) + '</a></li>'; }).join("") + '</ul>' : "") +
@@ -1098,6 +1125,7 @@
     (R[PAGE] || home)();
     footer();
     reveal();
+    fillCovers();
   }).catch(function () {
     $("#main").innerHTML = '<div class="loading pad">' + t("loadErr") + '</div>';
   });
